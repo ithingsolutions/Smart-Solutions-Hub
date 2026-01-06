@@ -3,36 +3,24 @@ import { useLanguage } from "@/lib/language-context";
 import { Linkedin } from "lucide-react";
 
 const team = [
-  {
-    key: "ceo",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    key: "cto",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    key: "coo",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    key: "lead",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-  },
+  { key: "1", number: 1 },
+  { key: "2", number: 2 },
+  { key: "3", number: 3 },
+  { key: "4", number: 4 },
 ];
 
 const teamData = {
   en: {
-    ceo: { name: "Ahmad Al-Hassan", role: "CEO & Founder" },
-    cto: { name: "Omar Khalil", role: "Chief Technology Officer" },
-    coo: { name: "Sara Al-Rashid", role: "Chief Operations Officer" },
-    lead: { name: "Khaled Mansour", role: "Lead Solutions Architect" },
+    "1": { name: "Name 1", role: "CEO & Founder" },
+    "2": { name: "Name 2", role: "Chief Technology Officer" },
+    "3": { name: "Name 3", role: "Chief Operations Officer" },
+    "4": { name: "Name 4", role: "Lead Solutions Architect" },
   },
   ar: {
-    ceo: { name: "أحمد الحسن", role: "الرئيس التنفيذي والمؤسس" },
-    cto: { name: "عمر خليل", role: "المدير التقني" },
-    coo: { name: "سارة الراشد", role: "مديرة العمليات" },
-    lead: { name: "خالد منصور", role: "كبير مهندسي الحلول" },
+    "1": { name: "الاسم 1", role: "الرئيس التنفيذي والمؤسس" },
+    "2": { name: "الاسم 2", role: "المدير التقني" },
+    "3": { name: "الاسم 3", role: "مديرة العمليات" },
+    "4": { name: "الاسم 4", role: "كبير مهندسي الحلول" },
   },
 };
 
@@ -83,11 +71,11 @@ export function Team() {
               >
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={memberData.name}
-                      className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+                    <div className="w-full aspect-square bg-gradient-to-br from-primary/20 via-primary/10 to-accent flex items-center justify-center">
+                      <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="text-4xl font-bold text-primary">{member.number}</span>
+                      </div>
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <a

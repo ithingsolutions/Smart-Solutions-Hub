@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hasan Alquds Arabic Font */
+@font-face {
+  font-family: 'Hasan Alquds';
+  src: url('/attached_assets/Hasan-Alquds-Unicode-Light_1767682217754.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* LIGHT MODE - iThing Brand Colors (Charcoal + Red accent) */
 :root {
   --button-outline: rgba(0,0,0, .10);
@@ -297,5 +306,10 @@
 
   .animate-gradient {
     animation: gradient 4s ease infinite;
+  }
+
+  /* Arabic Font Class */
+  .font-arabic {
+    font-family: 'Hasan Alquds', 'Cairo', 'Tajawal', sans-serif;
   }
 }

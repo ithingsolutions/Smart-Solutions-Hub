@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useLanguage } from "@/lib/language-context";
-import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Loader2, MessageCircle } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -67,20 +67,25 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-card/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-28 lg:py-36 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/30 via-accent/50 to-accent/30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            {isRTL ? "تواصل معنا" : "Contact Us"}
-          </span>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <MessageCircle className="w-4 h-4 text-primary" />
+            <span className={`text-sm font-semibold text-primary ${isRTL ? "font-arabic" : ""}`}>
+              {isRTL ? "تواصل معنا" : "Get In Touch"}
+            </span>
+          </div>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${isRTL ? "font-arabic" : ""}`}
+            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 ${isRTL ? "font-arabic" : ""}`}
             data-testid="text-contact-title"
           >
             {t("contact.title")}
           </h2>
           <p
-            className={`text-lg text-muted-foreground max-w-2xl mx-auto ${isRTL ? "font-arabic" : ""}`}
+            className={`text-xl text-muted-foreground max-w-2xl mx-auto ${isRTL ? "font-arabic" : ""}`}
             data-testid="text-contact-subtitle"
           >
             {t("contact.subtitle")}
@@ -88,14 +93,14 @@ export function Contact() {
         </div>
 
         <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 ${isRTL ? "lg:flex-row-reverse" : ""}`}>
-          <Card className="lg:col-span-3 border-border bg-background">
-            <CardContent className="p-8 lg:p-10">
-              <form onSubmit={handleSubmit} className="space-y-6">
+          <Card className="lg:col-span-3 border-0 bg-background shadow-2xl">
+            <CardContent className="p-8 lg:p-12">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Label
                       htmlFor="name"
-                      className={`font-medium ${isRTL ? "font-arabic" : ""}`}
+                      className={`text-sm font-semibold ${isRTL ? "font-arabic" : ""}`}
                     >
                       {t("contact.form.name")}
                     </Label>
@@ -106,14 +111,14 @@ export function Contact() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       required
-                      className={`h-12 ${isRTL ? "text-right font-arabic" : ""}`}
+                      className={`h-14 text-base border-2 focus:border-primary transition-colors ${isRTL ? "text-right font-arabic" : ""}`}
                       data-testid="input-name"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Label
                       htmlFor="email"
-                      className={`font-medium ${isRTL ? "font-arabic" : ""}`}
+                      className={`text-sm font-semibold ${isRTL ? "font-arabic" : ""}`}
                     >
                       {t("contact.form.email")}
                     </Label>
@@ -125,7 +130,7 @@ export function Contact() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       required
-                      className={`h-12 ${isRTL ? "text-right" : ""}`}
+                      className={`h-14 text-base border-2 focus:border-primary transition-colors ${isRTL ? "text-right" : ""}`}
                       dir="ltr"
                       data-testid="input-email"
                     />
@@ -133,10 +138,10 @@ export function Contact() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Label
                       htmlFor="phone"
-                      className={`font-medium ${isRTL ? "font-arabic" : ""}`}
+                      className={`text-sm font-semibold ${isRTL ? "font-arabic" : ""}`}
                     >
                       {t("contact.form.phone")}
                     </Label>
@@ -147,15 +152,15 @@ export function Contact() {
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
                       }
-                      className={`h-12 ${isRTL ? "text-right" : ""}`}
+                      className={`h-14 text-base border-2 focus:border-primary transition-colors ${isRTL ? "text-right" : ""}`}
                       dir="ltr"
                       data-testid="input-phone"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Label
                       htmlFor="service"
-                      className={`font-medium ${isRTL ? "font-arabic" : ""}`}
+                      className={`text-sm font-semibold ${isRTL ? "font-arabic" : ""}`}
                     >
                       {t("contact.form.service")}
                     </Label>
@@ -166,7 +171,7 @@ export function Contact() {
                       }
                     >
                       <SelectTrigger
-                        className={`h-12 ${isRTL ? "text-right font-arabic" : ""}`}
+                        className={`h-14 text-base border-2 focus:border-primary transition-colors ${isRTL ? "text-right font-arabic" : ""}`}
                         data-testid="select-service"
                       >
                         <SelectValue
@@ -188,10 +193,10 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <Label
                     htmlFor="message"
-                    className={`font-medium ${isRTL ? "font-arabic" : ""}`}
+                    className={`text-sm font-semibold ${isRTL ? "font-arabic" : ""}`}
                   >
                     {t("contact.form.message")}
                   </Label>
@@ -202,8 +207,8 @@ export function Contact() {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     required
-                    rows={5}
-                    className={`resize-none ${isRTL ? "text-right font-arabic" : ""}`}
+                    rows={6}
+                    className={`text-base border-2 focus:border-primary transition-colors resize-none ${isRTL ? "text-right font-arabic" : ""}`}
                     data-testid="input-message"
                   />
                 </div>
@@ -211,7 +216,7 @@ export function Contact() {
                 <Button
                   type="submit"
                   size="lg"
-                  className={`w-full h-12 text-base font-semibold ${isRTL ? "font-arabic" : ""}`}
+                  className={`w-full h-14 text-lg font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all ${isRTL ? "font-arabic" : ""}`}
                   disabled={mutation.isPending}
                   data-testid="button-submit-contact"
                 >
@@ -219,7 +224,7 @@ export function Contact() {
                     <Loader2 className="h-5 w-5 animate-spin" />
                   ) : (
                     <>
-                      <Send className={`h-5 w-5 ${isRTL ? "ml-2" : "mr-2"}`} />
+                      <Send className={`h-5 w-5 ${isRTL ? "ml-3" : "mr-3"}`} />
                       {t("contact.form.submit")}
                     </>
                   )}
@@ -229,24 +234,25 @@ export function Contact() {
           </Card>
 
           <div className="lg:col-span-2 space-y-6">
-            <Card className="border-border bg-background" data-testid="card-office-amman">
+            <Card className="border-0 bg-background shadow-xl overflow-hidden" data-testid="card-office-amman">
+              <div className="h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/50" />
               <CardContent className="p-8">
                 <h3
-                  className={`text-xl font-bold mb-6 ${isRTL ? "font-arabic" : ""}`}
+                  className={`text-2xl font-bold mb-6 ${isRTL ? "font-arabic text-right" : ""}`}
                 >
                   {t("contact.office.amman")}
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
-                    <div className="p-2 rounded-lg bg-primary/10">
+                    <div className="p-3 rounded-xl bg-primary/10">
                       <MapPin className="h-5 w-5 text-primary" />
                     </div>
-                    <span className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
+                    <span className={`text-muted-foreground pt-2 ${isRTL ? "font-arabic" : ""}`}>
                       {t("contact.office.amman.address")}
                     </span>
                   </div>
                   <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="p-2 rounded-lg bg-primary/10">
+                    <div className="p-3 rounded-xl bg-primary/10">
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">
@@ -254,7 +260,7 @@ export function Contact() {
                     </span>
                   </div>
                   <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="p-2 rounded-lg bg-primary/10">
+                    <div className="p-3 rounded-xl bg-primary/10">
                       <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">
@@ -265,24 +271,25 @@ export function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="border-border bg-background" data-testid="card-office-dubai">
+            <Card className="border-0 bg-background shadow-xl overflow-hidden" data-testid="card-office-dubai">
+              <div className="h-2 bg-gradient-to-r from-primary/50 via-primary/80 to-primary" />
               <CardContent className="p-8">
                 <h3
-                  className={`text-xl font-bold mb-6 ${isRTL ? "font-arabic" : ""}`}
+                  className={`text-2xl font-bold mb-6 ${isRTL ? "font-arabic text-right" : ""}`}
                 >
                   {t("contact.office.dubai")}
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
-                    <div className="p-2 rounded-lg bg-primary/10">
+                    <div className="p-3 rounded-xl bg-primary/10">
                       <MapPin className="h-5 w-5 text-primary" />
                     </div>
-                    <span className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
+                    <span className={`text-muted-foreground pt-2 ${isRTL ? "font-arabic" : ""}`}>
                       {t("contact.office.dubai.address")}
                     </span>
                   </div>
                   <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="p-2 rounded-lg bg-primary/10">
+                    <div className="p-3 rounded-xl bg-primary/10">
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">
@@ -290,7 +297,7 @@ export function Contact() {
                     </span>
                   </div>
                   <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="p-2 rounded-lg bg-primary/10">
+                    <div className="p-3 rounded-xl bg-primary/10">
                       <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">

@@ -1,23 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Hasan Alquds Arabic Font */
-@font-face {
-  font-family: 'Hasan Alquds';
-  src: url('/attached_assets/Hasan-Alquds-Unicode-Light_1767682217754.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+/* Custom Cursor */
+* {
+  cursor: url('/cursor.svg') 4 4, auto;
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
+  cursor: url('/cursor.svg') 4 4, pointer;
 }
 
 /* LIGHT MODE - iThing Brand Colors (Charcoal + Red accent) */
 :root {
-  --button-outline: rgba(0,0,0, .10);
-  --badge-outline: rgba(0,0,0, .05);
+  --button-outline: rgba(0, 0, 0, .10);
+  --badge-outline: rgba(0, 0, 0, .05);
   --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .08);
+  --elevate-1: rgba(0, 0, 0, .03);
+  --elevate-2: rgba(0, 0, 0, .08);
   --background: 0 0% 100%;
   --foreground: 0 0% 15%;
   --border: 0 0% 90%;
@@ -67,7 +69,7 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
-/* Fallback for older browsers */
+  /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
@@ -97,11 +99,11 @@
 }
 
 .dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+  --button-outline: rgba(255, 255, 255, .10);
+  --badge-outline: rgba(255, 255, 255, .05);
   --opaque-button-border-intensity: 9;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
+  --elevate-1: rgba(255, 255, 255, .04);
+  --elevate-2: rgba(255, 255, 255, .09);
   --background: 0 0% 7%;
   --foreground: 0 0% 95%;
   --border: 0 0% 18%;
@@ -145,7 +147,7 @@
   --shadow-xl: 0px 2px 0px 0px hsl(220 5% 95% / 0.00), 0px 8px 10px -1px hsl(220 5% 95% / 0.00);
   --shadow-2xl: 0px 2px 0px 0px hsl(220 5% 95% / 0.00);
 
-/* Fallback for older browsers */
+  /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
@@ -296,9 +298,12 @@
   }
 
   @keyframes gradient {
-    0%, 100% {
+
+    0%,
+    100% {
       background-position: 0% center;
     }
+
     50% {
       background-position: 100% center;
     }
@@ -310,6 +315,8 @@
 
   /* Arabic Font Class */
   .font-arabic {
-    font-family: 'Hasan Alquds', 'Cairo', 'Tajawal', sans-serif;
+
+    font-family: "Almarai", sans-serif;
+    font-optical-sizing: auto;
   }
 }

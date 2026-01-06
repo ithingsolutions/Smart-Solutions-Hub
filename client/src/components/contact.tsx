@@ -264,7 +264,7 @@ export function Contact() {
                       <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">
-                      amman@ithing.com
+                      amman@ithingsolutions.com
                     </span>
                   </div>
                 </div>
@@ -301,7 +301,7 @@ export function Contact() {
                       <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">
-                      dubai@ithing.com
+                      dubai@ithingsolutions.com
                     </span>
                   </div>
                 </div>

@@ -112,7 +112,7 @@ export function Footer() {
                 {t("contact.office.dubai.address")}
               </li>
               <li className="text-sm text-background/60" dir="ltr">
-                info@ithing.com
+                info@ithingsolutions.com
               </li>
             </ul>
           </div>

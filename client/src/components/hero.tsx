@@ -44,7 +44,7 @@ export function Hero() {
             className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
             data-testid="text-hero-title"
           >
-            <span className="bg-gradient-to-br from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
               {t("hero.title")}
             </span>
           </h1>

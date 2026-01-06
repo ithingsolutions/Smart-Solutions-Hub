@@ -17,7 +17,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.getStarted": "Get Started",
     
-    "hero.title": "Ab'ad Smart Business Solutions",
+    "hero.title": "iThing Smart Business Solutions",
     "hero.subtitle": "Accelerating Digital Transformation",
     "hero.description": "We specialize in modern technology solutions with a focus on emerging technologies, artificial intelligence, data analytics, cloud services, and custom software development.",
     "hero.cta.primary": "Start Your Journey",
@@ -43,7 +43,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stats.experience": "Years Experience",
     "stats.experts": "Tech Experts",
     
-    "why.title": "Why Choose Ab'ad?",
+    "why.title": "Why Choose iThing?",
     "why.subtitle": "Partner with us for innovative, scalable, and future-ready solutions",
     "why.innovation.title": "Innovation First",
     "why.innovation.description": "We stay ahead of technology trends to deliver cutting-edge solutions.",
@@ -69,7 +69,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.amman.address": "Amman, 11194, Jordan",
     "contact.office.dubai.address": "Dubai, United Arab Emirates",
     
-    "footer.company": "Ab'ad Smart Business Solutions",
+    "footer.company": "iThing Smart Business Solutions",
     "footer.description": "Your trusted partner for digital transformation and innovative technology solutions.",
     "footer.services": "Services",
     "footer.quickLinks": "Quick Links",
@@ -85,7 +85,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "اتصل بنا",
     "nav.getStarted": "ابدأ الآن",
     
-    "hero.title": "أبعاد لتطوير حلول الأعمال الذكية",
+    "hero.title": "iThing لتطوير حلول الأعمال الذكية",
     "hero.subtitle": "تسريع التحول الرقمي",
     "hero.description": "نحن متخصصون في تقديم حلول التكنولوجيا الحديثة، مع تركيز على التقنيات الناشئة، والذكاء الاصطناعي، وتحليلات البيانات، وتطوير الخدمات السحابية، والحلول البرمجية المخصصة.",
     "hero.cta.primary": "ابدأ رحلتك",
@@ -111,7 +111,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stats.experience": "سنوات خبرة",
     "stats.experts": "خبير تقني",
     
-    "why.title": "لماذا تختار أبعاد؟",
+    "why.title": "لماذا تختار iThing؟",
     "why.subtitle": "شاركنا لحلول مبتكرة وقابلة للتطوير ومستعدة للمستقبل",
     "why.innovation.title": "الابتكار أولاً",
     "why.innovation.description": "نبقى في صدارة اتجاهات التكنولوجيا لتقديم حلول متطورة.",
@@ -137,7 +137,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.amman.address": "عمّان، 11194، الأردن",
     "contact.office.dubai.address": "دبي، الإمارات العربية المتحدة",
     
-    "footer.company": "أبعاد لتطوير حلول الأعمال الذكية",
+    "footer.company": "iThing لتطوير حلول الأعمال الذكية",
     "footer.description": "شريكك الموثوق للتحول الرقمي وحلول التكنولوجيا المبتكرة.",
     "footer.services": "الخدمات",
     "footer.quickLinks": "روابط سريعة",

@@ -1,5 +1,6 @@
 import { useLanguage } from "@/lib/language-context";
 import { SiLinkedin, SiX } from "react-icons/si";
+import logoImage from "@assets/1661853192216_1767668534815.jpg";
 
 export function Footer() {
   const { t, isRTL } = useLanguage();
@@ -26,12 +27,7 @@ export function Footer() {
         <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 ${isRTL ? "text-right" : ""}`}>
           <div className="sm:col-span-2 lg:col-span-1">
             <div className={`flex items-center gap-2 mb-4 ${isRTL ? "flex-row-reverse justify-end" : ""}`}>
-              <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">A</span>
-              </div>
-              <span className={`font-bold text-lg ${isRTL ? "font-arabic" : ""}`}>
-                {isRTL ? "أبعاد" : "Ab'ad"}
-              </span>
+              <img src={logoImage} alt="iThing" className="h-10 w-auto" />
             </div>
             <p className={`text-muted-foreground text-sm leading-relaxed mb-4 ${isRTL ? "font-arabic" : ""}`}>
               {t("footer.description")}
@@ -106,7 +102,7 @@ export function Footer() {
                 {t("contact.office.dubai.address")}
               </li>
               <li className="text-sm text-muted-foreground" dir="ltr">
-                info@abadsolutions.com
+                info@ithing.com
               </li>
             </ul>
           </div>

@@ -1,7 +1,7 @@
-# Ab'ad Smart Business Solutions - Bilingual Website
+# iThing Smart Business Solutions - Bilingual Website
 
 ## Overview
-A professional bilingual (Arabic/English) corporate website for Ab'ad Smart Business Solutions (أبعاد لتطوير حلول الأعمال الذكية), a technology company specializing in AI, data analytics, cloud services, and custom software development with offices in Amman, Jordan and Dubai, UAE.
+A professional bilingual (Arabic/English) corporate website for iThing Smart Business Solutions (iThing لتطوير حلول الأعمال الذكية), a technology company specializing in AI, data analytics, cloud services, and custom software development with offices in Amman, Jordan and Dubai, UAE.
 
 ## Current State
 - **Complete**: Fully functional bilingual website with RTL support
@@ -41,6 +41,8 @@ A professional bilingual (Arabic/English) corporate website for Ab'ad Smart Busi
 - Bilingual support (Arabic primary market)
 - Professional, enterprise-grade design
 - Offices in Amman (primary) and Dubai
+- Company name: iThing
 
 ## Recent Changes
+- January 2026: Updated branding to iThing with logo
 - January 2026: Initial website implementation with full bilingual support

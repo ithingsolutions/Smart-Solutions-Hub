@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
 import { Menu, X, Globe, Moon, Sun } from "lucide-react";
+import logoImage from "@assets/1661853192216_1767668534815.jpg";
 
 export function Header() {
   const { language, setLanguage, t, isRTL } = useLanguage();
@@ -26,13 +27,10 @@ export function Header() {
         <div className="flex items-center justify-between h-16 gap-4">
           <a
             href="#home"
-            className={`flex items-center gap-2 font-bold text-xl ${isRTL ? "font-arabic" : ""}`}
+            className="flex items-center gap-2"
             data-testid="link-logo"
           >
-            <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">A</span>
-            </div>
-            <span className="hidden sm:inline">{isRTL ? "أبعاد" : "Ab'ad"}</span>
+            <img src={logoImage} alt="iThing" className="h-10 w-auto" />
           </a>
 
           <nav className="hidden md:flex items-center gap-1">

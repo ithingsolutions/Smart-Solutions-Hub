@@ -249,7 +249,7 @@ export function Contact() {
                   <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
                     <Mail className="h-5 w-5 text-primary shrink-0" />
                     <span className="text-muted-foreground" dir="ltr">
-                      amman@abadsolutions.com
+                      amman@ithing.com
                     </span>
                   </div>
                 </div>
@@ -279,7 +279,7 @@ export function Contact() {
                   <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
                     <Mail className="h-5 w-5 text-primary shrink-0" />
                     <span className="text-muted-foreground" dir="ltr">
-                      dubai@abadsolutions.com
+                      dubai@ithing.com
                     </span>
                   </div>
                 </div>

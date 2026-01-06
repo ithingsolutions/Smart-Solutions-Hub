@@ -2,30 +2,30 @@ import { useLanguage } from "@/lib/language-context";
 import { Building2, Landmark, ShoppingBag, Plane, Stethoscope, GraduationCap } from "lucide-react";
 
 const clients = [
-  { key: "bank", icon: Landmark },
-  { key: "retail", icon: ShoppingBag },
-  { key: "airline", icon: Plane },
-  { key: "healthcare", icon: Stethoscope },
-  { key: "education", icon: GraduationCap },
-  { key: "enterprise", icon: Building2 },
+  { key: "1", icon: Landmark, number: 1 },
+  { key: "2", icon: ShoppingBag, number: 2 },
+  { key: "3", icon: Plane, number: 3 },
+  { key: "4", icon: Stethoscope, number: 4 },
+  { key: "5", icon: GraduationCap, number: 5 },
+  { key: "6", icon: Building2, number: 6 },
 ];
 
 const clientData = {
   en: {
-    bank: "Jordan National Bank",
-    retail: "Gulf Retail Group",
-    airline: "Royal Jordanian",
-    healthcare: "Emirates Health",
-    education: "MENA Academy",
-    enterprise: "Al-Futtaim Group",
+    "1": "Client 1",
+    "2": "Client 2",
+    "3": "Client 3",
+    "4": "Client 4",
+    "5": "Client 5",
+    "6": "Client 6",
   },
   ar: {
-    bank: "البنك الأردني الوطني",
-    retail: "مجموعة الخليج للتجزئة",
-    airline: "الملكية الأردنية",
-    healthcare: "الإمارات الصحية",
-    education: "أكاديمية الشرق الأوسط",
-    enterprise: "مجموعة الفطيم",
+    "1": "العميل 1",
+    "2": "العميل 2",
+    "3": "العميل 3",
+    "4": "العميل 4",
+    "5": "العميل 5",
+    "6": "العميل 6",
   },
 };
 

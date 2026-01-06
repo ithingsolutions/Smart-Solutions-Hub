@@ -11,20 +11,20 @@ export function Stats() {
   const { t, isRTL } = useLanguage();
 
   return (
-    <section className="py-16 lg:py-20 bg-primary text-primary-foreground">
+    <section className="py-20 lg:py-24 bg-foreground text-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((stat) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-16">
+          {stats.map((stat, index) => (
             <div
               key={stat.key}
-              className="text-center"
+              className={`text-center ${index !== stats.length - 1 ? "md:border-r md:border-background/20" : ""}`}
               data-testid={`stat-${stat.key}`}
             >
-              <div className="text-4xl sm:text-5xl font-bold mb-2" dir="ltr">
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 text-primary" dir="ltr">
                 {stat.value}
               </div>
               <div
-                className={`text-primary-foreground/80 text-sm sm:text-base ${isRTL ? "font-arabic" : ""}`}
+                className={`text-background/80 text-sm sm:text-base font-medium uppercase tracking-wider ${isRTL ? "font-arabic" : ""}`}
               >
                 {t(`stats.${stat.key}`)}
               </div>

@@ -22,15 +22,15 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-20 gap-4">
           <a
             href="#home"
-            className="flex items-center gap-2"
+            className="flex items-center"
             data-testid="link-logo"
           >
-            <img src={logoImage} alt="iThing" className="h-10 w-auto" />
+            <img src={logoImage} alt="iThing" className="h-12 w-auto" />
           </a>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -38,7 +38,7 @@ export function Header() {
               <a
                 key={item.key}
                 href={item.href}
-                className={`px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate ${isRTL ? "font-arabic" : ""}`}
+                className={`px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover-elevate ${isRTL ? "font-arabic" : ""}`}
                 data-testid={`link-${item.key.split(".")[1]}`}
               >
                 {t(item.key)}
@@ -53,20 +53,21 @@ export function Header() {
               onClick={toggleTheme}
               data-testid="button-theme-toggle"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
 
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleLanguage}
+              className="font-medium"
               data-testid="button-language-toggle"
             >
-              <Globe className="h-4 w-4" />
+              <span className="text-xs font-bold">{language === "en" ? "ع" : "EN"}</span>
             </Button>
 
             <Button
-              className={`hidden md:flex ${isRTL ? "font-arabic" : ""}`}
+              className={`hidden md:flex font-semibold ${isRTL ? "font-arabic" : ""}`}
               data-testid="button-get-started"
             >
               {t("nav.getStarted")}
@@ -85,20 +86,20 @@ export function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-6 border-t border-border">
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <a
                   key={item.key}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors ${isRTL ? "font-arabic" : ""}`}
+                  className={`px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors ${isRTL ? "font-arabic text-right" : ""}`}
                   data-testid={`link-mobile-${item.key.split(".")[1]}`}
                 >
                   {t(item.key)}
                 </a>
               ))}
-              <Button className={`mt-2 ${isRTL ? "font-arabic" : ""}`} data-testid="button-mobile-get-started">
+              <Button className={`mt-4 ${isRTL ? "font-arabic" : ""}`} data-testid="button-mobile-get-started">
                 {t("nav.getStarted")}
               </Button>
             </nav>

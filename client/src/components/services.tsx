@@ -15,11 +15,14 @@ export function Services() {
   const { t, isRTL } = useLanguage();
 
   return (
-    <section id="services" className="py-20 lg:py-24 bg-accent/30">
+    <section id="services" className="py-24 lg:py-32 bg-card/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            {isRTL ? "ما نقدمه" : "What We Offer"}
+          </span>
           <h2
-            className={`text-3xl sm:text-4xl font-bold mb-4 ${isRTL ? "font-arabic" : ""}`}
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${isRTL ? "font-arabic" : ""}`}
             data-testid="text-services-title"
           >
             {t("services.title")}
@@ -32,21 +35,21 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <Card
                 key={service.key}
-                className="group hover-elevate transition-all duration-300 border-border/50 hover:border-primary/30 bg-card/50 backdrop-blur-sm"
+                className="group hover-elevate transition-all duration-300 border-border bg-background"
                 data-testid={`card-service-${service.key}`}
               >
-                <CardContent className="p-6">
-                  <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="h-6 w-6 text-primary" />
+                <CardContent className="p-8">
+                  <div className="mb-6 inline-flex p-4 rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors">
+                    <Icon className="h-7 w-7 text-primary" />
                   </div>
                   <h3
-                    className={`text-xl font-semibold mb-3 ${isRTL ? "font-arabic" : ""}`}
+                    className={`text-xl font-bold mb-4 ${isRTL ? "font-arabic" : ""}`}
                   >
                     {t(`services.${service.key}.title`)}
                   </h3>

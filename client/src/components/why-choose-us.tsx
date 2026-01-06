@@ -13,11 +13,14 @@ export function WhyChooseUs() {
   const { t, isRTL } = useLanguage();
 
   return (
-    <section id="about" className="py-20 lg:py-24">
+    <section id="about" className="py-24 lg:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            {isRTL ? "مزايانا" : "Our Advantages"}
+          </span>
           <h2
-            className={`text-3xl sm:text-4xl font-bold mb-4 ${isRTL ? "font-arabic" : ""}`}
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${isRTL ? "font-arabic" : ""}`}
             data-testid="text-why-title"
           >
             {t("why.title")}
@@ -30,23 +33,23 @@ export function WhyChooseUs() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {reasons.map((reason) => {
             const Icon = reason.icon;
             return (
               <Card
                 key={reason.key}
-                className="group hover-elevate transition-all duration-300 border-border/50"
+                className="group hover-elevate transition-all duration-300 border-border"
                 data-testid={`card-why-${reason.key}`}
               >
-                <CardContent className="p-6 lg:p-8">
-                  <div className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
-                    <div className="shrink-0 inline-flex p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="h-6 w-6 text-primary" />
+                <CardContent className="p-8 lg:p-10">
+                  <div className={`flex items-start gap-6 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
+                    <div className="shrink-0 inline-flex p-4 rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors">
+                      <Icon className="h-7 w-7 text-primary" />
                     </div>
                     <div>
                       <h3
-                        className={`text-xl font-semibold mb-2 ${isRTL ? "font-arabic" : ""}`}
+                        className={`text-xl font-bold mb-3 ${isRTL ? "font-arabic" : ""}`}
                       >
                         {t(`why.${reason.key}.title`)}
                       </h3>

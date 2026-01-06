@@ -76,7 +76,7 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className={`flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-sm ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm mb-24 ${isRTL ? "flex-row-reverse" : ""}`}>
             <div className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm ${isRTL ? "flex-row-reverse" : ""}`}>
               <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
               <span className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>{isRTL ? "متوفرون الآن" : "Available Now"}</span>
@@ -92,9 +92,8 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <a href="#services" className="flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors group">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{isRTL ? "اكتشف" : "Explore"}</span>
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
+          <a href="#services" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group">
             <div className="w-6 h-10 rounded-full border-2 border-current flex items-start justify-center p-1.5">
               <div className="w-1.5 h-3 rounded-full bg-current animate-bounce" />
             </div>

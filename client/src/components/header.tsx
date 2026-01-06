@@ -31,15 +31,13 @@ export function Header() {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
-          <a
-            href="#home"
-            className="flex items-center"
-            data-testid="link-logo"
-          >
-            <img src={logoImage} alt="iThing" className="h-12 w-auto" />
+          <a href="#home" className="flex items-center" data-testid="link-logo">
+            <img src={logoImage} alt="iThing" className="h-12 w-auto rounded" />
           </a>
 
           <nav className="hidden md:flex items-center gap-2">
@@ -64,7 +62,11 @@ export function Header() {
               className="rounded-full"
               data-testid="button-theme-toggle"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
 
             <Button
@@ -91,7 +93,11 @@ export function Header() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
@@ -110,7 +116,10 @@ export function Header() {
                   {t(item.key)}
                 </a>
               ))}
-              <Button className={`mt-4 h-12 rounded-full ${isRTL ? "font-arabic" : ""}`} data-testid="button-mobile-get-started">
+              <Button
+                className={`mt-4 h-12 rounded-full ${isRTL ? "font-arabic" : ""}`}
+                data-testid="button-mobile-get-started"
+              >
                 {t("nav.getStarted")}
               </Button>
             </nav>

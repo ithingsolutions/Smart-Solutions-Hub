@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/lib/language-context";
 import { ThemeProvider } from "@/lib/theme-context";
+import { CursorAnimation } from "@/components/cursor-animation";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 
@@ -23,6 +24,7 @@ function App() {
       <ThemeProvider>
         <LanguageProvider>
           <TooltipProvider>
+            <CursorAnimation />
             <Toaster />
             <Router />
           </TooltipProvider>

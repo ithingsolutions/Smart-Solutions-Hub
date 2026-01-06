@@ -2,10 +2,10 @@ import { useLanguage } from "@/lib/language-context";
 import { Sparkles, Users, HeadphonesIcon, TrendingUp, CheckCircle2, Star } from "lucide-react";
 
 const reasons = [
-  { key: "innovation", icon: Sparkles, color: "from-rose-500 to-orange-500" },
-  { key: "expertise", icon: Users, color: "from-blue-500 to-cyan-500" },
-  { key: "support", icon: HeadphonesIcon, color: "from-violet-500 to-purple-500" },
-  { key: "scalable", icon: TrendingUp, color: "from-emerald-500 to-teal-500" },
+  { key: "innovation", icon: Sparkles },
+  { key: "expertise", icon: Users },
+  { key: "support", icon: HeadphonesIcon },
+  { key: "scalable", icon: TrendingUp },
 ];
 
 export function WhyChooseUs() {
@@ -47,11 +47,11 @@ export function WhyChooseUs() {
                     className={`group relative p-6 rounded-2xl bg-gradient-to-br from-card to-card/50 border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden ${isRTL ? "text-right" : ""}`}
                     data-testid={`card-why-${reason.key}`}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${reason.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
                     <div className={`relative flex items-start gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                      <div className={`shrink-0 p-3.5 rounded-xl bg-gradient-to-br ${reason.color} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="h-6 w-6 text-foreground" />
+                      <div className="shrink-0 p-3.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <Icon className="h-6 w-6 text-primary" />
                       </div>
                       <div>
                         <h3 className={`text-lg font-bold mb-2 ${isRTL ? "font-arabic" : ""}`}>

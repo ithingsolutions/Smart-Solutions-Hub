@@ -20,15 +20,19 @@ export function Clients() {
 
   if (isLoading) {
     return (
-      <section className="py-16 lg:py-20 border-t border-border/40">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="h-8 w-32 bg-muted rounded mx-auto mb-3" />
-            <div className="h-10 w-48 bg-muted rounded mx-auto" />
+      <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="h-10 w-48 bg-muted animate-pulse rounded-full mx-auto mb-8" />
+            <div className="h-12 w-64 bg-muted animate-pulse rounded mx-auto mb-4" />
+            <div className="h-6 w-96 bg-muted animate-pulse rounded mx-auto" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-24 bg-muted rounded-lg" />
+              <div
+                key={i}
+                className="h-32 bg-muted animate-pulse rounded-2xl"
+              />
             ))}
           </div>
         </div>
@@ -41,18 +45,34 @@ export function Clients() {
   }
 
   return (
-    <section className="py-16 lg:py-20 border-t border-border/40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className={`text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3 ${isRTL ? "font-arabic" : ""}`}>
-            {isRTL ? "شركاء النجاح" : "Success Partners"}
-          </p>
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5">
+            <span
+              className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}
+            >
+              {isRTL ? "شركاء النجاح" : "Success Partners"}
+            </span>
+          </div>
           <h2
-            className={`text-2xl sm:text-3xl font-bold ${isRTL ? "font-arabic" : ""}`}
+            className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 ${isRTL ? "font-arabic" : ""}`}
             data-testid="text-clients-title"
           >
             {isRTL ? "عملاؤنا" : "Our Clients"}
           </h2>
+          <p
+            className={`text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+            data-testid="text-clients-subtitle"
+          >
+            {isRTL
+              ? "نفخر بالعمل مع شركات رائدة في المنطقة"
+              : "Proud to work with leading companies across the region"}
+          </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -61,24 +81,24 @@ export function Clients() {
             return (
               <div
                 key={client.id}
-                className="group flex flex-col items-center justify-center p-6 rounded-lg border border-border/40 hover:border-primary/30 transition-all"
+                className="group flex flex-col items-center justify-center p-8 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 data-testid={`client-${client.id}`}
               >
                 {client.logoUrl ? (
-                  <div className="h-16 w-full flex items-center justify-center mb-3">
+                  <div className="h-24 w-full flex items-center justify-center mb-4">
                     <img
                       src={client.logoUrl}
                       alt={name}
-                      className="max-h-16 max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                      className="max-h-24 max-w-full object-contain"
                     />
                   </div>
                 ) : (
-                  <div className="p-3 rounded-lg bg-muted/50 group-hover:bg-primary/10 transition-colors mb-3">
-                    <Building2 className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <div className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors mb-4">
+                    <Building2 className="w-8 h-8 text-primary" />
                   </div>
                 )}
                 <span
-                  className={`text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
+                  className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
                 >
                   {name}
                 </span>

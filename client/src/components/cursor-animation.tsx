@@ -46,7 +46,7 @@ export function CursorAnimation() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div className="w-3 h-3 rounded-full bg-black dark:bg-white" />
+        <div className={`w-3 h-3 rounded-full transition-colors duration-200 ${isHovering ? "bg-primary" : "bg-black dark:bg-white"}`} />
       </div>
       <div
         className="pointer-events-none fixed z-[99998] transition-all duration-150 ease-out"
@@ -56,7 +56,7 @@ export function CursorAnimation() {
           transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
         }}
       >
-        <div className={`w-8 h-8 border-2 border-primary rounded-full animate-cursor-ring`} />
+        <div className={`w-8 h-8 border-2 rounded-full animate-cursor-ring transition-colors duration-200 ${isHovering ? "border-primary" : "border-black dark:border-white"}`} />
       </div>
     </>
   );

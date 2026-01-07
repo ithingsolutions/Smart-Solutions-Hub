@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { Stats } from "@/components/stats";
 import { WhyChooseUs } from "@/components/why-choose-us";
+import { Team } from "@/components/team";
 import { Clients } from "@/components/clients";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
@@ -16,6 +17,7 @@ export default function Home() {
         <Services />
         <Stats />
         <WhyChooseUs />
+        <Team />
         <Clients />
         <Contact />
       </main>

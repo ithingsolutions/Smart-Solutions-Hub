@@ -1,13 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
-import {
-  ArrowRight,
-  ArrowLeft,
-  ChevronDown,
-  Sparkles,
-  Zap,
-  Shield,
-} from "lucide-react";
+import { ArrowRight, ArrowLeft, Zap, Shield } from "lucide-react";
 
 export function Hero() {
   const { t, isRTL } = useLanguage();

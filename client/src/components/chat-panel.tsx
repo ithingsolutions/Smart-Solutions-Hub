@@ -103,8 +103,8 @@ export function ChatPanel() {
                     prev.map((msg) =>
                       msg.id === assistantMessage.id
                         ? { ...msg, content: assistantContent }
-                        : msg
-                    )
+                        : msg,
+                    ),
                   );
                 }
               } catch (e) {
@@ -121,7 +121,10 @@ export function ChatPanel() {
         {
           id: Date.now() + 1,
           role: "assistant",
-          content: language === "ar" ? "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى." : "Sorry, an error occurred. Please try again.",
+          content:
+            language === "ar"
+              ? "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى."
+              : "Sorry, an error occurred. Please try again.",
         },
       ]);
     } finally {
@@ -139,21 +142,20 @@ export function ChatPanel() {
   return (
     <>
       {!isOpen && (
-        <Button
-          size="icon"
-          className={`fixed bottom-6 z-[100] h-14 w-14 rounded-full shadow-lg ${
+        <button
+          className={`fixed bottom-6 z-[9999] h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-xl flex items-center justify-center hover:scale-105 transition-transform ${
             language === "ar" ? "left-6" : "right-6"
           }`}
           onClick={() => setIsOpen(true)}
           data-testid="button-open-chat-fixed"
         >
           <MessageCircle className="h-6 w-6" />
-        </Button>
+        </button>
       )}
 
       {isOpen && (
         <div
-          className={`fixed bottom-6 z-[100] ${
+          className={`fixed bottom-6 z-[9999] ${
             language === "ar" ? "left-6" : "right-6"
           }`}
           dir={language === "ar" ? "rtl" : "ltr"}
@@ -198,7 +200,9 @@ export function ChatPanel() {
                         : "bg-muted text-foreground"
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    <p className="text-sm whitespace-pre-wrap">
+                      {message.content}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -220,7 +224,9 @@ export function ChatPanel() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={
-                    language === "ar" ? "اكتب رسالتك..." : "Type your message..."
+                    language === "ar"
+                      ? "اكتب رسالتك..."
+                      : "Type your message..."
                   }
                   className="flex-1 rounded-md border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   disabled={isLoading}

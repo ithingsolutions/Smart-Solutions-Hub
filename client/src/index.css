@@ -4,15 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Cursor */
-* {
-  cursor: url('/cursor.svg') 4 4, auto;
-}
-
-a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
-  cursor: url('/cursor.svg') 4 4, pointer;
-}
-
 /* LIGHT MODE - iThing Brand Colors (Charcoal + Red accent) */
 :root {
   --button-outline: rgba(0, 0, 0, .10);
@@ -317,22 +308,6 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
   .font-arabic {
     font-family: 'Hasan Alquds', 'Almarai', sans-serif;
     font-optical-sizing: auto;
-  }
-
-  /* Cursor Trail Animation */
-  @keyframes cursor-trail {
-    0% {
-      opacity: 0.5;
-      transform: scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: scale(0);
-    }
-  }
-
-  .animate-cursor-trail {
-    animation: cursor-trail 0.5s ease-out forwards;
   }
 
   /* Slow Spin Animation for Preloader */

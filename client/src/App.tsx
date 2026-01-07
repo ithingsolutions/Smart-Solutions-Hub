@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/lib/language-context";
 import { ThemeProvider } from "@/lib/theme-context";
 import { BackgroundProvider } from "@/lib/background-context";
-import { CursorAnimation } from "@/components/cursor-animation";
 import { DynamicBackground } from "@/components/dynamic-background";
 import { Preloader } from "@/components/preloader";
 import { ChatPanel } from "@/components/chat-panel";
@@ -33,7 +32,6 @@ function App() {
             <TooltipProvider>
               <Preloader />
               <DynamicBackground />
-              <CursorAnimation />
               <ChatPanel />
               <Toaster />
               <Router />

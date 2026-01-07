@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Circle Cursor */
+* {
+  cursor: url('/cursor.svg') 12 12, auto;
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
+  cursor: url('/cursor.svg') 12 12, pointer;
+}
+
 /* LIGHT MODE - iThing Brand Colors (Charcoal + Red accent) */
 :root {
   --button-outline: rgba(0, 0, 0, .10);

@@ -140,104 +140,95 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm" onClick={onClose}>
-      <div
-        className={`fixed top-0 h-full w-full max-w-md bg-background shadow-2xl flex flex-col transition-transform duration-300 ${
-          language === "ar" ? "left-0" : "right-0"
-        }`}
-        dir={language === "ar" ? "rtl" : "ltr"}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between gap-2 border-b bg-primary p-4">
-          <h3 className="font-semibold text-primary-foreground text-lg">
-            {language === "ar" ? "مساعد iThing" : "iThing Assistant"}
-          </h3>
-          <Button
-            size="icon"
-            variant="ghost"
-            className="text-primary-foreground hover:bg-primary-foreground/20"
-            onClick={onClose}
-            data-testid="button-close-chat"
-          >
-            <X className="h-5 w-5" />
-          </Button>
-        </div>
+    <div
+      className={`fixed left-0 right-0 z-[100] transition-all duration-300 ease-in-out ${
+        isOpen ? "top-20 opacity-100" : "-top-full opacity-0 pointer-events-none"
+      }`}
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="bg-background border rounded-lg shadow-2xl overflow-hidden">
+          <div className="flex items-center justify-between gap-2 bg-primary px-4 py-3">
+            <h3 className="font-semibold text-primary-foreground">
+              {language === "ar" ? "مساعد iThing" : "iThing Assistant"}
+            </h3>
+            <Button
+              size="icon"
+              variant="ghost"
+              className="h-8 w-8 text-primary-foreground hover:bg-primary-foreground/20"
+              onClick={onClose}
+              data-testid="button-close-chat"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
-          {messages.length === 0 && (
-            <div className="flex h-full items-center justify-center text-center text-muted-foreground p-8">
-              <div>
-                <p className="text-lg mb-2">
+          <div className="h-64 overflow-y-auto p-4 space-y-3">
+            {messages.length === 0 && (
+              <div className="flex h-full items-center justify-center text-center text-muted-foreground">
+                <p>
                   {language === "ar"
                     ? "مرحباً! كيف يمكنني مساعدتك اليوم؟"
                     : "Hello! How can I help you today?"}
                 </p>
-                <p className="text-sm">
-                  {language === "ar"
-                    ? "اسألني عن خدماتنا أو أي شيء آخر"
-                    : "Ask me about our services or anything else"}
-                </p>
               </div>
-            </div>
-          )}
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${
-                message.role === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
+            )}
+            {messages.map((message) => (
               <div
-                className={`max-w-[85%] rounded-lg px-4 py-3 ${
-                  message.role === "user"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground"
+                key={message.id}
+                className={`flex ${
+                  message.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
-                <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                <div
+                  className={`max-w-[80%] rounded-lg px-3 py-2 ${
+                    message.role === "user"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-foreground"
+                  }`}
+                >
+                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                </div>
               </div>
-            </div>
-          ))}
-          {isLoading && messages[messages.length - 1]?.role === "user" && (
-            <div className="flex justify-start">
-              <div className="bg-muted rounded-lg px-4 py-3">
-                <Loader2 className="h-5 w-5 animate-spin" />
+            ))}
+            {isLoading && messages[messages.length - 1]?.role === "user" && (
+              <div className="flex justify-start">
+                <div className="bg-muted rounded-lg px-3 py-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                </div>
               </div>
-            </div>
-          )}
-          <div ref={messagesEndRef} />
-        </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
 
-        <div className="border-t p-4">
-          <div className="flex gap-2">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder={
-                language === "ar" ? "اكتب رسالتك..." : "Type your message..."
-              }
-              className="flex-1 rounded-md border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              disabled={isLoading}
-              data-testid="input-chat-message"
-            />
-            <Button
-              size="icon"
-              onClick={sendMessage}
-              disabled={!input.trim() || isLoading}
-              className="h-11 w-11"
-              data-testid="button-send-message"
-            >
-              {isLoading ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
-              ) : (
-                <Send className="h-5 w-5" />
-              )}
-            </Button>
+          <div className="border-t p-3">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder={
+                  language === "ar" ? "اكتب رسالتك..." : "Type your message..."
+                }
+                className="flex-1 rounded-md border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                disabled={isLoading}
+                data-testid="input-chat-message"
+              />
+              <Button
+                size="icon"
+                onClick={sendMessage}
+                disabled={!input.trim() || isLoading}
+                data-testid="button-send-message"
+              >
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Send className="h-4 w-4" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
       </div>

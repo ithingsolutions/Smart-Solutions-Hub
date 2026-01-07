@@ -58,30 +58,12 @@ export function Hero() {
           </div>
 
           <h1
-            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.1]"}`}
+            className={`text-6xl sm:text-5xl md:text-6xl lg:text-6xl font-black tracking-tight mb-8 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
             data-testid="text-hero-title"
           >
-            {isRTL ? (
-              <>
-                <span className="relative inline-block">
-                  <span className="text-primary">iThing</span>
-                  <span className="absolute bottom-0 left-0 w-full h-1 bg-primary rounded-full" />
-                </span>
-                <span className="text-foreground"> لتطوير حلول</span>
-                <br />
-                <span className="text-foreground">الأعمال الذكية</span>
-              </>
-            ) : (
-              <>
-                <span className="relative inline-block">
-                  <span className="text-primary italic">iThing</span>
-                  <span className="absolute bottom-0 left-0 w-full h-1 bg-primary rounded-full" />
-                </span>
-                <span className="text-foreground"> Smart Business</span>
-                <br />
-                <span className="text-foreground">Solutions</span>
-              </>
-            )}
+            <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+              {t("hero.title")}
+            </span>
           </h1>
 
           <p

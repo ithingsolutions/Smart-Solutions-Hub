@@ -9,6 +9,7 @@ import { BackgroundProvider } from "@/lib/background-context";
 import { CursorAnimation } from "@/components/cursor-animation";
 import { DynamicBackground } from "@/components/dynamic-background";
 import { Preloader } from "@/components/preloader";
+import { ChatPanel } from "@/components/chat-panel";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
@@ -33,6 +34,7 @@ function App() {
               <Preloader />
               <DynamicBackground />
               <CursorAnimation />
+              <ChatPanel />
               <Toaster />
               <Router />
             </TooltipProvider>

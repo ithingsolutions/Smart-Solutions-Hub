@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, Loader2 } from "lucide-react";
+import { X, Send, Loader2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 
@@ -9,12 +9,8 @@ interface Message {
   content: string;
 }
 
-interface ChatPanelProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
+export function ChatPanel() {
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -141,99 +137,112 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
   };
 
   return (
-    <div
-      className={`fixed bottom-6 z-[100] transition-all duration-300 ease-in-out ${
-        language === "ar" ? "left-6" : "right-6"
-      } ${
-        isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-      }`}
-      dir={language === "ar" ? "rtl" : "ltr"}
-    >
-      <div className="w-[380px]">
-        <div className="bg-background border rounded-lg shadow-2xl overflow-hidden">
-          <div className="flex items-center justify-between gap-2 bg-primary px-4 py-3">
-            <h3 className="font-semibold text-primary-foreground">
-              {language === "ar" ? "مساعد iThing" : "iThing Assistant"}
-            </h3>
-            <Button
-              size="icon"
-              variant="ghost"
-              className="h-8 w-8 text-primary-foreground hover:bg-primary-foreground/20"
-              onClick={onClose}
-              data-testid="button-close-chat"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
+    <>
+      {!isOpen && (
+        <Button
+          size="icon"
+          className={`fixed bottom-6 z-[100] h-14 w-14 rounded-full shadow-lg ${
+            language === "ar" ? "left-6" : "right-6"
+          }`}
+          onClick={() => setIsOpen(true)}
+          data-testid="button-open-chat-fixed"
+        >
+          <MessageCircle className="h-6 w-6" />
+        </Button>
+      )}
 
-          <div className="h-64 overflow-y-auto p-4 space-y-3">
-            {messages.length === 0 && (
-              <div className="flex h-full items-center justify-center text-center text-muted-foreground">
-                <p>
-                  {language === "ar"
-                    ? "مرحباً! كيف يمكنني مساعدتك اليوم؟"
-                    : "Hello! How can I help you today?"}
-                </p>
-              </div>
-            )}
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${
-                  message.role === "user" ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div
-                  className={`max-w-[80%] rounded-lg px-3 py-2 ${
-                    message.role === "user"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-foreground"
-                  }`}
-                >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                </div>
-              </div>
-            ))}
-            {isLoading && messages[messages.length - 1]?.role === "user" && (
-              <div className="flex justify-start">
-                <div className="bg-muted rounded-lg px-3 py-2">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          <div className="border-t p-3">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder={
-                  language === "ar" ? "اكتب رسالتك..." : "Type your message..."
-                }
-                className="flex-1 rounded-md border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                disabled={isLoading}
-                data-testid="input-chat-message"
-              />
+      {isOpen && (
+        <div
+          className={`fixed bottom-6 z-[100] ${
+            language === "ar" ? "left-6" : "right-6"
+          }`}
+          dir={language === "ar" ? "rtl" : "ltr"}
+        >
+          <div className="w-[380px] bg-background border rounded-lg shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between gap-2 bg-primary px-4 py-3">
+              <h3 className="font-semibold text-primary-foreground">
+                {language === "ar" ? "مساعد iThing" : "iThing Assistant"}
+              </h3>
               <Button
                 size="icon"
-                onClick={sendMessage}
-                disabled={!input.trim() || isLoading}
-                data-testid="button-send-message"
+                variant="ghost"
+                className="h-8 w-8 text-primary-foreground hover:bg-primary-foreground/20"
+                onClick={() => setIsOpen(false)}
+                data-testid="button-close-chat"
               >
-                {isLoading ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <Send className="h-4 w-4" />
-                )}
+                <X className="h-4 w-4" />
               </Button>
+            </div>
+
+            <div className="h-64 overflow-y-auto p-4 space-y-3">
+              {messages.length === 0 && (
+                <div className="flex h-full items-center justify-center text-center text-muted-foreground">
+                  <p>
+                    {language === "ar"
+                      ? "مرحباً! كيف يمكنني مساعدتك اليوم؟"
+                      : "Hello! How can I help you today?"}
+                  </p>
+                </div>
+              )}
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${
+                    message.role === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  <div
+                    className={`max-w-[80%] rounded-lg px-3 py-2 ${
+                      message.role === "user"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-foreground"
+                    }`}
+                  >
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  </div>
+                </div>
+              ))}
+              {isLoading && messages[messages.length - 1]?.role === "user" && (
+                <div className="flex justify-start">
+                  <div className="bg-muted rounded-lg px-3 py-2">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="border-t p-3">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder={
+                    language === "ar" ? "اكتب رسالتك..." : "Type your message..."
+                  }
+                  className="flex-1 rounded-md border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  disabled={isLoading}
+                  data-testid="input-chat-message"
+                />
+                <Button
+                  size="icon"
+                  onClick={sendMessage}
+                  disabled={!input.trim() || isLoading}
+                  data-testid="button-send-message"
+                >
+                  {isLoading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

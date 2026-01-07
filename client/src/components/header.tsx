@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
 import { BackgroundToggle } from "@/components/background-toggle";
-import { Menu, X, Moon, Sun, MessageCircle } from "lucide-react";
-import { ChatPanel } from "@/components/chat-panel";
+import { Menu, X, Moon, Sun } from "lucide-react";
 const logoImage = "/attached_assets/1661853192216_1767668534815.jpg";
 
 export function Header() {
@@ -12,7 +11,6 @@ export function Header() {
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,16 +56,6 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setChatOpen(true)}
-              className="rounded-full"
-              data-testid="button-open-chat"
-            >
-              <MessageCircle className="h-5 w-5" />
-            </Button>
-
             <BackgroundToggle />
 
             <Button
@@ -141,8 +129,6 @@ export function Header() {
           </div>
         )}
       </div>
-
-      <ChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} />
     </header>
   );
 }

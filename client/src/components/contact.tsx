@@ -234,7 +234,7 @@ export function Contact() {
           </Card>
 
           <div className="lg:col-span-2 space-y-6">
-            <Card className="border-0 bg-background shadow-xl overflow-hidden" data-testid="card-office-amman">
+            <Card className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine" data-testid="card-office-amman">
               <div className="h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/50" />
               <CardContent className="p-8">
                 <h3
@@ -244,8 +244,8 @@ export function Contact() {
                 </h3>
                 <div className="space-y-5">
                   <div className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
-                    <div className="p-3 rounded-xl bg-primary/10">
-                      <MapPin className="h-5 w-5 text-primary" />
+                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-5 w-5 text-primary icon-bounce" />
                     </div>
                     <span className={`text-muted-foreground pt-2 ${isRTL ? "font-arabic" : ""}`}>
                       {t("contact.office.amman.address")}
@@ -271,7 +271,7 @@ export function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 bg-background shadow-xl overflow-hidden" data-testid="card-office-dubai">
+            <Card className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine" data-testid="card-office-dubai">
               <div className="h-2 bg-gradient-to-r from-primary/50 via-primary/80 to-primary" />
               <CardContent className="p-8">
                 <h3
@@ -281,8 +281,8 @@ export function Contact() {
                 </h3>
                 <div className="space-y-5">
                   <div className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
-                    <div className="p-3 rounded-xl bg-primary/10">
-                      <MapPin className="h-5 w-5 text-primary" />
+                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-5 w-5 text-primary icon-bounce" />
                     </div>
                     <span className={`text-muted-foreground pt-2 ${isRTL ? "font-arabic" : ""}`}>
                       {t("contact.office.dubai.address")}

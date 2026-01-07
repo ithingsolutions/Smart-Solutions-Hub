@@ -57,19 +57,19 @@ export function Footer() {
                 href="https://www.linkedin.com/company/ithing-smart-business-solutions"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-background/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="group p-3 rounded-xl bg-background/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
                 data-testid="link-linkedin"
               >
-                <SiLinkedin className="h-5 w-5" />
+                <SiLinkedin className="h-5 w-5 transition-transform group-hover:rotate-6" />
               </a>
               <a
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-background/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="group p-3 rounded-xl bg-background/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
                 data-testid="link-twitter"
               >
-                <SiX className="h-5 w-5" />
+                <SiX className="h-5 w-5 transition-transform group-hover:rotate-6" />
               </a>
             </div>
           </div>

@@ -20,7 +20,7 @@ export function Clients() {
 
   if (isLoading) {
     return (
-      <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
+      <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50 dark:bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="h-10 w-48 bg-muted animate-pulse rounded-full mx-auto mb-8" />
@@ -45,7 +45,7 @@ export function Clients() {
   }
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50 dark:bg-transparent">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
       </div>

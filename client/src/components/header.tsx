@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
-import { Menu, X, Globe, Moon, Sun } from "lucide-react";
-import logoImage from "@assets/1661853192216_1767668534815.jpg";
+import { BackgroundToggle } from "@/components/background-toggle";
+import { Menu, X, Moon, Sun } from "lucide-react";
+const logoImage = "/attached_assets/1661853192216_1767668534815.jpg";
 
 export function Header() {
   const { language, setLanguage, t, isRTL } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { key: "nav.home", href: "#home" },
@@ -22,51 +32,58 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
-          <a
-            href="#home"
-            className="flex items-center gap-2"
-            data-testid="link-logo"
-          >
-            <img src={logoImage} alt="iThing" className="h-10 w-auto" />
+        <div className="flex items-center justify-between h-20 gap-4">
+          <a href="#home" className="flex items-center" data-testid="link-logo">
+            <img src={logoImage} alt="iThing" className="h-12 w-auto rounded" />
           </a>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               <a
                 key={item.key}
                 href={item.href}
-                className={`px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate ${isRTL ? "font-arabic" : ""}`}
+                className={`relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group ${isRTL ? "font-arabic" : ""}`}
                 data-testid={`link-${item.key.split(".")[1]}`}
               >
                 {t(item.key)}
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all group-hover:w-1/2 rounded-full" />
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <BackgroundToggle />
+
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
+              className="rounded-full"
               data-testid="button-theme-toggle"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
 
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={toggleLanguage}
+              className="font-bold text-xs px-3 rounded-full"
               data-testid="button-language-toggle"
             >
-              <Globe className="h-4 w-4" />
+              {language === "en" ? "العربية" : "EN"}
             </Button>
 
             <Button
-              className={`hidden md:flex ${isRTL ? "font-arabic" : ""}`}
+              className={`hidden md:flex font-semibold rounded-full shadow-lg shadow-primary/25 ${isRTL ? "font-arabic" : ""}`}
               data-testid="button-get-started"
             >
               {t("nav.getStarted")}
@@ -75,30 +92,37 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden rounded-full"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-6 border-t border-border bg-background/95 backdrop-blur-md">
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <a
                   key={item.key}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors ${isRTL ? "font-arabic" : ""}`}
+                  className={`px-4 py-4 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-xl transition-colors ${isRTL ? "font-arabic text-right" : ""}`}
                   data-testid={`link-mobile-${item.key.split(".")[1]}`}
                 >
                   {t(item.key)}
                 </a>
               ))}
-              <Button className={`mt-2 ${isRTL ? "font-arabic" : ""}`} data-testid="button-mobile-get-started">
+              <Button
+                className={`mt-4 h-12 rounded-full ${isRTL ? "font-arabic" : ""}`}
+                data-testid="button-mobile-get-started"
+              >
                 {t("nav.getStarted")}
               </Button>
             </nav>

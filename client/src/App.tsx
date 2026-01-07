@@ -5,13 +5,20 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/lib/language-context";
 import { ThemeProvider } from "@/lib/theme-context";
+import { BackgroundProvider } from "@/lib/background-context";
+import { DynamicBackground } from "@/components/dynamic-background";
+import { CursorAnimation } from "@/components/cursor-animation";
+import { Preloader } from "@/components/preloader";
+import { ChatPanel } from "@/components/chat-panel";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
+import Dashboard from "@/pages/dashboard";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -22,10 +29,16 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <LanguageProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+          <BackgroundProvider>
+            <TooltipProvider>
+              <Preloader />
+              <DynamicBackground />
+              <CursorAnimation />
+              <ChatPanel />
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </BackgroundProvider>
         </LanguageProvider>
       </ThemeProvider>
     </QueryClientProvider>

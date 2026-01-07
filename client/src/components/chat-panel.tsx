@@ -142,12 +142,14 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
 
   return (
     <div
-      className={`fixed left-0 right-0 z-[100] transition-all duration-300 ease-in-out ${
-        isOpen ? "top-20 opacity-100" : "-top-full opacity-0 pointer-events-none"
+      className={`fixed bottom-6 z-[100] transition-all duration-300 ease-in-out ${
+        language === "ar" ? "left-6" : "right-6"
+      } ${
+        isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       }`}
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="w-[380px]">
         <div className="bg-background border rounded-lg shadow-2xl overflow-hidden">
           <div className="flex items-center justify-between gap-2 bg-primary px-4 py-3">
             <h3 className="font-semibold text-primary-foreground">

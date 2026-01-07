@@ -1,37 +1,45 @@
 import { useLanguage } from "@/lib/language-context";
-import { Building2, Landmark, ShoppingBag, Plane, Stethoscope, GraduationCap } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Building2 } from "lucide-react";
 
-const clients = [
-  { key: "1", icon: Landmark, number: 1 },
-  { key: "2", icon: ShoppingBag, number: 2 },
-  { key: "3", icon: Plane, number: 3 },
-  { key: "4", icon: Stethoscope, number: 4 },
-  { key: "5", icon: GraduationCap, number: 5 },
-  { key: "6", icon: Building2, number: 6 },
-];
-
-const clientData = {
-  en: {
-    "1": "Client 1",
-    "2": "Client 2",
-    "3": "Client 3",
-    "4": "Client 4",
-    "5": "Client 5",
-    "6": "Client 6",
-  },
-  ar: {
-    "1": "العميل 1",
-    "2": "العميل 2",
-    "3": "العميل 3",
-    "4": "العميل 4",
-    "5": "العميل 5",
-    "6": "العميل 6",
-  },
-};
+interface Client {
+  id: number;
+  nameEn: string;
+  nameAr: string;
+  logoUrl: string;
+  icon: string;
+  sortOrder: number;
+}
 
 export function Clients() {
   const { language, isRTL } = useLanguage();
-  const data = clientData[language as keyof typeof clientData];
+
+  const { data: clients = [], isLoading } = useQuery<Client[]>({
+    queryKey: ["/api/content/clients"],
+  });
+
+  if (isLoading) {
+    return (
+      <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="h-10 w-48 bg-muted animate-pulse rounded-full mx-auto mb-8" />
+            <div className="h-12 w-64 bg-muted animate-pulse rounded mx-auto mb-4" />
+            <div className="h-6 w-96 bg-muted animate-pulse rounded mx-auto" />
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="h-32 bg-muted animate-pulse rounded-2xl" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (clients.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
@@ -64,17 +72,26 @@ export function Clients() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {clients.map((client) => {
-            const Icon = client.icon;
-            const name = data[client.key as keyof typeof data];
+            const name = language === "ar" ? client.nameAr : client.nameEn;
             return (
               <div
-                key={client.key}
+                key={client.id}
                 className="group flex flex-col items-center justify-center p-8 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                data-testid={`client-${client.key}`}
+                data-testid={`client-${client.id}`}
               >
-                <div className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors mb-4">
-                  <Icon className="w-8 h-8 text-primary" />
-                </div>
+                {client.logoUrl ? (
+                  <div className="h-16 w-full flex items-center justify-center mb-4">
+                    <img 
+                      src={client.logoUrl} 
+                      alt={name}
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors mb-4">
+                    <Building2 className="w-8 h-8 text-primary" />
+                  </div>
+                )}
                 <span className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}>
                   {name}
                 </span>

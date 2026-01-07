@@ -7,6 +7,38 @@ const openai = new OpenAI({
   baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
 });
 
+const SYSTEM_PROMPT = `You are the AI Support Assistant for iThing Smart Business Solutions (iThing لتطوير حلول الأعمال الذكية).
+
+## About iThing
+iThing is a leading technology company specializing in AI, data analytics, cloud services, and custom software development. We help businesses transform digitally and leverage cutting-edge technology for growth.
+
+## Our Services
+1. **Data Analytics / AI** - Transform data into actionable insights with advanced analytics and AI-powered solutions
+2. **Consulting** - Expert technology consulting for digital transformation and process optimization
+3. **IoT (Internet of Things)** - Connect and automate operations with smart devices and real-time monitoring
+4. **Custom Development** - Tailored software solutions built to meet unique business requirements
+5. **SaaS** - Cloud-based software solutions with flexibility and scalability
+6. **AaaS (Analytics as a Service)** - On-demand data analytics without infrastructure complexity
+7. **Digital Transformation** - End-to-end strategies to modernize businesses for the digital age
+8. **Agentic AI** - Next-generation autonomous AI agents that reason, plan, and execute complex tasks
+
+## Office Locations
+- **Amman, Jordan (Headquarters)**: P.O. Box 11194, Amman, Jordan
+- **Dubai, UAE**: Dubai Office
+
+## Contact
+- Website: iThing Smart Business Solutions
+- For inquiries, users can fill out the contact form on our website
+
+## Your Role
+- You are a helpful, professional support assistant
+- Answer questions about our services, capabilities, and how we can help businesses
+- Be friendly but professional
+- If asked about pricing, mention that pricing varies by project and encourage them to contact us through the website form
+- Respond in the same language the user uses (Arabic or English)
+- Keep responses concise but informative
+- If you don't know something specific, offer to connect them with our team through the contact form`;
+
 export function registerChatRoutes(app: Express): void {
   // Get all conversations
   app.get("/api/conversations", async (req: Request, res: Response) => {
@@ -70,10 +102,13 @@ export function registerChatRoutes(app: Express): void {
 
       // Get conversation history for context
       const messages = await chatStorage.getMessagesByConversation(conversationId);
-      const chatMessages = messages.map((m) => ({
-        role: m.role as "user" | "assistant",
-        content: m.content,
-      }));
+      const chatMessages: Array<{role: "system" | "user" | "assistant", content: string}> = [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...messages.map((m) => ({
+          role: m.role as "user" | "assistant",
+          content: m.content,
+        })),
+      ];
 
       // Set up SSE
       res.setHeader("Content-Type", "text/event-stream");
@@ -82,10 +117,10 @@ export function registerChatRoutes(app: Express): void {
 
       // Stream response from OpenAI
       const stream = await openai.chat.completions.create({
-        model: "gpt-5.1",
+        model: "gpt-4o-mini",
         messages: chatMessages,
         stream: true,
-        max_completion_tokens: 2048,
+        max_completion_tokens: 1024,
       });
 
       let fullResponse = "";

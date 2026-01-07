@@ -36,13 +36,16 @@ export function Preloader() {
     >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-primary/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: "0.5s" }} />
+        <div
+          className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-primary/15 to-transparent rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "0.5s" }}
+        />
       </div>
 
       <div className="relative z-10 flex flex-col items-center gap-8">
         <div className="relative">
           <div className="absolute inset-0 bg-primary/30 rounded-full blur-2xl animate-pulse" />
-          <div className="relative w-24 h-24 flex items-center justify-center">
+          <div className="relative w-32 h-32 flex items-center justify-center">
             <svg
               className="w-full h-full animate-spin-slow"
               viewBox="0 0 100 100"
@@ -66,23 +69,24 @@ export function Preloader() {
                 strokeLinecap="round"
                 strokeDasharray={`${progress * 2.83} 283`}
                 className="text-primary transition-all duration-300"
-                style={{ transform: "rotate(-90deg)", transformOrigin: "center" }}
+                style={{
+                  transform: "rotate(-90deg)",
+                  transformOrigin: "center",
+                }}
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-2xl font-black text-primary">
-                {Math.min(Math.round(progress), 100)}%
-              </span>
+              <img 
+                src="/attached_assets/ithing logo red-Photoroom.png" 
+                alt="iThing" 
+                className="w-16 h-16 object-contain"
+              />
             </div>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-4">
-          <h1 className="text-3xl font-black tracking-tight">
-            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
-              iThing
-            </span>
-          </h1>
+          <p className="text-xl font-bold text-foreground">iThing</p>
           <p className="text-sm text-muted-foreground font-medium tracking-wider uppercase">
             Smart Business Solutions
           </p>

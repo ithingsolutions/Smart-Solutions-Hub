@@ -1,7 +1,7 @@
 import { useLanguage } from "@/lib/language-context";
 import { SiLinkedin, SiX } from "react-icons/si";
 import { ArrowUpRight } from "lucide-react";
-import logoImage from "@assets/1661853192216_1767668534815.jpg";
+const logoImage = "/attached_assets/1661853192216_1767668534815.jpg";
 
 export function Footer() {
   const { t, isRTL } = useLanguage();

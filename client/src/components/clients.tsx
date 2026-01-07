@@ -29,7 +29,10 @@ export function Clients() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-32 bg-muted animate-pulse rounded-2xl" />
+              <div
+                key={i}
+                className="h-32 bg-muted animate-pulse rounded-2xl"
+              />
             ))}
           </div>
         </div>
@@ -50,7 +53,9 @@ export function Clients() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5">
-            <span className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}>
+            <span
+              className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}
+            >
               {isRTL ? "شركاء النجاح" : "Success Partners"}
             </span>
           </div>
@@ -80,11 +85,11 @@ export function Clients() {
                 data-testid={`client-${client.id}`}
               >
                 {client.logoUrl ? (
-                  <div className="h-16 w-full flex items-center justify-center mb-4">
-                    <img 
-                      src={client.logoUrl} 
+                  <div className="h-24 w-full flex items-center justify-center mb-4">
+                    <img
+                      src={client.logoUrl}
                       alt={name}
-                      className="max-h-16 max-w-full object-contain"
+                      className="max-h-24 max-w-full object-contain"
                     />
                   </div>
                 ) : (
@@ -92,18 +97,14 @@ export function Clients() {
                     <Building2 className="w-8 h-8 text-primary" />
                   </div>
                 )}
-                <span className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}>
+                <span
+                  className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
+                >
                   {name}
                 </span>
               </div>
             );
           })}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
-            {isRTL ? "وأكثر من 80 عميل راضٍ آخر..." : "And 80+ more satisfied clients..."}
-          </p>
         </div>
       </div>
     </section>

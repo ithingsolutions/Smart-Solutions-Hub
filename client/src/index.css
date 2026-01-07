@@ -4,13 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Circle Cursor */
+/* Hide default cursor for custom animated cursor */
 * {
-  cursor: url('/cursor.svg') 12 12, auto;
-}
-
-a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
-  cursor: url('/cursor.svg') 12 12, pointer;
+  cursor: none !important;
 }
 
 /* LIGHT MODE - iThing Brand Colors (Charcoal + Red accent) */
@@ -331,5 +327,21 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
 
   .animate-spin-slow {
     animation: spin-slow 3s linear infinite;
+  }
+
+  /* Cursor Ring Animation */
+  @keyframes cursor-ring-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+
+  .animate-cursor-ring {
+    animation: cursor-ring-pulse 1.5s ease-in-out infinite;
   }
 }

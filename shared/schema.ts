@@ -6,6 +6,9 @@ import { z } from "zod";
 // Re-export auth models
 export * from "./models/auth";
 
+// Re-export chat models
+export * from "./models/chat";
+
 // Team Members
 export const teamMembers = pgTable("team_members", {
   id: serial("id").primaryKey(),

@@ -3,6 +3,7 @@ import { type Server } from "http";
 import { storage } from "./storage";
 import { contactFormSchema, insertTeamMemberSchema, insertClientSchema, insertServiceSchema } from "@shared/schema";
 import { setupAuth, registerAuthRoutes, isAuthenticated } from "./replit_integrations/auth";
+import { registerChatRoutes } from "./replit_integrations/chat";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -11,6 +12,9 @@ export async function registerRoutes(
   // Setup auth BEFORE other routes
   await setupAuth(app);
   registerAuthRoutes(app);
+  
+  // Register chat routes
+  registerChatRoutes(app);
 
   // Public API: Contact form
   app.post("/api/contact", async (req, res) => {

@@ -36,7 +36,7 @@ export function Hero() {
           >
             <span className="relative inline-block text-primary">
               iThing
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-primary/60 rounded-full" />
+              <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-primary via-primary to-primary/40" />
             </span>
             <span className="text-foreground">
               {isRTL ? " لتطوير حلول الأعمال الذكية" : " Smart Business Solutions"}

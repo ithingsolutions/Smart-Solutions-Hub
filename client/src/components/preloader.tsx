@@ -21,8 +21,8 @@ export function Preloader() {
 
   useEffect(() => {
     if (progress >= 100) {
-      setTimeout(() => setFadeOut(true), 300);
-      setTimeout(() => setIsLoading(false), 800);
+      setTimeout(() => setFadeOut(true), 3500);
+      setTimeout(() => setIsLoading(false), 5800);
     }
   }, [progress]);
 
@@ -76,9 +76,9 @@ export function Preloader() {
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <img 
-                src="/attached_assets/ithing logo red-Photoroom.png" 
-                alt="iThing" 
+              <img
+                src="/2.png"
+                alt="iThing"
                 className="w-16 h-16 object-contain"
               />
             </div>

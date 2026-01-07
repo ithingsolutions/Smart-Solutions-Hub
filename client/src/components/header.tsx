@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
+import { BackgroundToggle } from "@/components/background-toggle";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import logoImage from "@assets/1661853192216_1767668534815.jpg";
 
@@ -55,6 +56,8 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <BackgroundToggle />
+
             <Button
               variant="ghost"
               size="icon"

@@ -34,9 +34,11 @@ export function Hero() {
             className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 ${isRTL ? "font-arabic leading-relaxed" : "leading-tight"}`}
             data-testid="text-hero-title"
           >
-            <span className="relative inline-block text-primary">
+            <span className="relative inline-block text-primary pb-2">
               iThing
-              <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-primary via-primary to-primary/40" />
+              <svg className="absolute -bottom-1 left-0 w-full h-3" viewBox="0 0 100 12" preserveAspectRatio="none">
+                <path d="M0 6 Q25 0, 50 6 T100 6" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" className="text-primary" />
+              </svg>
             </span>
             <span className="text-foreground">
               {isRTL ? " لتطوير حلول الأعمال الذكية" : " Smart Business Solutions"}

@@ -34,8 +34,12 @@ export function Hero() {
             className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 ${isRTL ? "font-arabic leading-relaxed" : "leading-tight"}`}
             data-testid="text-hero-title"
           >
+            <span className="relative inline-block text-primary">
+              iThing
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-primary/60 rounded-full" />
+            </span>
             <span className="text-foreground">
-              {t("hero.title")}
+              {isRTL ? " لتطوير حلول الأعمال الذكية" : " Smart Business Solutions"}
             </span>
           </h1>
 

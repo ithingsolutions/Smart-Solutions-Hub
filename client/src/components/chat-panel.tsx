@@ -1,0 +1,246 @@
+import { useState, useRef, useEffect } from "react";
+import { X, Send, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/language-context";
+
+interface Message {
+  id: number;
+  role: "user" | "assistant";
+  content: string;
+}
+
+interface ChatPanelProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [conversationId, setConversationId] = useState<number | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const createConversation = async () => {
+    try {
+      const response = await fetch("/api/conversations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: "Website Chat" }),
+      });
+      const data = await response.json();
+      setConversationId(data.id);
+      return data.id;
+    } catch (error) {
+      console.error("Failed to create conversation:", error);
+      return null;
+    }
+  };
+
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = input.trim();
+    setInput("");
+    setIsLoading(true);
+
+    let convId = conversationId;
+    if (!convId) {
+      convId = await createConversation();
+      if (!convId) {
+        setIsLoading(false);
+        return;
+      }
+    }
+
+    const newUserMessage: Message = {
+      id: Date.now(),
+      role: "user",
+      content: userMessage,
+    };
+    setMessages((prev) => [...prev, newUserMessage]);
+
+    try {
+      const response = await fetch(`/api/conversations/${convId}/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: userMessage }),
+      });
+
+      if (!response.ok) throw new Error("Failed to send message");
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let assistantContent = "";
+
+      const assistantMessage: Message = {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: "",
+      };
+      setMessages((prev) => [...prev, assistantMessage]);
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value);
+          const lines = chunk.split("\n");
+
+          for (const line of lines) {
+            if (line.startsWith("data: ")) {
+              try {
+                const data = JSON.parse(line.slice(6));
+                if (data.content) {
+                  assistantContent += data.content;
+                  setMessages((prev) =>
+                    prev.map((msg) =>
+                      msg.id === assistantMessage.id
+                        ? { ...msg, content: assistantContent }
+                        : msg
+                    )
+                  );
+                }
+              } catch (e) {
+                // Skip invalid JSON
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          content: language === "ar" ? "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى." : "Sorry, an error occurred. Please try again.",
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm" onClick={onClose}>
+      <div
+        className={`fixed top-0 h-full w-full max-w-md bg-background shadow-2xl flex flex-col transition-transform duration-300 ${
+          language === "ar" ? "left-0" : "right-0"
+        }`}
+        dir={language === "ar" ? "rtl" : "ltr"}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between gap-2 border-b bg-primary p-4">
+          <h3 className="font-semibold text-primary-foreground text-lg">
+            {language === "ar" ? "مساعد iThing" : "iThing Assistant"}
+          </h3>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="text-primary-foreground hover:bg-primary-foreground/20"
+            onClick={onClose}
+            data-testid="button-close-chat"
+          >
+            <X className="h-5 w-5" />
+          </Button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          {messages.length === 0 && (
+            <div className="flex h-full items-center justify-center text-center text-muted-foreground p-8">
+              <div>
+                <p className="text-lg mb-2">
+                  {language === "ar"
+                    ? "مرحباً! كيف يمكنني مساعدتك اليوم؟"
+                    : "Hello! How can I help you today?"}
+                </p>
+                <p className="text-sm">
+                  {language === "ar"
+                    ? "اسألني عن خدماتنا أو أي شيء آخر"
+                    : "Ask me about our services or anything else"}
+                </p>
+              </div>
+            </div>
+          )}
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className={`flex ${
+                message.role === "user" ? "justify-end" : "justify-start"
+              }`}
+            >
+              <div
+                className={`max-w-[85%] rounded-lg px-4 py-3 ${
+                  message.role === "user"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-foreground"
+                }`}
+              >
+                <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+              </div>
+            </div>
+          ))}
+          {isLoading && messages[messages.length - 1]?.role === "user" && (
+            <div className="flex justify-start">
+              <div className="bg-muted rounded-lg px-4 py-3">
+                <Loader2 className="h-5 w-5 animate-spin" />
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div className="border-t p-4">
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder={
+                language === "ar" ? "اكتب رسالتك..." : "Type your message..."
+              }
+              className="flex-1 rounded-md border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              disabled={isLoading}
+              data-testid="input-chat-message"
+            />
+            <Button
+              size="icon"
+              onClick={sendMessage}
+              disabled={!input.trim() || isLoading}
+              className="h-11 w-11"
+              data-testid="button-send-message"
+            >
+              {isLoading ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : (
+                <Send className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

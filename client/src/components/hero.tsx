@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { ArrowRight, ArrowLeft, Zap, Shield } from "lucide-react";
+import heroBackground from "@assets/stock_images/abstract_technology__2c24a2c3.jpg";
 
 export function Hero() {
   const { t, isRTL } = useLanguage();
@@ -12,7 +13,11 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackground})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-primary/20" />
 
       <div className="absolute inset-0 overflow-hidden">
         <div

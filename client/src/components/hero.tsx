@@ -70,18 +70,12 @@ export function Hero() {
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-primary via-red-400 to-primary bg-clip-text text-transparent">iThing</span>
                 <svg
-                  className="absolute -bottom-2 left-0 w-full h-4 text-primary"
-                  viewBox="0 0 100 12"
-                  preserveAspectRatio="none"
-                  fill="none"
+                  className="absolute -bottom-4 right-0 w-8 h-8 text-primary transform translate-x-2"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
                 >
-                  <path
-                    d="M2 8 Q 25 2, 50 8 T 98 8"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
+                  <path d="M4 4L10.5 20L12.5 14.5L18 12.5L4 4Z" />
+                  <path d="M12.5 14.5L17 19L19 17L14.5 12.5" />
                 </svg>
               </span>{" "}
               {isRTL ? "لتطوير حلول الأعمال الذكية" : "Smart Business Solutions"}

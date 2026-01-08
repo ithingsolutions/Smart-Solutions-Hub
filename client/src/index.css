@@ -9,7 +9,12 @@
   cursor: url('/cursor.svg') 12 12, auto;
 }
 
-a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+.cursor-pointer {
   cursor: url('/cursor.svg') 12 12, pointer;
 }
 
@@ -324,6 +329,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
     from {
       transform: rotate(0deg);
     }
+
     to {
       transform: rotate(360deg);
     }
@@ -337,7 +343,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
   .hover-lift {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .hover-lift:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
@@ -346,7 +352,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
   .hover-scale {
     transition: transform 0.3s ease;
   }
-  
+
   .hover-scale:hover {
     transform: scale(1.02);
   }
@@ -354,7 +360,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
   .hover-glow {
     transition: box-shadow 0.3s ease;
   }
-  
+
   .hover-glow:hover {
     box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
   }
@@ -363,21 +369,28 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
   .icon-bounce {
     transition: transform 0.3s ease;
   }
-  
+
   .group:hover .icon-bounce {
     animation: iconBounce 0.5s ease;
   }
 
   @keyframes iconBounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.15);
+    }
   }
 
   /* Smooth underline animation */
   .hover-underline {
     position: relative;
   }
-  
+
   .hover-underline::after {
     content: '';
     position: absolute;
@@ -388,7 +401,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
     background: hsl(var(--primary));
     transition: width 0.3s ease, left 0.3s ease;
   }
-  
+
   .hover-underline:hover::after {
     width: 100%;
     left: 0;
@@ -399,7 +412,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
     position: relative;
     overflow: hidden;
   }
-  
+
   .hover-shine::before {
     content: '';
     position: absolute;
@@ -407,23 +420,23 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent);
     transition: left 0.5s ease;
     pointer-events: none;
     z-index: 1;
   }
-  
+
   .hover-shine:hover::before {
     left: 100%;
   }
 
   /* Input focus glow */
-  input:focus, textarea:focus, select:focus {
+  input:focus,
+  textarea:focus,
+  select:focus {
     box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
   }
 
@@ -437,15 +450,19 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
     0% {
       transform: scale(1) translateX(0) translateY(0);
     }
+
     25% {
       transform: scale(1.08) translateX(-1%) translateY(-0.5%);
     }
+
     50% {
       transform: scale(1.12) translateX(-2%) translateY(-1%);
     }
+
     75% {
       transform: scale(1.08) translateX(-1%) translateY(-0.5%);
     }
+
     100% {
       transform: scale(1) translateX(0) translateY(0);
     }

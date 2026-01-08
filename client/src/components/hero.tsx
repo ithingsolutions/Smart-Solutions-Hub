@@ -67,7 +67,24 @@ export function Hero() {
             data-testid="text-hero-title"
           >
             <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-              {t("hero.title")}
+              <span className="relative inline-block">
+                <span className="text-primary">i</span>Thing
+                <svg
+                  className="absolute -bottom-2 left-0 w-full h-4 text-primary"
+                  viewBox="0 0 100 12"
+                  preserveAspectRatio="none"
+                  fill="none"
+                >
+                  <path
+                    d="M2 8 Q 25 2, 50 8 T 98 8"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>{" "}
+              {isRTL ? "لتطوير حلول الأعمال الذكية" : "Smart Business Solutions"}
             </span>
           </h1>
 

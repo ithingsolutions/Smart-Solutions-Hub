@@ -37,27 +37,8 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
-          <a href="#home" className="flex items-center gap-3" data-testid="link-logo">
+          <a href="#home" className="flex items-center" data-testid="link-logo">
             <img src={logoImage} alt="iThing" className="h-12 w-auto rounded" />
-            <span className="relative hidden sm:block">
-              <span className="text-2xl font-black tracking-tight">
-                <span className="text-primary">i</span>Thing
-              </span>
-              <svg
-                className="absolute -bottom-1 left-0 w-full h-3 text-primary"
-                viewBox="0 0 100 12"
-                preserveAspectRatio="none"
-                fill="none"
-              >
-                <path
-                  d="M2 8 Q 25 2, 50 8 T 98 8"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </svg>
-            </span>
           </a>
 
           <nav className="hidden md:flex items-center gap-2">

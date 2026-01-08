@@ -68,7 +68,7 @@ export function Hero() {
           >
             <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
               <span className="relative inline-block">
-                <span className="text-primary">i</span>Thing
+                <span className="bg-gradient-to-r from-primary via-red-400 to-primary bg-clip-text text-transparent">iThing</span>
                 <svg
                   className="absolute -bottom-2 left-0 w-full h-4 text-primary"
                   viewBox="0 0 100 12"

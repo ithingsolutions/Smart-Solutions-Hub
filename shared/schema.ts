@@ -66,6 +66,48 @@ export const insertServiceSchema = createInsertSchema(services).omit({
 export type InsertService = z.infer<typeof insertServiceSchema>;
 export type Service = typeof services.$inferSelect;
 
+// Testimonials
+export const testimonials = pgTable("testimonials", {
+  id: serial("id").primaryKey(),
+  nameEn: varchar("name_en", { length: 255 }).notNull(),
+  nameAr: varchar("name_ar", { length: 255 }).notNull(),
+  companyEn: varchar("company_en", { length: 255 }).notNull(),
+  companyAr: varchar("company_ar", { length: 255 }).notNull(),
+  textEn: text("text_en").notNull(),
+  textAr: text("text_ar").notNull(),
+  rating: integer("rating").default(5),
+  sortOrder: integer("sort_order").default(0),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertTestimonialSchema = createInsertSchema(testimonials).omit({
+  id: true,
+  createdAt: true,
+});
+export type InsertTestimonial = z.infer<typeof insertTestimonialSchema>;
+export type Testimonial = typeof testimonials.$inferSelect;
+
+// Portfolio Projects
+export const portfolioProjects = pgTable("portfolio_projects", {
+  id: serial("id").primaryKey(),
+  titleEn: varchar("title_en", { length: 255 }).notNull(),
+  titleAr: varchar("title_ar", { length: 255 }).notNull(),
+  descriptionEn: text("description_en").notNull(),
+  descriptionAr: text("description_ar").notNull(),
+  imageUrl: text("image_url"),
+  tagsEn: text("tags_en"),
+  tagsAr: text("tags_ar"),
+  sortOrder: integer("sort_order").default(0),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertPortfolioProjectSchema = createInsertSchema(portfolioProjects).omit({
+  id: true,
+  createdAt: true,
+});
+export type InsertPortfolioProject = z.infer<typeof insertPortfolioProjectSchema>;
+export type PortfolioProject = typeof portfolioProjects.$inferSelect;
+
 // Contact Form
 export const contactFormSchema = z.object({
   name: z.string().min(1, "Name is required"),

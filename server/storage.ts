@@ -7,9 +7,15 @@ import {
   type InsertClient,
   type Service,
   type InsertService,
+  type Testimonial,
+  type InsertTestimonial,
+  type PortfolioProject,
+  type InsertPortfolioProject,
   teamMembers,
   clients,
-  services
+  services,
+  testimonials,
+  portfolioProjects
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
@@ -36,6 +42,18 @@ export interface IStorage {
   createService(data: InsertService): Promise<Service>;
   updateService(id: number, data: Partial<InsertService>): Promise<Service>;
   deleteService(id: number): Promise<void>;
+  
+  // Testimonials
+  getTestimonials(): Promise<Testimonial[]>;
+  createTestimonial(data: InsertTestimonial): Promise<Testimonial>;
+  updateTestimonial(id: number, data: Partial<InsertTestimonial>): Promise<Testimonial>;
+  deleteTestimonial(id: number): Promise<void>;
+  
+  // Portfolio Projects
+  getPortfolioProjects(): Promise<PortfolioProject[]>;
+  createPortfolioProject(data: InsertPortfolioProject): Promise<PortfolioProject>;
+  updatePortfolioProject(id: number, data: Partial<InsertPortfolioProject>): Promise<PortfolioProject>;
+  deletePortfolioProject(id: number): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -115,6 +133,44 @@ export class DatabaseStorage implements IStorage {
 
   async deleteService(id: number): Promise<void> {
     await db.delete(services).where(eq(services.id, id));
+  }
+
+  // Testimonials
+  async getTestimonials(): Promise<Testimonial[]> {
+    return await db.select().from(testimonials).orderBy(asc(testimonials.sortOrder));
+  }
+
+  async createTestimonial(data: InsertTestimonial): Promise<Testimonial> {
+    const [testimonial] = await db.insert(testimonials).values(data).returning();
+    return testimonial;
+  }
+
+  async updateTestimonial(id: number, data: Partial<InsertTestimonial>): Promise<Testimonial> {
+    const [testimonial] = await db.update(testimonials).set(data).where(eq(testimonials.id, id)).returning();
+    return testimonial;
+  }
+
+  async deleteTestimonial(id: number): Promise<void> {
+    await db.delete(testimonials).where(eq(testimonials.id, id));
+  }
+
+  // Portfolio Projects
+  async getPortfolioProjects(): Promise<PortfolioProject[]> {
+    return await db.select().from(portfolioProjects).orderBy(asc(portfolioProjects.sortOrder));
+  }
+
+  async createPortfolioProject(data: InsertPortfolioProject): Promise<PortfolioProject> {
+    const [project] = await db.insert(portfolioProjects).values(data).returning();
+    return project;
+  }
+
+  async updatePortfolioProject(id: number, data: Partial<InsertPortfolioProject>): Promise<PortfolioProject> {
+    const [project] = await db.update(portfolioProjects).set(data).where(eq(portfolioProjects.id, id)).returning();
+    return project;
+  }
+
+  async deletePortfolioProject(id: number): Promise<void> {
+    await db.delete(portfolioProjects).where(eq(portfolioProjects.id, id));
   }
 }
 

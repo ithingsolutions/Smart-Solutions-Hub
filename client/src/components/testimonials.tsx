@@ -1,8 +1,10 @@
 import { useLanguage } from "@/lib/language-context";
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import type { Testimonial } from "@shared/schema";
 
-const testimonials = [
+const fallbackTestimonials = [
   {
     id: 1,
     nameEn: "Mohammed Al-Rashid",
@@ -37,6 +39,12 @@ const testimonials = [
 
 export function Testimonials() {
   const { language, isRTL } = useLanguage();
+  
+  const { data: apiTestimonials = [], isLoading } = useQuery<Testimonial[]>({
+    queryKey: ["/api/content/testimonials"],
+  });
+
+  const testimonials = apiTestimonials.length > 0 ? apiTestimonials : fallbackTestimonials;
 
   return (
     <section className="py-28 lg:py-40 relative overflow-hidden bg-card/50">
@@ -68,57 +76,64 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => {
-            const name = language === "ar" ? testimonial.nameAr : testimonial.nameEn;
-            const company = language === "ar" ? testimonial.companyAr : testimonial.companyEn;
-            const text = language === "ar" ? testimonial.textAr : testimonial.textEn;
-            
-            return (
-              <Card
-                key={testimonial.id}
-                className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine"
-                data-testid={`card-testimonial-${testimonial.id}`}
-              >
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-1 mb-6">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <Quote className="w-10 h-10 text-primary/20 mb-4" />
-                  <p 
-                    className={`text-muted-foreground leading-relaxed mb-8 ${isRTL ? "font-arabic text-right" : ""}`}
-                    data-testid={`text-testimonial-quote-${testimonial.id}`}
-                  >
-                    "{text}"
-                  </p>
-                  <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <span className={`text-lg font-bold text-primary ${isRTL ? "font-arabic" : ""}`}>
-                        {name.charAt(0)}
-                      </span>
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => {
+              const name = language === "ar" ? testimonial.nameAr : testimonial.nameEn;
+              const company = language === "ar" ? testimonial.companyAr : testimonial.companyEn;
+              const text = language === "ar" ? testimonial.textAr : testimonial.textEn;
+              const rating = testimonial.rating || 5;
+              
+              return (
+                <Card
+                  key={testimonial.id}
+                  className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine"
+                  data-testid={`card-testimonial-${testimonial.id}`}
+                >
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-1 mb-6">
+                      {[...Array(rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                      ))}
                     </div>
-                    <div className={isRTL ? "text-right" : ""}>
-                      <h4 
-                        className={`font-bold ${isRTL ? "font-arabic" : ""}`}
-                        data-testid={`text-testimonial-name-${testimonial.id}`}
-                      >
-                        {name}
-                      </h4>
-                      <p 
-                        className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
-                        data-testid={`text-testimonial-company-${testimonial.id}`}
-                      >
-                        {company}
-                      </p>
+                    <Quote className="w-10 h-10 text-primary/20 mb-4" />
+                    <p 
+                      className={`text-muted-foreground leading-relaxed mb-8 ${isRTL ? "font-arabic text-right" : ""}`}
+                      data-testid={`text-testimonial-quote-${testimonial.id}`}
+                    >
+                      "{text}"
+                    </p>
+                    <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                        <span className={`text-lg font-bold text-primary ${isRTL ? "font-arabic" : ""}`}>
+                          {name.charAt(0)}
+                        </span>
+                      </div>
+                      <div className={isRTL ? "text-right" : ""}>
+                        <h4 
+                          className={`font-bold ${isRTL ? "font-arabic" : ""}`}
+                          data-testid={`text-testimonial-name-${testimonial.id}`}
+                        >
+                          {name}
+                        </h4>
+                        <p 
+                          className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                          data-testid={`text-testimonial-company-${testimonial.id}`}
+                        >
+                          {company}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

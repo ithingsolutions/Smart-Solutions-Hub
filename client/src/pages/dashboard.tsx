@@ -14,9 +14,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { z } from "zod";
-import { Users, Building2, Briefcase, Plus, Pencil, Trash2, LogOut, Home, Loader2 } from "lucide-react";
+import { Users, Building2, Briefcase, Plus, Pencil, Trash2, LogOut, Home, Loader2, Quote, FolderOpen } from "lucide-react";
 import { Link } from "wouter";
-import type { TeamMember, Client, Service } from "@shared/schema";
+import type { TeamMember, Client, Service, Testimonial, PortfolioProject } from "@shared/schema";
 
 const teamMemberFormSchema = z.object({
   nameEn: z.string().min(1, "English name is required"),
@@ -42,6 +42,28 @@ const serviceFormSchema = z.object({
   descriptionEn: z.string().min(1, "English description is required"),
   descriptionAr: z.string().min(1, "Arabic description is required"),
   icon: z.string().min(1, "Icon is required"),
+  sortOrder: z.number().default(0),
+});
+
+const testimonialFormSchema = z.object({
+  nameEn: z.string().min(1, "English name is required"),
+  nameAr: z.string().min(1, "Arabic name is required"),
+  companyEn: z.string().min(1, "English company is required"),
+  companyAr: z.string().min(1, "Arabic company is required"),
+  textEn: z.string().min(1, "English text is required"),
+  textAr: z.string().min(1, "Arabic text is required"),
+  rating: z.number().default(5),
+  sortOrder: z.number().default(0),
+});
+
+const portfolioFormSchema = z.object({
+  titleEn: z.string().min(1, "English title is required"),
+  titleAr: z.string().min(1, "Arabic title is required"),
+  descriptionEn: z.string().min(1, "English description is required"),
+  descriptionAr: z.string().min(1, "Arabic description is required"),
+  imageUrl: z.string().optional(),
+  tagsEn: z.string().optional(),
+  tagsAr: z.string().optional(),
   sortOrder: z.number().default(0),
 });
 
@@ -95,7 +117,7 @@ export default function Dashboard() {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="team" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 max-w-md">
+          <TabsList className="grid w-full grid-cols-5 max-w-2xl">
             <TabsTrigger value="team" className="flex items-center gap-2" data-testid="tab-team">
               <Users className="w-4 h-4" />
               Team
@@ -108,6 +130,14 @@ export default function Dashboard() {
               <Briefcase className="w-4 h-4" />
               Services
             </TabsTrigger>
+            <TabsTrigger value="testimonials" className="flex items-center gap-2" data-testid="tab-testimonials">
+              <Quote className="w-4 h-4" />
+              Testimonials
+            </TabsTrigger>
+            <TabsTrigger value="portfolio" className="flex items-center gap-2" data-testid="tab-portfolio">
+              <FolderOpen className="w-4 h-4" />
+              Portfolio
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="team">
@@ -118,6 +148,12 @@ export default function Dashboard() {
           </TabsContent>
           <TabsContent value="services">
             <ServicesSection />
+          </TabsContent>
+          <TabsContent value="testimonials">
+            <TestimonialsSection />
+          </TabsContent>
+          <TabsContent value="portfolio">
+            <PortfolioSection />
           </TabsContent>
         </Tabs>
       </main>
@@ -679,6 +715,436 @@ function ServicesSection() {
                         <Pencil className="w-4 h-4" />
                       </Button>
                       <Button size="sm" variant="destructive" onClick={() => deleteMutation.mutate(service.id)} disabled={deleteMutation.isPending} data-testid={`button-delete-service-${service.id}`}>
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function TestimonialsSection() {
+  const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
+
+  const { data: testimonials = [], isLoading } = useQuery<Testimonial[]>({
+    queryKey: ["/api/admin/testimonials"],
+  });
+
+  const form = useForm<z.infer<typeof testimonialFormSchema>>({
+    resolver: zodResolver(testimonialFormSchema),
+    defaultValues: {
+      nameEn: "",
+      nameAr: "",
+      companyEn: "",
+      companyAr: "",
+      textEn: "",
+      textAr: "",
+      rating: 5,
+      sortOrder: 0,
+    },
+  });
+
+  const createMutation = useMutation({
+    mutationFn: (data: z.infer<typeof testimonialFormSchema>) =>
+      apiRequest("POST", "/api/admin/testimonials", data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/testimonials"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/content/testimonials"] });
+      toast({ title: "Success", description: "Testimonial created" });
+      setIsDialogOpen(false);
+      form.reset();
+    },
+    onError: () => toast({ title: "Error", description: "Failed to create testimonial", variant: "destructive" }),
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: ({ id, data }: { id: number; data: z.infer<typeof testimonialFormSchema> }) =>
+      apiRequest("PUT", `/api/admin/testimonials/${id}`, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/testimonials"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/content/testimonials"] });
+      toast({ title: "Success", description: "Testimonial updated" });
+      setIsDialogOpen(false);
+      setEditingTestimonial(null);
+      form.reset();
+    },
+    onError: () => toast({ title: "Error", description: "Failed to update testimonial", variant: "destructive" }),
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: number) => apiRequest("DELETE", `/api/admin/testimonials/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/testimonials"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/content/testimonials"] });
+      toast({ title: "Success", description: "Testimonial deleted" });
+    },
+    onError: () => toast({ title: "Error", description: "Failed to delete testimonial", variant: "destructive" }),
+  });
+
+  const onSubmit = (data: z.infer<typeof testimonialFormSchema>) => {
+    if (editingTestimonial) {
+      updateMutation.mutate({ id: editingTestimonial.id, data });
+    } else {
+      createMutation.mutate(data);
+    }
+  };
+
+  const openEditDialog = (testimonial: Testimonial) => {
+    setEditingTestimonial(testimonial);
+    form.reset({
+      nameEn: testimonial.nameEn,
+      nameAr: testimonial.nameAr,
+      companyEn: testimonial.companyEn,
+      companyAr: testimonial.companyAr,
+      textEn: testimonial.textEn,
+      textAr: testimonial.textAr,
+      rating: testimonial.rating || 5,
+      sortOrder: testimonial.sortOrder || 0,
+    });
+    setIsDialogOpen(true);
+  };
+
+  const openCreateDialog = () => {
+    setEditingTestimonial(null);
+    form.reset();
+    setIsDialogOpen(true);
+  };
+
+  return (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between gap-4">
+        <CardTitle>Testimonials</CardTitle>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={openCreateDialog} data-testid="button-add-testimonial">
+              <Plus className="w-4 h-4 mr-2" />
+              Add Testimonial
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>{editingTestimonial ? "Edit" : "Add"} Testimonial</DialogTitle>
+            </DialogHeader>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField control={form.control} name="nameEn" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name (English)</FormLabel>
+                    <FormControl><Input {...field} data-testid="input-testimonial-name-en" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="nameAr" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name (Arabic)</FormLabel>
+                    <FormControl><Input {...field} dir="rtl" data-testid="input-testimonial-name-ar" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="companyEn" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company (English)</FormLabel>
+                    <FormControl><Input {...field} data-testid="input-testimonial-company-en" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="companyAr" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company (Arabic)</FormLabel>
+                    <FormControl><Input {...field} dir="rtl" data-testid="input-testimonial-company-ar" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="textEn" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Testimonial Text (English)</FormLabel>
+                    <FormControl><Textarea {...field} rows={3} data-testid="input-testimonial-text-en" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="textAr" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Testimonial Text (Arabic)</FormLabel>
+                    <FormControl><Textarea {...field} dir="rtl" rows={3} data-testid="input-testimonial-text-ar" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="rating" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Rating (1-5)</FormLabel>
+                    <FormControl>
+                      <Input type="number" min={1} max={5} {...field} onChange={(e) => field.onChange(parseInt(e.target.value) || 5)} data-testid="input-testimonial-rating" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="sortOrder" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sort Order</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value) || 0)} data-testid="input-testimonial-sort" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <DialogFooter>
+                  <Button type="submit" disabled={createMutation.isPending || updateMutation.isPending} data-testid="button-submit-testimonial">
+                    {(createMutation.isPending || updateMutation.isPending) && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+                    {editingTestimonial ? "Update" : "Create"}
+                  </Button>
+                </DialogFooter>
+              </form>
+            </Form>
+          </DialogContent>
+        </Dialog>
+      </CardHeader>
+      <CardContent>
+        {isLoading ? (
+          <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin" /></div>
+        ) : testimonials.length === 0 ? (
+          <p className="text-center text-muted-foreground py-8">No testimonials yet. Add your first one!</p>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.id} data-testid={`card-testimonial-${testimonial.id}`}>
+                <CardContent className="pt-6">
+                  <div className="flex flex-col">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                      <Quote className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-semibold">{testimonial.nameEn}</h3>
+                    <p className="text-sm text-muted-foreground">{testimonial.companyEn}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mt-2">{testimonial.textEn}</p>
+                    <div className="flex gap-2 mt-4">
+                      <Button size="sm" variant="outline" onClick={() => openEditDialog(testimonial)} data-testid={`button-edit-testimonial-${testimonial.id}`}>
+                        <Pencil className="w-4 h-4" />
+                      </Button>
+                      <Button size="sm" variant="destructive" onClick={() => deleteMutation.mutate(testimonial.id)} disabled={deleteMutation.isPending} data-testid={`button-delete-testimonial-${testimonial.id}`}>
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function PortfolioSection() {
+  const [editingProject, setEditingProject] = useState<PortfolioProject | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
+
+  const { data: projects = [], isLoading } = useQuery<PortfolioProject[]>({
+    queryKey: ["/api/admin/portfolio"],
+  });
+
+  const form = useForm<z.infer<typeof portfolioFormSchema>>({
+    resolver: zodResolver(portfolioFormSchema),
+    defaultValues: {
+      titleEn: "",
+      titleAr: "",
+      descriptionEn: "",
+      descriptionAr: "",
+      imageUrl: "",
+      tagsEn: "",
+      tagsAr: "",
+      sortOrder: 0,
+    },
+  });
+
+  const createMutation = useMutation({
+    mutationFn: (data: z.infer<typeof portfolioFormSchema>) =>
+      apiRequest("POST", "/api/admin/portfolio", data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/portfolio"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/content/portfolio"] });
+      toast({ title: "Success", description: "Portfolio project created" });
+      setIsDialogOpen(false);
+      form.reset();
+    },
+    onError: () => toast({ title: "Error", description: "Failed to create portfolio project", variant: "destructive" }),
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: ({ id, data }: { id: number; data: z.infer<typeof portfolioFormSchema> }) =>
+      apiRequest("PUT", `/api/admin/portfolio/${id}`, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/portfolio"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/content/portfolio"] });
+      toast({ title: "Success", description: "Portfolio project updated" });
+      setIsDialogOpen(false);
+      setEditingProject(null);
+      form.reset();
+    },
+    onError: () => toast({ title: "Error", description: "Failed to update portfolio project", variant: "destructive" }),
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: number) => apiRequest("DELETE", `/api/admin/portfolio/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/portfolio"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/content/portfolio"] });
+      toast({ title: "Success", description: "Portfolio project deleted" });
+    },
+    onError: () => toast({ title: "Error", description: "Failed to delete portfolio project", variant: "destructive" }),
+  });
+
+  const onSubmit = (data: z.infer<typeof portfolioFormSchema>) => {
+    if (editingProject) {
+      updateMutation.mutate({ id: editingProject.id, data });
+    } else {
+      createMutation.mutate(data);
+    }
+  };
+
+  const openEditDialog = (project: PortfolioProject) => {
+    setEditingProject(project);
+    form.reset({
+      titleEn: project.titleEn,
+      titleAr: project.titleAr,
+      descriptionEn: project.descriptionEn,
+      descriptionAr: project.descriptionAr,
+      imageUrl: project.imageUrl || "",
+      tagsEn: project.tagsEn || "",
+      tagsAr: project.tagsAr || "",
+      sortOrder: project.sortOrder || 0,
+    });
+    setIsDialogOpen(true);
+  };
+
+  const openCreateDialog = () => {
+    setEditingProject(null);
+    form.reset();
+    setIsDialogOpen(true);
+  };
+
+  return (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between gap-4">
+        <CardTitle>Portfolio Projects</CardTitle>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={openCreateDialog} data-testid="button-add-portfolio">
+              <Plus className="w-4 h-4 mr-2" />
+              Add Project
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>{editingProject ? "Edit" : "Add"} Portfolio Project</DialogTitle>
+            </DialogHeader>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField control={form.control} name="titleEn" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title (English)</FormLabel>
+                    <FormControl><Input {...field} data-testid="input-portfolio-title-en" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="titleAr" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title (Arabic)</FormLabel>
+                    <FormControl><Input {...field} dir="rtl" data-testid="input-portfolio-title-ar" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="descriptionEn" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Description (English)</FormLabel>
+                    <FormControl><Textarea {...field} rows={3} data-testid="input-portfolio-desc-en" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="descriptionAr" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Description (Arabic)</FormLabel>
+                    <FormControl><Textarea {...field} dir="rtl" rows={3} data-testid="input-portfolio-desc-ar" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="imageUrl" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Image URL (optional)</FormLabel>
+                    <FormControl><Input {...field} data-testid="input-portfolio-image" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="tagsEn" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Tags (English, comma-separated)</FormLabel>
+                    <FormControl><Input {...field} data-testid="input-portfolio-tags-en" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="tagsAr" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Tags (Arabic, comma-separated)</FormLabel>
+                    <FormControl><Input {...field} dir="rtl" data-testid="input-portfolio-tags-ar" /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="sortOrder" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sort Order</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value) || 0)} data-testid="input-portfolio-sort" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <DialogFooter>
+                  <Button type="submit" disabled={createMutation.isPending || updateMutation.isPending} data-testid="button-submit-portfolio">
+                    {(createMutation.isPending || updateMutation.isPending) && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+                    {editingProject ? "Update" : "Create"}
+                  </Button>
+                </DialogFooter>
+              </form>
+            </Form>
+          </DialogContent>
+        </Dialog>
+      </CardHeader>
+      <CardContent>
+        {isLoading ? (
+          <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin" /></div>
+        ) : projects.length === 0 ? (
+          <p className="text-center text-muted-foreground py-8">No portfolio projects yet. Add your first one!</p>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <Card key={project.id} data-testid={`card-portfolio-${project.id}`}>
+                <CardContent className="pt-6">
+                  <div className="flex flex-col">
+                    {project.imageUrl ? (
+                      <img src={project.imageUrl} alt={project.titleEn} className="w-full h-32 object-cover rounded-md mb-4" />
+                    ) : (
+                      <div className="w-full h-32 rounded-md bg-primary/20 flex items-center justify-center mb-4">
+                        <FolderOpen className="w-8 h-8 text-primary" />
+                      </div>
+                    )}
+                    <h3 className="font-semibold">{project.titleEn}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mt-1">{project.descriptionEn}</p>
+                    {project.tagsEn && (
+                      <p className="text-xs text-muted-foreground mt-2">{project.tagsEn}</p>
+                    )}
+                    <div className="flex gap-2 mt-4">
+                      <Button size="sm" variant="outline" onClick={() => openEditDialog(project)} data-testid={`button-edit-portfolio-${project.id}`}>
+                        <Pencil className="w-4 h-4" />
+                      </Button>
+                      <Button size="sm" variant="destructive" onClick={() => deleteMutation.mutate(project.id)} disabled={deleteMutation.isPending} data-testid={`button-delete-portfolio-${project.id}`}>
                         <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>

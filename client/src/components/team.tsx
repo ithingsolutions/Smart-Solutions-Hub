@@ -1,21 +1,23 @@
 import { useLanguage } from "@/lib/language-context";
 import { Card } from "@/components/ui/card";
 import { SiLinkedin } from "react-icons/si";
-import { Users } from "lucide-react";
+import { Users, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import type { TeamMember } from "@shared/schema";
 import teamMember1 from "@assets/stock_images/professional_corpora_1a8fc176.jpg";
 import teamMember2 from "@assets/stock_images/professional_corpora_164ce9df.jpg";
 import teamMember3 from "@assets/stock_images/professional_corpora_4ea7d5ba.jpg";
 import teamMember4 from "@assets/stock_images/professional_corpora_4a571262.jpg";
 
-const teamMembers = [
+const fallbackTeamMembers = [
   {
     id: 1,
     nameEn: "Ahmad Al-Hassan",
     nameAr: "أحمد الحسن",
     roleEn: "Chief Executive Officer",
     roleAr: "الرئيس التنفيذي",
-    image: teamMember1,
-    linkedin: "#",
+    imageUrl: teamMember1,
+    linkedinUrl: "#",
   },
   {
     id: 2,
@@ -23,8 +25,8 @@ const teamMembers = [
     nameAr: "سارة ميتشل",
     roleEn: "Chief Technology Officer",
     roleAr: "رئيس قسم التكنولوجيا",
-    image: teamMember2,
-    linkedin: "#",
+    imageUrl: teamMember2,
+    linkedinUrl: "#",
   },
   {
     id: 3,
@@ -32,8 +34,8 @@ const teamMembers = [
     nameAr: "عمر خالد",
     roleEn: "Head of AI Solutions",
     roleAr: "رئيس حلول الذكاء الاصطناعي",
-    image: teamMember3,
-    linkedin: "#",
+    imageUrl: teamMember3,
+    linkedinUrl: "#",
   },
   {
     id: 4,
@@ -41,13 +43,19 @@ const teamMembers = [
     nameAr: "ليلى فاروق",
     roleEn: "Director of Operations",
     roleAr: "مدير العمليات",
-    image: teamMember4,
-    linkedin: "#",
+    imageUrl: teamMember4,
+    linkedinUrl: "#",
   },
 ];
 
 export function Team() {
   const { language, isRTL } = useLanguage();
+  
+  const { data: apiTeamMembers = [], isLoading } = useQuery<TeamMember[]>({
+    queryKey: ["/api/content/team"],
+  });
+
+  const teamMembers = apiTeamMembers.length > 0 ? apiTeamMembers : fallbackTeamMembers;
 
   return (
     <section className="py-28 lg:py-40 relative overflow-hidden">
@@ -82,50 +90,59 @@ export function Team() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member) => {
-            const name = language === "ar" ? member.nameAr : member.nameEn;
-            const role = language === "ar" ? member.roleAr : member.roleEn;
-            
-            return (
-              <Card
-                key={member.id}
-                className="group border-0 bg-background/80 backdrop-blur-sm shadow-xl overflow-hidden hover-lift"
-                data-testid={`card-team-${member.id}`}
-              >
-                <div className="relative aspect-[3/4] overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className={`absolute bottom-0 left-0 right-0 p-6 ${isRTL ? "text-right" : ""}`}>
-                    <h3 
-                      className={`text-xl font-bold text-white mb-1 ${isRTL ? "font-arabic" : ""}`}
-                      data-testid={`text-team-name-${member.id}`}
-                    >
-                      {name}
-                    </h3>
-                    <p 
-                      className={`text-sm text-white/70 mb-4 ${isRTL ? "font-arabic" : ""}`}
-                      data-testid={`text-team-role-${member.id}`}
-                    >
-                      {role}
-                    </p>
-                    <a
-                      href={member.linkedin}
-                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-primary transition-colors"
-                      data-testid={`link-team-linkedin-${member.id}`}
-                    >
-                      <SiLinkedin className="w-4 h-4 text-white" />
-                    </a>
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member) => {
+              const name = language === "ar" ? member.nameAr : member.nameEn;
+              const role = language === "ar" ? member.roleAr : member.roleEn;
+              const imageUrl = member.imageUrl || teamMember1;
+              
+              return (
+                <Card
+                  key={member.id}
+                  className="group border-0 bg-background/80 backdrop-blur-sm shadow-xl overflow-hidden hover-lift"
+                  data-testid={`card-team-${member.id}`}
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <img
+                      src={imageUrl}
+                      alt={name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className={`absolute bottom-0 left-0 right-0 p-6 ${isRTL ? "text-right" : ""}`}>
+                      <h3 
+                        className={`text-xl font-bold text-white mb-1 ${isRTL ? "font-arabic" : ""}`}
+                        data-testid={`text-team-name-${member.id}`}
+                      >
+                        {name}
+                      </h3>
+                      <p 
+                        className={`text-sm text-white/70 mb-4 ${isRTL ? "font-arabic" : ""}`}
+                        data-testid={`text-team-role-${member.id}`}
+                      >
+                        {role}
+                      </p>
+                      {member.linkedinUrl && (
+                        <a
+                          href={member.linkedinUrl}
+                          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-primary transition-colors"
+                          data-testid={`link-team-linkedin-${member.id}`}
+                        >
+                          <SiLinkedin className="w-4 h-4 text-white" />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
+                </Card>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { type Server } from "http";
 import { storage } from "./storage";
-import { contactFormSchema, insertTeamMemberSchema, insertClientSchema, insertServiceSchema } from "@shared/schema";
+import { contactFormSchema, insertTeamMemberSchema, insertClientSchema, insertServiceSchema, insertTestimonialSchema, insertPortfolioProjectSchema } from "@shared/schema";
 import { setupAuth, registerAuthRoutes, isAuthenticated } from "./replit_integrations/auth";
 import { registerChatRoutes } from "./replit_integrations/chat";
 
@@ -60,6 +60,26 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error fetching services:", error);
       res.status(500).json({ error: "Failed to fetch services" });
+    }
+  });
+
+  app.get("/api/content/testimonials", async (req, res) => {
+    try {
+      const testimonials = await storage.getTestimonials();
+      res.json(testimonials);
+    } catch (error) {
+      console.error("Error fetching testimonials:", error);
+      res.status(500).json({ error: "Failed to fetch testimonials" });
+    }
+  });
+
+  app.get("/api/content/portfolio", async (req, res) => {
+    try {
+      const projects = await storage.getPortfolioProjects();
+      res.json(projects);
+    } catch (error) {
+      console.error("Error fetching portfolio:", error);
+      res.status(500).json({ error: "Failed to fetch portfolio projects" });
     }
   });
 
@@ -195,6 +215,96 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error deleting service:", error);
       res.status(400).json({ error: "Failed to delete service" });
+    }
+  });
+
+  // Protected API: Testimonials CRUD
+  app.get("/api/admin/testimonials", isAuthenticated, async (req, res) => {
+    try {
+      const testimonials = await storage.getTestimonials();
+      res.json(testimonials);
+    } catch (error) {
+      console.error("Error fetching testimonials:", error);
+      res.status(500).json({ error: "Failed to fetch testimonials" });
+    }
+  });
+
+  app.post("/api/admin/testimonials", isAuthenticated, async (req, res) => {
+    try {
+      const validatedData = insertTestimonialSchema.parse(req.body);
+      const testimonial = await storage.createTestimonial(validatedData);
+      res.status(201).json(testimonial);
+    } catch (error) {
+      console.error("Error creating testimonial:", error);
+      res.status(400).json({ error: "Failed to create testimonial" });
+    }
+  });
+
+  app.put("/api/admin/testimonials/:id", isAuthenticated, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const validatedData = insertTestimonialSchema.partial().parse(req.body);
+      const testimonial = await storage.updateTestimonial(id, validatedData);
+      res.json(testimonial);
+    } catch (error) {
+      console.error("Error updating testimonial:", error);
+      res.status(400).json({ error: "Failed to update testimonial" });
+    }
+  });
+
+  app.delete("/api/admin/testimonials/:id", isAuthenticated, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      await storage.deleteTestimonial(id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error deleting testimonial:", error);
+      res.status(400).json({ error: "Failed to delete testimonial" });
+    }
+  });
+
+  // Protected API: Portfolio CRUD
+  app.get("/api/admin/portfolio", isAuthenticated, async (req, res) => {
+    try {
+      const projects = await storage.getPortfolioProjects();
+      res.json(projects);
+    } catch (error) {
+      console.error("Error fetching portfolio:", error);
+      res.status(500).json({ error: "Failed to fetch portfolio projects" });
+    }
+  });
+
+  app.post("/api/admin/portfolio", isAuthenticated, async (req, res) => {
+    try {
+      const validatedData = insertPortfolioProjectSchema.parse(req.body);
+      const project = await storage.createPortfolioProject(validatedData);
+      res.status(201).json(project);
+    } catch (error) {
+      console.error("Error creating portfolio project:", error);
+      res.status(400).json({ error: "Failed to create portfolio project" });
+    }
+  });
+
+  app.put("/api/admin/portfolio/:id", isAuthenticated, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const validatedData = insertPortfolioProjectSchema.partial().parse(req.body);
+      const project = await storage.updatePortfolioProject(id, validatedData);
+      res.json(project);
+    } catch (error) {
+      console.error("Error updating portfolio project:", error);
+      res.status(400).json({ error: "Failed to update portfolio project" });
+    }
+  });
+
+  app.delete("/api/admin/portfolio/:id", isAuthenticated, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      await storage.deletePortfolioProject(id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error deleting portfolio project:", error);
+      res.status(400).json({ error: "Failed to delete portfolio project" });
     }
   });
 

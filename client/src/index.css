@@ -431,4 +431,28 @@ a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-
   button:active:not(:disabled) {
     transform: scale(0.98);
   }
+
+  /* Hero background animation */
+  @keyframes hero-bg-animation {
+    0% {
+      transform: scale(1) translateX(0) translateY(0);
+    }
+    25% {
+      transform: scale(1.08) translateX(-1%) translateY(-0.5%);
+    }
+    50% {
+      transform: scale(1.12) translateX(-2%) translateY(-1%);
+    }
+    75% {
+      transform: scale(1.08) translateX(-1%) translateY(-0.5%);
+    }
+    100% {
+      transform: scale(1) translateX(0) translateY(0);
+    }
+  }
+
+  .animate-hero-bg {
+    animation: hero-bg-animation 25s ease-in-out infinite;
+    will-change: transform;
+  }
 }

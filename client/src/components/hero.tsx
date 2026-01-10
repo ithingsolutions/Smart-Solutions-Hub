@@ -21,63 +21,69 @@ export function Hero() {
 
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/25 to-primary/5 rounded-full blur-3xl animate-pulse"
+          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/30 to-primary/5 rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: "4s" }}
         />
         <div
-          className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-primary/15 to-transparent rounded-full blur-3xl animate-pulse"
+          className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: "6s" }}
         />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/8 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-gradient-radial from-primary/10 to-transparent rounded-full blur-3xl" />
 
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.15) 1px, transparent 0)`,
-            backgroundSize: "50px 50px",
+            backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.2) 1px, transparent 0)`,
+            backgroundSize: "40px 40px",
           }}
         />
 
         <div
-          className="absolute top-20 left-20 w-20 h-20 border border-primary/20 rounded-2xl rotate-12 animate-pulse"
-          style={{ animationDuration: "3s" }}
+          className="absolute top-20 left-20 w-24 h-24 border-2 border-primary/25 rounded-2xl rotate-12 animate-spin"
+          style={{ animationDuration: "20s" }}
         />
         <div
-          className="absolute bottom-40 right-20 w-16 h-16 border border-primary/15 rounded-full animate-pulse"
-          style={{ animationDuration: "4s" }}
+          className="absolute bottom-40 right-20 w-20 h-20 border-2 border-primary/20 rounded-full animate-spin"
+          style={{ animationDuration: "15s", animationDirection: "reverse" }}
         />
-        <div className="absolute top-1/3 right-1/4 w-12 h-12 bg-primary/10 rounded-xl rotate-45" />
+        <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-primary/15 rounded-xl rotate-45 animate-pulse" style={{ animationDuration: "3s" }} />
+        <div className="absolute bottom-1/3 left-1/6 w-8 h-8 bg-primary/20 rounded-full animate-bounce" style={{ animationDuration: "2s" }} />
+        <div className="absolute top-1/2 right-1/6 w-6 h-6 border border-primary/30 rounded-md rotate-45 animate-pulse" style={{ animationDuration: "4s" }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="text-center max-w-5xl mx-auto">
           <div
-            className={`inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/15 via-primary/10 to-primary/15 border border-primary/25 mb-12 backdrop-blur-sm shadow-lg shadow-primary/5 ${isRTL ? "font-arabic" : ""}`}
+            className={`inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 border border-primary/30 mb-12 backdrop-blur-md shadow-xl shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 hover:scale-105 ${isRTL ? "font-arabic" : ""}`}
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20">
-              <img src="/2.png" className="w-8 h-8 text-primary" />
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/20">
+              <img src="/2.png" className="w-8 h-8" />
             </div>
-            <span className="text-sm font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            <span className="text-sm font-bold bg-gradient-to-r from-primary via-red-400 to-primary bg-clip-text text-transparent">
               {t("hero.subtitle")}
             </span>
           </div>
 
           <h1
-            className={`text-6xl sm:text-5xl md:text-6xl lg:text-6xl font-black tracking-tight mb-8 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
+            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-10 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
             data-testid="text-hero-title"
           >
-            <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-              <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-primary via-red-400 to-primary bg-clip-text text-transparent">iThing</span>
-                <svg
-                  className="absolute -bottom-4 right-0 w-8 h-8 text-primary transform translate-x-2"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M4 4L10.5 20L12.5 14.5L18 12.5L4 4Z" />
-                  <path d="M12.5 14.5L17 19L19 17L14.5 12.5" />
-                </svg>
-              </span>{" "}
+            <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-primary via-red-400 to-red-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(255,0,0,0.4)]">
+                iThing
+              </span>
+              <svg
+                className="absolute -bottom-2 -right-6 sm:-right-8 w-10 h-10 sm:w-12 sm:h-12 text-primary drop-shadow-[0_0_15px_rgba(255,0,0,0.6)] animate-pulse"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                style={{ animationDuration: "2s" }}
+              >
+                <path d="M4 4L10.5 20L12.5 14.5L18 12.5L4 4Z" />
+                <path d="M12.5 14.5L17 19L19 17L14.5 12.5" />
+              </svg>
+            </span>
+            <br />
+            <span className="text-foreground">
               {isRTL ? "لتطوير حلول الأعمال الذكية" : "Smart Business Solutions"}
             </span>
           </h1>

@@ -56,8 +56,6 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <BackgroundToggle />
-
             <Button
               variant="ghost"
               size="icon"

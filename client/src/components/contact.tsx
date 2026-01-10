@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useLanguage } from "@/lib/language-context";
-import { MapPin, Phone, Mail, Send, Loader2, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Loader2, MessageCircle, User } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -234,6 +234,33 @@ export function Contact() {
           </Card>
 
           <div className="lg:col-span-2 space-y-6">
+            <Card className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine" data-testid="card-general-manager">
+              <div className="h-2 bg-gradient-to-r from-primary to-red-600" />
+              <CardContent className="p-8">
+                <div className={`flex items-center gap-4 mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <div className="p-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20">
+                    <User className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className={isRTL ? "text-right" : ""}>
+                    <h3 className={`text-2xl font-bold ${isRTL ? "font-arabic" : ""}`}>
+                      {isRTL ? "طارق الخوالدة" : "Tarek Al-Khawaldeh"}
+                    </h3>
+                    <p className={`text-primary font-semibold ${isRTL ? "font-arabic" : ""}`}>
+                      {isRTL ? "المدير العام" : "General Manager"}
+                    </p>
+                  </div>
+                </div>
+                <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <div className="p-3 rounded-xl bg-primary/10">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <a href="mailto:TarekKhawaldeh@ithingsolutions.com" className="text-muted-foreground hover:text-primary transition-colors" dir="ltr">
+                    TarekKhawaldeh@ithingsolutions.com
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+
             <Card className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine" data-testid="card-office-amman">
               <div className="h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/50" />
               <CardContent className="p-8">

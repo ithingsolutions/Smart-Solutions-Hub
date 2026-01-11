@@ -77,23 +77,6 @@ export function Hero() {
           <div className="relative mb-10">
             <div className="relative inline-flex items-center justify-center w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px]">
               <div 
-                className="absolute inset-0 animate-spin"
-                style={{ animationDuration: "20s" }}
-              >
-                {["Innovation", "Technology", "Solutions", "Excellence", "Digital", "Future"].map((word, i) => (
-                  <span
-                    key={word}
-                    className="absolute text-xs sm:text-sm font-bold text-primary/50 whitespace-nowrap left-1/2 top-1/2"
-                    style={{
-                      transform: `rotate(${i * 60}deg) translateY(-120px) sm:translateY(-150px) md:translateY(-180px)`,
-                    }}
-                  >
-                    <span style={{ display: "inline-block", transform: `rotate(-${i * 60}deg)` }}>{word}</span>
-                  </span>
-                ))}
-              </div>
-              
-              <div 
                 className="absolute inset-4 sm:inset-6 md:inset-8 rounded-full border border-dashed border-primary/30 animate-spin"
                 style={{ animationDuration: "15s", animationDirection: "reverse" }}
               />

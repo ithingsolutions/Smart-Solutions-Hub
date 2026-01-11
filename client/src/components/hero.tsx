@@ -80,17 +80,7 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="text-center max-w-5xl mx-auto">
-          <div
-            className={`inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 border border-primary/30 mb-12 backdrop-blur-md shadow-xl shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 hover:scale-105 ${isRTL ? "font-arabic" : ""}`}
-          >
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/20">
-              <img src="/2.png" className="w-8 h-8" />
-            </div>
-            <span className="text-sm font-bold bg-gradient-to-r from-primary via-red-400 to-primary bg-clip-text text-transparent">
-              {t("hero.subtitle")}
-            </span>
-          </div>
-
+          
           <div className="relative mb-8">
             <div className="relative inline-flex items-center justify-center">
               <div

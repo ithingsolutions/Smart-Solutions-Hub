@@ -14,19 +14,11 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    titleEn: "AI Solutions",
-    titleAr: "حلول الذكاء الاصطناعي",
-    descriptionEn: "Leverage cutting-edge artificial intelligence to automate processes, gain insights, and drive innovation across your organization.",
-    descriptionAr: "استفد من أحدث تقنيات الذكاء الاصطناعي لأتمتة العمليات واكتساب رؤى وقيادة الابتكار في جميع أنحاء مؤسستك.",
+    titleEn: "AI & Data Analytics",
+    titleAr: "الذكاء الاصطناعي وتحليل البيانات",
+    descriptionEn: "Leverage cutting-edge AI and advanced analytics to automate processes, transform data into actionable insights, and drive innovation.",
+    descriptionAr: "استفد من أحدث تقنيات الذكاء الاصطناعي والتحليلات المتقدمة لأتمتة العمليات وتحويل البيانات إلى رؤى قابلة للتنفيذ.",
     icon: Brain,
-  },
-  {
-    id: 2,
-    titleEn: "Data Analytics",
-    titleAr: "تحليل البيانات",
-    descriptionEn: "Transform raw data into actionable intelligence with advanced analytics, visualization, and predictive modeling capabilities.",
-    descriptionAr: "حوّل البيانات الخام إلى ذكاء قابل للتنفيذ من خلال التحليلات المتقدمة والتصور والنمذجة التنبؤية.",
-    icon: BarChart3,
   },
   {
     id: 3,

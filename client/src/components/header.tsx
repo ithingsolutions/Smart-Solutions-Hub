@@ -4,7 +4,8 @@ import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
 import { BackgroundToggle } from "@/components/background-toggle";
 import { Menu, X, Moon, Sun } from "lucide-react";
-const logoImage = "/attached_assets/1661853192216_1767668534815.jpg";
+const logoLight = "/attached_assets/ithing_logo_light.png";
+const logoDark = "/attached_assets/ithing_logo_dark.png";
 
 export function Header() {
   const { language, setLanguage, t, isRTL } = useLanguage();
@@ -38,7 +39,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
           <a href="#home" className="flex items-center" data-testid="link-logo">
-            <img src={logoImage} alt="iThing" className="h-12 w-auto rounded" />
+            <img 
+              src={theme === "dark" ? logoDark : logoLight} 
+              alt="iThing" 
+              className="h-12 w-auto" 
+            />
           </a>
 
           <nav className="hidden md:flex items-center gap-2">

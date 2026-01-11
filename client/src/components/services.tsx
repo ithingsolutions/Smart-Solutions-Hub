@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/lib/language-context";
-import { useQuery } from "@tanstack/react-query";
 import { Brain, BarChart3, Cloud, Code2, Lightbulb, Workflow, Wifi, Bot, ArrowUpRight, LucideIcon } from "lucide-react";
 
 interface Service {
@@ -9,20 +8,75 @@ interface Service {
   titleAr: string;
   descriptionEn: string;
   descriptionAr: string;
-  icon: string;
-  sortOrder: number;
+  icon: LucideIcon;
 }
 
-const iconMap: Record<string, LucideIcon> = {
-  Brain,
-  BarChart3,
-  Cloud,
-  Code2,
-  Lightbulb,
-  Workflow,
-  Wifi,
-  Bot,
-};
+const services: Service[] = [
+  {
+    id: 1,
+    titleEn: "AI Solutions",
+    titleAr: "حلول الذكاء الاصطناعي",
+    descriptionEn: "Leverage cutting-edge artificial intelligence to automate processes, gain insights, and drive innovation across your organization.",
+    descriptionAr: "استفد من أحدث تقنيات الذكاء الاصطناعي لأتمتة العمليات واكتساب رؤى وقيادة الابتكار في جميع أنحاء مؤسستك.",
+    icon: Brain,
+  },
+  {
+    id: 2,
+    titleEn: "Data Analytics",
+    titleAr: "تحليل البيانات",
+    descriptionEn: "Transform raw data into actionable intelligence with advanced analytics, visualization, and predictive modeling capabilities.",
+    descriptionAr: "حوّل البيانات الخام إلى ذكاء قابل للتنفيذ من خلال التحليلات المتقدمة والتصور والنمذجة التنبؤية.",
+    icon: BarChart3,
+  },
+  {
+    id: 3,
+    titleEn: "Cloud Services",
+    titleAr: "الخدمات السحابية",
+    descriptionEn: "Scale your infrastructure seamlessly with secure, reliable cloud solutions tailored to your business needs.",
+    descriptionAr: "وسّع بنيتك التحتية بسلاسة من خلال حلول سحابية آمنة وموثوقة مصممة خصيصاً لاحتياجات عملك.",
+    icon: Cloud,
+  },
+  {
+    id: 4,
+    titleEn: "Custom Software",
+    titleAr: "البرمجيات المخصصة",
+    descriptionEn: "Build bespoke software solutions that perfectly align with your unique business requirements and workflows.",
+    descriptionAr: "أنشئ حلولاً برمجية مخصصة تتوافق تماماً مع متطلبات عملك الفريدة وسير العمل الخاص بك.",
+    icon: Code2,
+  },
+  {
+    id: 5,
+    titleEn: "Digital Consulting",
+    titleAr: "الاستشارات الرقمية",
+    descriptionEn: "Strategic guidance to navigate digital transformation and optimize your technology investments for maximum ROI.",
+    descriptionAr: "إرشادات استراتيجية للتنقل في التحول الرقمي وتحسين استثماراتك التقنية لتحقيق أقصى عائد.",
+    icon: Lightbulb,
+  },
+  {
+    id: 6,
+    titleEn: "Process Automation",
+    titleAr: "أتمتة العمليات",
+    descriptionEn: "Streamline operations and eliminate manual tasks with intelligent automation and workflow optimization.",
+    descriptionAr: "بسّط العمليات وتخلص من المهام اليدوية من خلال الأتمتة الذكية وتحسين سير العمل.",
+    icon: Workflow,
+  },
+  {
+    id: 7,
+    titleEn: "IoT Solutions",
+    titleAr: "حلول إنترنت الأشياء",
+    descriptionEn: "Connect devices, collect data, and create smart systems that drive efficiency and innovation.",
+    descriptionAr: "اربط الأجهزة واجمع البيانات وأنشئ أنظمة ذكية تدفع الكفاءة والابتكار.",
+    icon: Wifi,
+  },
+  {
+    id: 8,
+    titleEn: "Chatbot Development",
+    titleAr: "تطوير روبوتات المحادثة",
+    descriptionEn: "Create intelligent conversational agents that enhance customer experience and automate support.",
+    descriptionAr: "أنشئ وكلاء محادثة ذكية تعزز تجربة العملاء وتؤتمت الدعم.",
+    icon: Bot,
+  },
+];
 
 const gradients = [
   "from-rose-500/20 to-orange-500/20",
@@ -37,33 +91,6 @@ const gradients = [
 
 export function Services() {
   const { language, isRTL } = useLanguage();
-
-  const { data: services = [], isLoading } = useQuery<Service[]>({
-    queryKey: ["/api/content/services"],
-  });
-
-  if (isLoading) {
-    return (
-      <section id="services" className="py-28 lg:py-40 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <div className="h-10 w-48 bg-muted animate-pulse rounded-full mx-auto mb-8" />
-            <div className="h-12 w-64 bg-muted animate-pulse rounded mx-auto mb-4" />
-            <div className="h-6 w-96 bg-muted animate-pulse rounded mx-auto" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="h-64 bg-muted animate-pulse rounded-xl" />
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (services.length === 0) {
-    return null;
-  }
 
   return (
     <section id="services" className="py-28 lg:py-40 relative overflow-hidden">
@@ -99,7 +126,7 @@ export function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => {
-            const Icon = iconMap[service.icon] || Brain;
+            const Icon = service.icon;
             const gradient = gradients[index % gradients.length];
             const title = language === "ar" ? service.titleAr : service.titleEn;
             const description = language === "ar" ? service.descriptionAr : service.descriptionEn;

@@ -479,4 +479,18 @@
     animation: hero-bg-animation 25s ease-in-out infinite;
     will-change: transform;
   }
+
+  /* Shimmer text animation */
+  @keyframes shimmer {
+    0% {
+      background-position: 200% center;
+    }
+    100% {
+      background-position: -200% center;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 8s linear infinite;
+  }
 }

@@ -80,55 +80,63 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="text-center max-w-5xl mx-auto">
-          <div className="relative mb-8">
-            <div className="relative inline-flex items-center justify-center">
+          <div className="relative mb-10">
+            <div className="relative inline-flex flex-col items-center justify-center">
               <div
-                className="absolute w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] rounded-full border border-dashed border-primary/30 animate-spin"
-                style={{
-                  animationDuration: "20s",
-                  animationDirection: "reverse",
-                }}
+                className="absolute w-80 h-80 sm:w-[420px] sm:h-[420px] md:w-[480px] md:h-[480px] lg:w-[520px] lg:h-[520px] rounded-full border border-dashed border-primary/20 animate-spin"
+                style={{ animationDuration: "25s", animationDirection: "reverse" }}
               />
-
               <div
-                className="absolute w-80 h-80 sm:w-[420px] sm:h-[420px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] rounded-full border border-primary/15 animate-spin"
-                style={{ animationDuration: "30s" }}
+                className="absolute w-[340px] h-[340px] sm:w-[460px] sm:h-[460px] md:w-[520px] md:h-[520px] lg:w-[580px] lg:h-[580px] rounded-full border border-primary/10 animate-spin"
+                style={{ animationDuration: "35s" }}
               />
-
               <div
-                className="absolute w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full border-2 border-primary/25 animate-pulse"
+                className="absolute w-72 h-72 sm:w-[380px] sm:h-[380px] md:w-[440px] md:h-[440px] lg:w-[480px] lg:h-[480px] rounded-full border-2 border-primary/15 animate-pulse"
+                style={{ animationDuration: "4s" }}
+              />
+              <div
+                className="absolute w-64 h-64 sm:w-[340px] sm:h-[340px] md:w-[400px] md:h-[400px] lg:w-[440px] lg:h-[440px] rounded-full bg-gradient-to-br from-primary/5 via-transparent to-primary/5 animate-pulse"
                 style={{ animationDuration: "3s" }}
               />
 
-              <div className="relative z-10 py-12 sm:py-16 md:py-20">
-                <div className="relative group">
+              <div className="relative z-10 py-8 sm:py-12 md:py-14 flex flex-col items-center">
+                <div className="relative group mb-6">
                   <div
-                    className="absolute -inset-8 sm:-inset-12 bg-gradient-to-r from-primary/50 via-red-500/40 to-primary/50 rounded-3xl blur-3xl opacity-60 group-hover:opacity-80 transition-opacity animate-pulse"
-                    style={{ animationDuration: "2s" }}
+                    className="absolute -inset-12 sm:-inset-16 bg-gradient-radial from-primary/40 via-primary/20 to-transparent rounded-full blur-3xl opacity-70 group-hover:opacity-90 transition-opacity animate-pulse"
+                    style={{ animationDuration: "2.5s" }}
                   />
                   <div
-                    className="absolute -inset-4 sm:-inset-6 bg-gradient-to-br from-primary/30 to-red-600/20 rounded-2xl blur-2xl opacity-50 animate-pulse"
-                    style={{ animationDuration: "4s" }}
+                    className="absolute -inset-8 sm:-inset-10 bg-gradient-to-t from-primary/30 via-red-500/20 to-transparent rounded-full blur-2xl opacity-60 animate-pulse"
+                    style={{ animationDuration: "3.5s" }}
+                  />
+                  <div
+                    className="absolute -inset-4 sm:-inset-6 bg-gradient-to-b from-transparent via-primary/25 to-primary/10 rounded-full blur-xl opacity-50"
                   />
                   <img
                     src={ithingLogo}
                     alt="iThing Logo"
-                    className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.7)] hover:scale-105 transition-transform duration-500"
+                    className="relative h-44 sm:h-56 md:h-64 lg:h-72 w-auto drop-shadow-[0_0_80px_rgba(255,0,0,0.6)] hover:scale-105 transition-all duration-700 hover:drop-shadow-[0_0_100px_rgba(255,0,0,0.8)]"
                   />
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-transparent via-primary/10 to-transparent blur-xl opacity-60" />
+                  <h1
+                    className={`relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.3]"}`}
+                    data-testid="text-hero-title"
+                  >
+                    <span className="bg-gradient-to-r from-foreground via-primary/80 to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
+                      {isRTL
+                        ? "لتطوير حلول الأعمال الذكية"
+                        : "Smart Business Solutions"}
+                    </span>
+                  </h1>
+                  <div className="mt-3 flex justify-center">
+                    <div className="h-1 w-24 sm:w-32 md:w-40 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full" />
+                  </div>
                 </div>
               </div>
             </div>
-
-            <h1
-              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mt-4 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.2]"}`}
-              data-testid="text-hero-title"
-            >
-              <span className="bg-gradient-to-r from-foreground via-foreground/90 to-foreground bg-clip-text">
-                {isRTL
-                  ? "لتطوير حلول الأعمال الذكية"
-                  : "Smart Business Solutions"}
-              </span>
-            </h1>
           </div>
           <p
             className={`text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-14 leading-relaxed ${isRTL ? "font-arabic" : ""}`}

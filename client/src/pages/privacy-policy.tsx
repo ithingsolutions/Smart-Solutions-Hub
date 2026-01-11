@@ -104,8 +104,8 @@ export default function PrivacyPolicy() {
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 {isRTL 
-                  ? "إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى التواصل معنا عبر البريد الإلكتروني: TarekKhawaldeh@ithingsolutions.com"
-                  : "If you have any questions about this Privacy Policy, please contact us at: TarekKhawaldeh@ithingsolutions.com"}
+                  ? "إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى التواصل معنا عبر البريد الإلكتروني: info@ithingsolutions.com"
+                  : "If you have any questions about this Privacy Policy, please contact us at: info@ithingsolutions.com"}
               </p>
             </section>
           </div>

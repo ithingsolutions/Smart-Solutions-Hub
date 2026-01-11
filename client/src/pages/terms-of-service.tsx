@@ -129,8 +129,8 @@ export default function TermsOfService() {
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 {isRTL 
-                  ? "إذا كانت لديك أي أسئلة حول شروط الخدمة هذه، يرجى التواصل معنا عبر البريد الإلكتروني: TarekKhawaldeh@ithingsolutions.com"
-                  : "If you have any questions about these Terms of Service, please contact us at: TarekKhawaldeh@ithingsolutions.com"}
+                  ? "إذا كانت لديك أي أسئلة حول شروط الخدمة هذه، يرجى التواصل معنا عبر البريد الإلكتروني: info@ithingsolutions.com"
+                  : "If you have any questions about these Terms of Service, please contact us at: info@ithingsolutions.com"}
               </p>
             </section>
           </div>

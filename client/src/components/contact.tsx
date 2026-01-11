@@ -243,10 +243,10 @@ export function Contact() {
                   </div>
                   <div className={isRTL ? "text-right" : ""}>
                     <h3 className={`text-2xl font-bold ${isRTL ? "font-arabic" : ""}`}>
-                      {isRTL ? "طارق الخوالدة" : "Tarek Al-Khawaldeh"}
+                      {isRTL ? "iThing Solutions" : "iThing Solutions"}
                     </h3>
                     <p className={`text-primary font-semibold ${isRTL ? "font-arabic" : ""}`}>
-                      {isRTL ? "المدير العام" : "General Manager"}
+                      {isRTL ? "تواصل معنا" : "Contact Us"}
                     </p>
                   </div>
                 </div>
@@ -254,8 +254,8 @@ export function Contact() {
                   <div className="p-3 rounded-xl bg-primary/10">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
-                  <a href="mailto:TarekKhawaldeh@ithingsolutions.com" className="text-muted-foreground hover:text-primary transition-colors" dir="ltr">
-                    TarekKhawaldeh@ithingsolutions.com
+                  <a href="mailto:info@ithingsolutions.com" className="text-muted-foreground hover:text-primary transition-colors" dir="ltr">
+                    info@ithingsolutions.com
                   </a>
                 </div>
               </CardContent>

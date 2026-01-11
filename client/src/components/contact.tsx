@@ -286,14 +286,18 @@ export function Contact() {
                       +962 6 XXX XXXX
                     </span>
                   </div>
-                  <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="p-3 rounded-xl bg-primary/10">
-                      <Mail className="h-5 w-5 text-primary" />
-                    </div>
-                    <span className="text-muted-foreground" dir="ltr">
-                      amman@ithingsolutions.com
-                    </span>
-                  </div>
+                </div>
+                <div className="mt-6 rounded-xl overflow-hidden border border-border/50">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108703.09807445508!2d35.87332895!3d31.9539494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5fb85d7981af%3A0x631c30c0f8dc65e8!2sAmman%2C%20Jordan!5e0!3m2!1sen!2s!4v1704067200000!5m2!1sen!2s"
+                    width="100%"
+                    height="150"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Amman Office Location"
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -323,14 +327,18 @@ export function Contact() {
                       +971 4 XXX XXXX
                     </span>
                   </div>
-                  <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="p-3 rounded-xl bg-primary/10">
-                      <Mail className="h-5 w-5 text-primary" />
-                    </div>
-                    <span className="text-muted-foreground" dir="ltr">
-                      dubai@ithingsolutions.com
-                    </span>
-                  </div>
+                </div>
+                <div className="mt-6 rounded-xl overflow-hidden border border-border/50">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828tried505!2d54.89781915!3d25.07628055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1704067200000!5m2!1sen!2s"
+                    width="100%"
+                    height="150"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Dubai Office Location"
+                  />
                 </div>
               </CardContent>
             </Card>

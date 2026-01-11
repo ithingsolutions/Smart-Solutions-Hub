@@ -192,7 +192,7 @@ export function Hero() {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
               <Brain className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
               <span

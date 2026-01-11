@@ -95,6 +95,9 @@ export function Contact() {
         <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 ${isRTL ? "lg:flex-row-reverse" : ""}`}>
           <Card className="lg:col-span-3 border-0 bg-background shadow-2xl">
             <CardContent className="p-8 lg:p-12">
+              <h3 className={`text-2xl font-bold mb-8 ${isRTL ? "font-arabic text-right" : ""}`}>
+                {isRTL ? "تواصل معنا" : "Contact Us"}
+              </h3>
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-3">

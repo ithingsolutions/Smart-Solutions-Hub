@@ -1,4 +1,5 @@
 import { useLanguage } from "@/lib/language-context";
+import { useTheme } from "@/lib/theme-context";
 import { Cpu } from "lucide-react";
 import { 
   SiReact, 
@@ -33,14 +34,14 @@ interface Technology {
 
 const technologies: Technology[] = [
   { name: "React", icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
+  { name: "Next.js", icon: SiNextdotjs, color: "theme-adaptive" },
   { name: "Angular", icon: SiAngular, color: "#DD0031" },
   { name: ".NET", icon: SiDotnet, color: "#512BD4" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
   { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
-  { name: "Express", icon: SiExpress, color: "#ffffff" },
+  { name: "Express", icon: SiExpress, color: "theme-adaptive" },
   { name: "Azure", icon: VscAzure, color: "#0078D4" },
   { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
@@ -57,6 +58,14 @@ const technologies: Technology[] = [
 
 export function TechStack() {
   const { isRTL } = useLanguage();
+  const { theme } = useTheme();
+  
+  const getIconColor = (color: string) => {
+    if (color === "theme-adaptive") {
+      return theme === "dark" ? "#ffffff" : "#000000";
+    }
+    return color;
+  };
 
   return (
     <section id="tech-stack" className="py-28 lg:py-40 relative overflow-hidden">
@@ -99,14 +108,14 @@ export function TechStack() {
                 key={tech.name}
                 className="tech-card group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card/50 border-2 border-border/30 backdrop-blur-sm hover:bg-card transition-all duration-300 hover:-translate-y-1"
                 style={{
-                  "--tech-color": tech.color,
+                  "--tech-color": getIconColor(tech.color),
                 } as React.CSSProperties}
                 data-testid={`tech-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 <div className="p-3 rounded-xl bg-accent/50 transition-all duration-300">
                   <Icon 
                     className="w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110" 
-                    style={{ color: tech.color }}
+                    style={{ color: getIconColor(tech.color) }}
                   />
                 </div>
                 <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { ArrowRight, ArrowLeft, Zap, Shield, Brain, Cloud, Code, BarChart3, Sparkles, Globe, Clock, Users } from "lucide-react";
 import heroBackground from "@assets/stock_images/abstract_technology__2c24a2c3.jpg";
+import ithingLogo from "@assets/ithing_logo.png";
 
 export function Hero() {
   const { t, isRTL } = useLanguage();
@@ -74,19 +75,20 @@ export function Hero() {
           </div>
 
           <h1
-            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-10 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-10 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
             data-testid="text-hero-title"
           >
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-primary via-red-400 to-red-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(255,0,0,0.4)]">
-                iThing
+            <span className={`inline-flex items-center gap-3 sm:gap-4 md:gap-5 flex-wrap justify-center ${isRTL ? "flex-row-reverse" : ""}`}>
+              <img 
+                src={ithingLogo} 
+                alt="iThing Logo" 
+                className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto drop-shadow-[0_0_30px_rgba(255,0,0,0.4)]" 
+              />
+              <span className="text-foreground whitespace-nowrap">
+                {isRTL
+                  ? "لتطوير حلول الأعمال الذكية"
+                  : "Smart Business Solutions"}
               </span>
-            </span>
-            <br />
-            <span className="text-foreground">
-              {isRTL
-                ? "لتطوير حلول الأعمال الذكية"
-                : "Smart Business Solutions"}
             </span>
           </h1>
 

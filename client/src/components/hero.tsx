@@ -74,23 +74,67 @@ export function Hero() {
             </span>
           </div>
 
-          <h1
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-10 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
-            data-testid="text-hero-title"
-          >
-            <span className={`inline-flex items-center gap-3 sm:gap-4 md:gap-5 flex-wrap justify-center ${isRTL ? "flex-row-reverse" : ""}`}>
-              <img 
-                src={ithingLogo} 
-                alt="iThing Logo" 
-                className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto drop-shadow-[0_0_30px_rgba(255,0,0,0.4)]" 
+          <div className="relative mb-10">
+            <div className="relative inline-flex items-center justify-center w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px]">
+              <div 
+                className="absolute inset-0 animate-spin"
+                style={{ animationDuration: "20s" }}
+              >
+                {["Innovation", "Technology", "Solutions", "Excellence", "Digital", "Future"].map((word, i) => (
+                  <span
+                    key={word}
+                    className="absolute text-xs sm:text-sm font-bold text-primary/50 whitespace-nowrap left-1/2 top-1/2"
+                    style={{
+                      transform: `rotate(${i * 60}deg) translateY(-120px) sm:translateY(-150px) md:translateY(-180px)`,
+                    }}
+                  >
+                    <span style={{ display: "inline-block", transform: `rotate(-${i * 60}deg)` }}>{word}</span>
+                  </span>
+                ))}
+              </div>
+              
+              <div 
+                className="absolute inset-4 sm:inset-6 md:inset-8 rounded-full border border-dashed border-primary/30 animate-spin"
+                style={{ animationDuration: "15s", animationDirection: "reverse" }}
               />
-              <span className="text-foreground whitespace-nowrap">
+              
+              <div 
+                className="absolute inset-0 rounded-full border border-primary/15 animate-spin"
+                style={{ animationDuration: "25s" }}
+              />
+              
+              <div 
+                className="absolute inset-8 sm:inset-12 md:inset-16 rounded-full border-2 border-primary/20 animate-pulse"
+                style={{ animationDuration: "3s" }}
+              />
+
+              <div className="relative z-10">
+                <div className="relative group">
+                  <div className="absolute -inset-6 bg-gradient-to-r from-primary/40 via-red-500/30 to-primary/40 rounded-full blur-3xl opacity-70 group-hover:opacity-90 transition-opacity animate-pulse" style={{ animationDuration: "2s" }} />
+                  <img 
+                    src={ithingLogo} 
+                    alt="iThing Logo" 
+                    className="relative h-28 sm:h-36 md:h-44 lg:h-52 w-auto drop-shadow-[0_0_50px_rgba(255,0,0,0.6)] hover:scale-110 transition-transform duration-500" 
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <h1
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mt-6 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
+              data-testid="text-hero-title"
+            >
+              <span className="bg-gradient-to-r from-primary via-red-400 to-red-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(255,0,0,0.4)]">
+                iThing
+              </span>
+              <br />
+              <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                 {isRTL
                   ? "لتطوير حلول الأعمال الذكية"
                   : "Smart Business Solutions"}
               </span>
-            </span>
-          </h1>
+            </h1>
+          </div>
 
           <p
             className={`text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-14 leading-relaxed ${isRTL ? "font-arabic" : ""}`}

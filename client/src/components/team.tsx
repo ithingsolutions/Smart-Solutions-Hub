@@ -4,10 +4,8 @@ import { SiLinkedin } from "react-icons/si";
 import { Users, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import type { TeamMember } from "@shared/schema";
-import teamMember1 from "@assets/stock_images/professional_corpora_1a8fc176.jpg";
+import tarekPhoto from "@assets/fdbffd8b-c30c-4bf1-a13d-52614b5d412d_1768089719045.jpg";
 import teamMember2 from "@assets/stock_images/professional_corpora_164ce9df.jpg";
-import teamMember3 from "@assets/stock_images/professional_corpora_4ea7d5ba.jpg";
-import teamMember4 from "@assets/stock_images/professional_corpora_4a571262.jpg";
 
 const fallbackTeamMembers = [
   {
@@ -16,7 +14,7 @@ const fallbackTeamMembers = [
     nameAr: "طارق الخوالدة",
     roleEn: "General Manager",
     roleAr: "المدير العام",
-    imageUrl: teamMember1,
+    imageUrl: tarekPhoto,
     linkedinUrl: "#",
   },
   {
@@ -81,7 +79,7 @@ export function Team() {
             {teamMembers.map((member) => {
               const name = language === "ar" ? member.nameAr : member.nameEn;
               const role = language === "ar" ? member.roleAr : member.roleEn;
-              const imageUrl = member.imageUrl || teamMember1;
+              const imageUrl = member.imageUrl || tarekPhoto;
               
               return (
                 <Card

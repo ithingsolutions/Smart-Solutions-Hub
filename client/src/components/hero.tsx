@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import heroBackground from "@assets/stock_images/abstract_technology__2c24a2c3.jpg";
 import ithingLogoLight from "@assets/logos/Logo/logaster_No_6_png/1024_pixels/1_Primary_logo_on_transparent_1024.png";
-import ithingLogoDark from "@assets/logos/Logo/logaster_No_6_png/1024_pixels/3_White_logo_on_color1_1024.png";
+import ithingLogoDark from "@assets/ithing_logo_dark.png_1768127827204.png";
 
 export function Hero() {
   const { t, isRTL } = useLanguage();

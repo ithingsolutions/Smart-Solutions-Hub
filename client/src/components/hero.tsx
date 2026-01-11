@@ -16,8 +16,8 @@ import {
   Users,
 } from "lucide-react";
 import heroBackground from "@assets/stock_images/abstract_technology__2c24a2c3.jpg";
-import ithingLogoLight from "@assets/ithing_logo_light.png";
-import ithingLogoDark from "@assets/3_White_logo_on_color1_1024-removebg-preview_1768123267398.png";
+import ithingLogoLight from "@assets/logos/Logo/logaster_No_6_png/1024_pixels/1_Primary_logo_on_transparent_1024.png";
+import ithingLogoDark from "@assets/logos/Logo/logaster_No_6_png/1024_pixels/3_White_logo_on_color1_1024.png";
 
 export function Hero() {
   const { t, isRTL } = useLanguage();
@@ -84,7 +84,10 @@ export function Hero() {
             <div className="relative inline-flex flex-col items-center justify-center">
               <div
                 className="absolute w-80 h-80 sm:w-[420px] sm:h-[420px] md:w-[480px] md:h-[480px] lg:w-[520px] lg:h-[520px] rounded-full border border-dashed border-primary/20 animate-spin"
-                style={{ animationDuration: "25s", animationDirection: "reverse" }}
+                style={{
+                  animationDuration: "25s",
+                  animationDirection: "reverse",
+                }}
               />
               <div
                 className="absolute w-[340px] h-[340px] sm:w-[460px] sm:h-[460px] md:w-[520px] md:h-[520px] lg:w-[580px] lg:h-[580px] rounded-full border border-primary/10 animate-spin"
@@ -109,9 +112,7 @@ export function Hero() {
                     className="absolute -inset-8 sm:-inset-10 bg-gradient-to-t from-primary/30 via-red-500/20 to-transparent rounded-full blur-2xl opacity-60 animate-pulse"
                     style={{ animationDuration: "3.5s" }}
                   />
-                  <div
-                    className="absolute -inset-4 sm:-inset-6 bg-gradient-to-b from-transparent via-primary/25 to-primary/10 rounded-full blur-xl opacity-50"
-                  />
+                  <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-b from-transparent via-primary/25 to-primary/10 rounded-full blur-xl opacity-50" />
                   <img
                     src={ithingLogo}
                     alt="iThing Logo"

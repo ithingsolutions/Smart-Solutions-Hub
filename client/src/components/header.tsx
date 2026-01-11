@@ -4,8 +4,8 @@ import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
 import { BackgroundToggle } from "@/components/background-toggle";
 import { Menu, X, Moon, Sun } from "lucide-react";
-const logoLight = "/attached_assets/ithing_logo_light.png";
-const logoDark = "/attached_assets/ithing_logo_dark.png";
+import logoLight from "@assets/logos/Logo/logaster_No_6_png/1024_pixels/1_Primary_logo_on_transparent_1024.png";
+import logoDark from "@assets/logos/Logo/logaster_No_6_png/1024_pixels/3_White_logo_on_color1_1024.png";
 
 export function Header() {
   const { language, setLanguage, t, isRTL } = useLanguage();

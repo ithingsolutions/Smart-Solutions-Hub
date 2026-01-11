@@ -493,4 +493,14 @@
   .animate-shimmer {
     animation: shimmer 8s linear infinite;
   }
+
+  /* Tech stack card hover border color */
+  .tech-card {
+    transition: all 0.3s ease;
+  }
+  
+  .tech-card:hover {
+    border-color: var(--tech-color) !important;
+    box-shadow: 0 10px 25px -5px color-mix(in srgb, var(--tech-color) 30%, transparent);
+  }
 }

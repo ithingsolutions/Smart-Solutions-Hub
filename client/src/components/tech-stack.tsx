@@ -1,84 +1,76 @@
 import { useLanguage } from "@/lib/language-context";
-import { Card } from "@/components/ui/card";
-import { Cpu, Database, Cloud, Code2, Layers, Shield, Workflow, Sparkles } from "lucide-react";
-import { SiReact, SiNodedotjs, SiPython, SiTensorflow, SiDocker, SiKubernetes, SiMongodb, SiPostgresql, SiRedis, SiTypescript, SiTailwindcss, SiNextdotjs, SiFigma } from "react-icons/si";
+import { Cpu } from "lucide-react";
+import { 
+  SiReact, 
+  SiNodedotjs, 
+  SiPython, 
+  SiTensorflow, 
+  SiDocker, 
+  SiKubernetes, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiRedis, 
+  SiTypescript, 
+  SiTailwindcss, 
+  SiNextdotjs, 
+  SiFigma,
+  SiAmazonwebservices,
+  SiGooglecloud,
+  SiOpenai,
+  SiFlutter,
+  SiSwift,
+  SiKotlin,
+  SiVuedotjs,
+  SiAngular,
+  SiDjango,
+  SiExpress,
+  SiGraphql,
+  SiFirebase,
+  SiJavascript,
+  SiGit
+} from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
+import { type IconType } from "react-icons";
 
-const techCategories = [
-  {
-    id: "frontend",
-    titleEn: "Frontend Development",
-    titleAr: "تطوير الواجهات الأمامية",
-    icon: Code2,
-    color: "from-blue-500 to-cyan-500",
-    technologies: [
-      { name: "React", icon: SiReact },
-      { name: "Next.js", icon: SiNextdotjs },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-    ],
-  },
-  {
-    id: "backend",
-    titleEn: "Backend Development",
-    titleAr: "تطوير الخوادم",
-    icon: Layers,
-    color: "from-green-500 to-emerald-500",
-    technologies: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Python", icon: SiPython },
-    ],
-  },
-  {
-    id: "cloud",
-    titleEn: "Cloud & DevOps",
-    titleAr: "السحابة والعمليات",
-    icon: Cloud,
-    color: "from-orange-500 to-amber-500",
-    technologies: [
-      { name: "AWS", icon: Cloud },
-      { name: "Azure", icon: Cloud },
-      { name: "Google Cloud", icon: Cloud },
-      { name: "Docker", icon: SiDocker },
-      { name: "Kubernetes", icon: SiKubernetes },
-    ],
-  },
-  {
-    id: "database",
-    titleEn: "Databases",
-    titleAr: "قواعد البيانات",
-    icon: Database,
-    color: "from-purple-500 to-violet-500",
-    technologies: [
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "Redis", icon: SiRedis },
-    ],
-  },
-  {
-    id: "ai",
-    titleEn: "AI & Machine Learning",
-    titleAr: "الذكاء الاصطناعي",
-    icon: Sparkles,
-    color: "from-pink-500 to-rose-500",
-    technologies: [
-      { name: "TensorFlow", icon: SiTensorflow },
-      { name: "OpenAI", icon: Sparkles },
-    ],
-  },
-  {
-    id: "design",
-    titleEn: "Design & Prototyping",
-    titleAr: "التصميم والنماذج",
-    icon: Workflow,
-    color: "from-indigo-500 to-blue-500",
-    technologies: [
-      { name: "Figma", icon: SiFigma },
-    ],
-  },
+interface Technology {
+  name: string;
+  icon: IconType;
+  color: string;
+}
+
+const technologies: Technology[] = [
+  { name: "React", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
+  { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+  { name: "Angular", icon: SiAngular, color: "#DD0031" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { name: "Python", icon: SiPython, color: "#3776AB" },
+  { name: "Django", icon: SiDjango, color: "#092E20" },
+  { name: "Express", icon: SiExpress, color: "#ffffff" },
+  { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
+  { name: "Azure", icon: VscAzure, color: "#0078D4" },
+  { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
+  { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "Redis", icon: SiRedis, color: "#DC382D" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+  { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+  { name: "OpenAI", icon: SiOpenai, color: "#00A67E" },
+  { name: "Flutter", icon: SiFlutter, color: "#02569B" },
+  { name: "Swift", icon: SiSwift, color: "#F05138" },
+  { name: "Kotlin", icon: SiKotlin, color: "#7F52FF" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+  { name: "Git", icon: SiGit, color: "#F05032" },
 ];
 
 export function TechStack() {
-  const { language, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
 
   return (
     <section id="tech-stack" className="py-28 lg:py-40 relative overflow-hidden">
@@ -90,7 +82,7 @@ export function TechStack() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5 ${isRTL ? "flex-row-reverse" : ""}`}>
             <Cpu className="w-4 h-4 text-primary" />
             <span className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}>
@@ -113,59 +105,29 @@ export function TechStack() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {techCategories.map((category) => {
-            const Icon = category.icon;
-            const title = language === "ar" ? category.titleAr : category.titleEn;
-            
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-6 md:gap-8">
+          {technologies.map((tech) => {
+            const Icon = tech.icon;
             return (
-              <Card
-                key={category.id}
-                className="group border-0 bg-background/80 backdrop-blur-sm shadow-xl overflow-hidden hover-lift"
-                data-testid={`card-tech-${category.id}`}
+              <div
+                key={tech.name}
+                className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card/50 border border-border/30 backdrop-blur-sm hover:bg-card hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
+                data-testid={`tech-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}
               >
-                <div className={`h-2 bg-gradient-to-r ${category.color}`} />
-                <div className="p-8">
-                  <div className={`flex items-center gap-4 mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${category.color} bg-opacity-20`}>
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className={`text-xl font-bold ${isRTL ? "font-arabic text-right" : ""}`}>
-                      {title}
-                    </h3>
-                  </div>
-                  
-                  <div className={`flex flex-wrap gap-3 ${isRTL ? "justify-end" : ""}`}>
-                    {category.technologies.map((tech) => {
-                      const TechIcon = tech.icon;
-                      return (
-                        <div
-                          key={tech.name}
-                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/50 border border-border/50 hover:bg-accent transition-colors group/tech"
-                        >
-                          <TechIcon className="w-4 h-4 text-muted-foreground group-hover/tech:text-primary transition-colors" />
-                          <span className="text-sm font-medium text-muted-foreground group-hover/tech:text-foreground transition-colors">
-                            {tech.name}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                <div 
+                  className="p-3 rounded-xl bg-accent/50 group-hover:bg-accent transition-colors"
+                >
+                  <Icon 
+                    className="w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110" 
+                    style={{ color: tech.color }}
+                  />
                 </div>
-              </Card>
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
+                  {tech.name}
+                </span>
+              </div>
             );
           })}
-        </div>
-
-        <div className="mt-16 text-center">
-          <div className={`inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm ${isRTL ? "flex-row-reverse" : ""}`}>
-            <Shield className="w-5 h-5 text-primary" />
-            <span className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
-              {isRTL 
-                ? "نختار دائماً الأدوات المناسبة لكل مشروع لضمان أفضل النتائج"
-                : "We always choose the right tools for each project to ensure the best results"}
-            </span>
-          </div>
         </div>
       </div>
     </section>

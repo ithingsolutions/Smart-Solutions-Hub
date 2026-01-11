@@ -91,46 +91,50 @@ export function Hero() {
             </span>
           </div>
 
-          <div className="relative mb-0">
-            <div className="relative inline-flex items-center justify-center w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px]">
+          <div className="relative mb-8">
+            <div className="relative inline-flex items-center justify-center">
               <div
-                className="absolute inset-4 sm:inset-6 md:inset-8 rounded-full border border-dashed border-primary/30 animate-spin"
+                className="absolute w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] rounded-full border border-dashed border-primary/30 animate-spin"
                 style={{
-                  animationDuration: "15s",
+                  animationDuration: "20s",
                   animationDirection: "reverse",
                 }}
               />
 
               <div
-                className="absolute inset-0 rounded-full border border-primary/15 animate-spin"
-                style={{ animationDuration: "25s" }}
+                className="absolute w-80 h-80 sm:w-[420px] sm:h-[420px] md:w-[500px] md:h-[500px] lg:w-[560px] lg:h-[560px] rounded-full border border-primary/15 animate-spin"
+                style={{ animationDuration: "30s" }}
               />
 
               <div
-                className="absolute inset-8 sm:inset-12 md:inset-16 rounded-full border-2 border-primary/20 animate-pulse"
+                className="absolute w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full border-2 border-primary/25 animate-pulse"
                 style={{ animationDuration: "3s" }}
               />
 
-              <div className="relative z-10">
+              <div className="relative z-10 py-12 sm:py-16 md:py-20">
                 <div className="relative group">
                   <div
-                    className="absolute -inset-6 bg-gradient-to-r from-primary/40 via-red-500/30 to-primary/40 rounded-full blur-3xl opacity-70 group-hover:opacity-90 transition-opacity animate-pulse"
+                    className="absolute -inset-8 sm:-inset-12 bg-gradient-to-r from-primary/50 via-red-500/40 to-primary/50 rounded-3xl blur-3xl opacity-60 group-hover:opacity-80 transition-opacity animate-pulse"
                     style={{ animationDuration: "2s" }}
+                  />
+                  <div
+                    className="absolute -inset-4 sm:-inset-6 bg-gradient-to-br from-primary/30 to-red-600/20 rounded-2xl blur-2xl opacity-50 animate-pulse"
+                    style={{ animationDuration: "4s" }}
                   />
                   <img
                     src={ithingLogo}
                     alt="iThing Logo"
-                    className="relative h-28 sm:h-36 md:h-44 lg:h-52 w-auto drop-shadow-[0_0_50px_rgba(255,0,0,0.6)] hover:scale-110 transition-transform duration-500"
+                    className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.7)] hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
             </div>
 
             <h1
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mt-6 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mt-4 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.2]"}`}
               data-testid="text-hero-title"
             >
-              <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              <span className="bg-gradient-to-r from-foreground via-foreground/90 to-foreground bg-clip-text">
                 {isRTL
                   ? "لتطوير حلول الأعمال الذكية"
                   : "Smart Business Solutions"}

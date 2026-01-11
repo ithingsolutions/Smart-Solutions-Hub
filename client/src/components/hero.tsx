@@ -1,11 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
-import { ArrowRight, ArrowLeft, Zap, Shield, Brain, Cloud, Code, BarChart3, Sparkles, Globe, Clock, Users } from "lucide-react";
+import { useTheme } from "@/lib/theme-context";
+import {
+  ArrowRight,
+  ArrowLeft,
+  Zap,
+  Shield,
+  Brain,
+  Cloud,
+  Code,
+  BarChart3,
+  Sparkles,
+  Globe,
+  Clock,
+  Users,
+} from "lucide-react";
 import heroBackground from "@assets/stock_images/abstract_technology__2c24a2c3.jpg";
-import ithingLogo from "@assets/ithing_logo.png";
+import ithingLogoLight from "@assets/ithing_logo_light.png";
+import ithingLogoDark from "@assets/ithing_logo_dark.png";
 
 export function Hero() {
   const { t, isRTL } = useLanguage();
+  const { theme } = useTheme();
+  const ithingLogo = theme === "dark" ? ithingLogoDark : ithingLogoLight;
 
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
@@ -74,43 +91,45 @@ export function Hero() {
             </span>
           </div>
 
-          <div className="relative mb-10">
+          <div className="relative mb-0">
             <div className="relative inline-flex items-center justify-center w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px]">
-              <div 
+              <div
                 className="absolute inset-4 sm:inset-6 md:inset-8 rounded-full border border-dashed border-primary/30 animate-spin"
-                style={{ animationDuration: "15s", animationDirection: "reverse" }}
+                style={{
+                  animationDuration: "15s",
+                  animationDirection: "reverse",
+                }}
               />
-              
-              <div 
+
+              <div
                 className="absolute inset-0 rounded-full border border-primary/15 animate-spin"
                 style={{ animationDuration: "25s" }}
               />
-              
-              <div 
+
+              <div
                 className="absolute inset-8 sm:inset-12 md:inset-16 rounded-full border-2 border-primary/20 animate-pulse"
                 style={{ animationDuration: "3s" }}
               />
 
               <div className="relative z-10">
                 <div className="relative group">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-primary/40 via-red-500/30 to-primary/40 rounded-full blur-3xl opacity-70 group-hover:opacity-90 transition-opacity animate-pulse" style={{ animationDuration: "2s" }} />
-                  <img 
-                    src={ithingLogo} 
-                    alt="iThing Logo" 
-                    className="relative h-28 sm:h-36 md:h-44 lg:h-52 w-auto drop-shadow-[0_0_50px_rgba(255,0,0,0.6)] hover:scale-110 transition-transform duration-500" 
+                  <div
+                    className="absolute -inset-6 bg-gradient-to-r from-primary/40 via-red-500/30 to-primary/40 rounded-full blur-3xl opacity-70 group-hover:opacity-90 transition-opacity animate-pulse"
+                    style={{ animationDuration: "2s" }}
+                  />
+                  <img
+                    src={ithingLogo}
+                    alt="iThing Logo"
+                    className="relative h-28 sm:h-36 md:h-44 lg:h-52 w-auto drop-shadow-[0_0_50px_rgba(255,0,0,0.6)] hover:scale-110 transition-transform duration-500"
                   />
                 </div>
               </div>
             </div>
-            
+
             <h1
               className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mt-6 ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.05]"}`}
               data-testid="text-hero-title"
             >
-              <span className="bg-gradient-to-r from-primary via-red-400 to-red-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(255,0,0,0.4)]">
-                iThing
-              </span>
-              <br />
               <span className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                 {isRTL
                   ? "لتطوير حلول الأعمال الذكية"
@@ -188,25 +207,33 @@ export function Hero() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
               <Brain className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-              <span className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "الذكاء الاصطناعي" : "AI Solutions"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
               <Cloud className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-              <span className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "الحوسبة السحابية" : "Cloud Services"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
               <Code className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-              <span className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "تطوير البرمجيات" : "Custom Software"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
               <BarChart3 className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-              <span className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "تحليل البيانات" : "Data Analytics"}
               </span>
             </div>
@@ -216,36 +243,52 @@ export function Hero() {
             <div className="text-center p-4">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Users className="w-5 h-5 text-primary" />
-                <span className="text-3xl sm:text-4xl font-black text-foreground">500+</span>
+                <span className="text-3xl sm:text-4xl font-black text-foreground">
+                  500+
+                </span>
               </div>
-              <span className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "عميل سعيد" : "Happy Clients"}
               </span>
             </div>
             <div className="text-center p-4">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Sparkles className="w-5 h-5 text-primary" />
-                <span className="text-3xl sm:text-4xl font-black text-foreground">1000+</span>
+                <span className="text-3xl sm:text-4xl font-black text-foreground">
+                  1000+
+                </span>
               </div>
-              <span className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "مشروع منجز" : "Projects Done"}
               </span>
             </div>
             <div className="text-center p-4">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Globe className="w-5 h-5 text-primary" />
-                <span className="text-3xl sm:text-4xl font-black text-foreground">15+</span>
+                <span className="text-3xl sm:text-4xl font-black text-foreground">
+                  15+
+                </span>
               </div>
-              <span className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "دولة" : "Countries"}
               </span>
             </div>
             <div className="text-center p-4">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Clock className="w-5 h-5 text-primary" />
-                <span className="text-3xl sm:text-4xl font-black text-foreground">10+</span>
+                <span className="text-3xl sm:text-4xl font-black text-foreground">
+                  10+
+                </span>
               </div>
-              <span className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
+              <span
+                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+              >
                 {isRTL ? "سنوات خبرة" : "Years Experience"}
               </span>
             </div>
@@ -253,14 +296,26 @@ export function Hero() {
 
           <div className={`text-center ${isRTL ? "font-arabic" : ""}`}>
             <p className="text-sm text-muted-foreground mb-4">
-              {isRTL ? "موثوق من قبل الشركات الرائدة" : "Trusted by Leading Companies"}
+              {isRTL
+                ? "موثوق من قبل الشركات الرائدة"
+                : "Trusted by Leading Companies"}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-8 opacity-50">
-              <div className="text-2xl font-bold text-muted-foreground">Microsoft</div>
-              <div className="text-2xl font-bold text-muted-foreground">Google</div>
-              <div className="text-2xl font-bold text-muted-foreground">AWS</div>
-              <div className="text-2xl font-bold text-muted-foreground">Oracle</div>
-              <div className="text-2xl font-bold text-muted-foreground">SAP</div>
+              <div className="text-2xl font-bold text-muted-foreground">
+                Microsoft
+              </div>
+              <div className="text-2xl font-bold text-muted-foreground">
+                Google
+              </div>
+              <div className="text-2xl font-bold text-muted-foreground">
+                AWS
+              </div>
+              <div className="text-2xl font-bold text-muted-foreground">
+                Oracle
+              </div>
+              <div className="text-2xl font-bold text-muted-foreground">
+                SAP
+              </div>
             </div>
           </div>
         </div>

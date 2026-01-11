@@ -5,7 +5,7 @@ import { Users, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import type { TeamMember } from "@shared/schema";
 import tarekPhoto from "@assets/fdbffd8b-c30c-4bf1-a13d-52614b5d412d_1768089719045.jpg";
-import teamMember2 from "@assets/stock_images/professional_corpora_164ce9df.jpg";
+import muathPhoto from "@assets/image_1768089752024.webp";
 
 const fallbackTeamMembers = [
   {
@@ -23,7 +23,7 @@ const fallbackTeamMembers = [
     nameAr: "معاذ الزعبي",
     roleEn: "Front-End Developer",
     roleAr: "مطور الواجهات الأمامية",
-    imageUrl: teamMember2,
+    imageUrl: muathPhoto,
     linkedinUrl: "#",
   },
 ];

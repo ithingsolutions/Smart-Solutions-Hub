@@ -1,5 +1,6 @@
 import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
+import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/scroll-animation";
 import { Cpu } from "lucide-react";
 import { 
   SiReact, 
@@ -77,54 +78,57 @@ export function TechStack() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <Cpu className="w-4 h-4 text-primary" />
-            <span className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}>
-              {isRTL ? "التقنيات" : "Technologies"}
-            </span>
+        <ScrollAnimation animation="fadeUp">
+          <div className="text-center mb-16">
+            <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5 ${isRTL ? "flex-row-reverse" : ""}`}>
+              <Cpu className="w-4 h-4 text-primary" />
+              <span className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}>
+                {isRTL ? "التقنيات" : "Technologies"}
+              </span>
+            </div>
+            <h2
+              className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 ${isRTL ? "font-arabic" : ""}`}
+              data-testid="text-tech-title"
+            >
+              {isRTL ? "التقنيات التي نستخدمها" : "Our Technology Stack"}
+            </h2>
+            <p
+              className={`text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+              data-testid="text-tech-subtitle"
+            >
+              {isRTL 
+                ? "نستخدم أحدث التقنيات والأدوات لبناء حلول قوية وقابلة للتطوير"
+                : "We leverage cutting-edge technologies and tools to build powerful, scalable solutions"}
+            </p>
           </div>
-          <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 ${isRTL ? "font-arabic" : ""}`}
-            data-testid="text-tech-title"
-          >
-            {isRTL ? "التقنيات التي نستخدمها" : "Our Technology Stack"}
-          </h2>
-          <p
-            className={`text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed ${isRTL ? "font-arabic" : ""}`}
-            data-testid="text-tech-subtitle"
-          >
-            {isRTL 
-              ? "نستخدم أحدث التقنيات والأدوات لبناء حلول قوية وقابلة للتطوير"
-              : "We leverage cutting-edge technologies and tools to build powerful, scalable solutions"}
-          </p>
-        </div>
+        </ScrollAnimation>
 
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-6 md:gap-8">
+        <StaggerContainer className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-6 md:gap-8" staggerDelay={0.05}>
           {technologies.map((tech) => {
             const Icon = tech.icon;
             return (
-              <div
-                key={tech.name}
-                className="tech-card group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card/50 border-2 border-border/30 backdrop-blur-sm hover:bg-card transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  "--tech-color": getIconColor(tech.color),
-                } as React.CSSProperties}
-                data-testid={`tech-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                <div className="p-3 rounded-xl bg-accent/50 transition-all duration-300">
-                  <Icon 
-                    className="w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110" 
-                    style={{ color: getIconColor(tech.color) }}
-                  />
+              <StaggerItem key={tech.name} animation="zoomIn">
+                <div
+                  className="tech-card group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card/50 border-2 border-border/30 backdrop-blur-sm hover:bg-card transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    "--tech-color": getIconColor(tech.color),
+                  } as React.CSSProperties}
+                  data-testid={`tech-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  <div className="p-3 rounded-xl bg-accent/50 transition-all duration-300">
+                    <Icon 
+                      className="w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110" 
+                      style={{ color: getIconColor(tech.color) }}
+                    />
+                  </div>
+                  <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
+                    {tech.name}
+                  </span>
                 </div>
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
-                  {tech.name}
-                </span>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

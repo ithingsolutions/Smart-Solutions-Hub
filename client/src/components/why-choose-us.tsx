@@ -1,4 +1,5 @@
 import { useLanguage } from "@/lib/language-context";
+import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/scroll-animation";
 import { Sparkles, Users, HeadphonesIcon, TrendingUp, CheckCircle2, Star } from "lucide-react";
 
 const reasons = [
@@ -18,7 +19,7 @@ export function WhyChooseUs() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center ${isRTL ? "lg:flex-row-reverse" : ""}`}>
-          <div className={isRTL ? "text-right order-2 lg:order-1" : "order-2 lg:order-1"}>
+          <ScrollAnimation animation="fadeLeft" className={isRTL ? "text-right order-2 lg:order-1" : "order-2 lg:order-1"}>
             <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5 ${isRTL ? "flex-row-reverse" : ""}`}>
               <CheckCircle2 className="w-4 h-4 text-primary" />
               <span className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}>
@@ -38,37 +39,38 @@ export function WhyChooseUs() {
               {t("why.subtitle")}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {reasons.map((reason) => {
                 const Icon = reason.icon;
                 return (
-                  <div
-                    key={reason.key}
-                    className={`group relative p-6 rounded-2xl bg-gradient-to-br from-card to-card/50 border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden ${isRTL ? "text-right" : ""}`}
-                    data-testid={`card-why-${reason.key}`}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <div className={`relative flex items-start gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                      <div className="shrink-0 p-3.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                        <Icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className={`text-lg font-bold mb-2 ${isRTL ? "font-arabic" : ""}`}>
-                          {t(`why.${reason.key}.title`)}
-                        </h3>
-                        <p className={`text-sm text-muted-foreground leading-relaxed ${isRTL ? "font-arabic" : ""}`}>
-                          {t(`why.${reason.key}.description`)}
-                        </p>
+                  <StaggerItem key={reason.key} animation="fadeUp">
+                    <div
+                      className={`group relative p-6 rounded-2xl bg-gradient-to-br from-card to-card/50 border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden h-full ${isRTL ? "text-right" : ""}`}
+                      data-testid={`card-why-${reason.key}`}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      <div className={`relative flex items-start gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                        <div className="shrink-0 p-3.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                          <Icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className={`text-lg font-bold mb-2 ${isRTL ? "font-arabic" : ""}`}>
+                            {t(`why.${reason.key}.title`)}
+                          </h3>
+                          <p className={`text-sm text-muted-foreground leading-relaxed ${isRTL ? "font-arabic" : ""}`}>
+                            {t(`why.${reason.key}.description`)}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </StaggerItem>
                 );
               })}
-            </div>
-          </div>
+            </StaggerContainer>
+          </ScrollAnimation>
 
-          <div className={`relative order-1 lg:order-2 ${isRTL ? "lg:order-1" : "lg:order-2"}`}>
+          <ScrollAnimation animation="fadeRight" className={`relative order-1 lg:order-2 ${isRTL ? "lg:order-1" : "lg:order-2"}`}>
             <div className="relative aspect-square max-w-lg mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/5 rounded-[3rem] rotate-6 blur-sm" />
               <div className="absolute inset-0 bg-gradient-to-tl from-primary/20 via-primary/10 to-transparent rounded-[3rem] -rotate-3" />
@@ -100,7 +102,7 @@ export function WhyChooseUs() {
               <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '3s' }} />
               <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-primary/15 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
             </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/lib/language-context";
+import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/scroll-animation";
 import {
   Brain,
   BarChart3,
@@ -109,31 +110,33 @@ export function Services() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5">
-            <span
-              className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}
+        <ScrollAnimation animation="fadeUp">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5">
+              <span
+                className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}
+              >
+                {isRTL ? "ما نقدمه" : "What We Offer"}
+              </span>
+            </div>
+            <h2
+              className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 ${isRTL ? "font-arabic" : ""}`}
+              data-testid="text-services-title"
             >
-              {isRTL ? "ما نقدمه" : "What We Offer"}
-            </span>
+              {isRTL ? "خدماتنا" : "Our Services"}
+            </h2>
+            <p
+              className={`text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+              data-testid="text-services-subtitle"
+            >
+              {isRTL
+                ? "حلول مبتكرة مصممة لتحويل عملك"
+                : "Innovative solutions designed to transform your business"}
+            </p>
           </div>
-          <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 ${isRTL ? "font-arabic" : ""}`}
-            data-testid="text-services-title"
-          >
-            {isRTL ? "خدماتنا" : "Our Services"}
-          </h2>
-          <p
-            className={`text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed ${isRTL ? "font-arabic" : ""}`}
-            data-testid="text-services-subtitle"
-          >
-            {isRTL
-              ? "حلول مبتكرة مصممة لتحويل عملك"
-              : "Innovative solutions designed to transform your business"}
-          </p>
-        </div>
+        </ScrollAnimation>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             const gradient = gradients[index % gradients.length];
@@ -142,11 +145,11 @@ export function Services() {
               language === "ar" ? service.descriptionAr : service.descriptionEn;
 
             return (
-              <Card
-                key={service.id}
-                className="group relative overflow-hidden border-0 bg-background/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                data-testid={`card-service-${service.id}`}
-              >
+              <StaggerItem key={service.id} animation="zoomIn">
+                <Card
+                  className="group relative overflow-hidden border-0 bg-background/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full"
+                  data-testid={`card-service-${service.id}`}
+                >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 />
@@ -177,10 +180,11 @@ export function Services() {
                     {description}
                   </p>
                 </CardContent>
-              </Card>
+                </Card>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

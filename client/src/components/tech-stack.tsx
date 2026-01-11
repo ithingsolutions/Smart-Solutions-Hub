@@ -5,16 +5,12 @@ import {
   SiNodedotjs, 
   SiPython, 
   SiTensorflow, 
-  SiDocker, 
-  SiKubernetes, 
   SiMongodb, 
   SiPostgresql, 
-  SiRedis, 
   SiTypescript, 
   SiTailwindcss, 
   SiNextdotjs, 
   SiFigma,
-  SiAmazonwebservices,
   SiGooglecloud,
   SiOpenai,
   SiFlutter,
@@ -27,8 +23,10 @@ import {
   SiGraphql,
   SiFirebase,
   SiJavascript,
-  SiGit
+  SiGit,
+  SiDotnet
 } from "react-icons/si";
+import { TbBrandMysql } from "react-icons/tb";
 import { VscAzure } from "react-icons/vsc";
 import { type IconType } from "react-icons";
 
@@ -43,20 +41,18 @@ const technologies: Technology[] = [
   { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
   { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
   { name: "Angular", icon: SiAngular, color: "#DD0031" },
+  { name: ".NET", icon: SiDotnet, color: "#512BD4" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
   { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
   { name: "Django", icon: SiDjango, color: "#092E20" },
   { name: "Express", icon: SiExpress, color: "#ffffff" },
-  { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
   { name: "Azure", icon: VscAzure, color: "#0078D4" },
   { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
-  { name: "Docker", icon: SiDocker, color: "#2496ED" },
-  { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "SQL Server", icon: TbBrandMysql, color: "#CC2927" },
   { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-  { name: "Redis", icon: SiRedis, color: "#DC382D" },
   { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
   { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
   { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },

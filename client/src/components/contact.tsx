@@ -286,7 +286,7 @@ export function Contact() {
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">
-                      +962 6 XXX XXXX
+                      +962 777775484
                     </span>
                   </div>
                 </div>

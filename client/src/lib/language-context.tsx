@@ -49,8 +49,8 @@ const translations: Record<Language, Record<string, string>> = {
     "why.innovation.description": "We stay ahead of technology trends to deliver cutting-edge solutions.",
     "why.expertise.title": "Expert Team",
     "why.expertise.description": "Our certified professionals bring years of industry experience.",
-    "why.support.title": "24/7 Support",
-    "why.support.description": "Round-the-clock assistance to keep your business running smoothly.",
+    "why.support.title": "Expert Assistance",
+    "why.support.description": "Dedicated professionals ready to help you achieve your business goals.",
     "why.scalable.title": "Scalable Solutions",
     "why.scalable.description": "Solutions that grow with your business without compromising performance.",
     
@@ -117,8 +117,8 @@ const translations: Record<Language, Record<string, string>> = {
     "why.innovation.description": "نبقى في صدارة اتجاهات التكنولوجيا لتقديم حلول متطورة.",
     "why.expertise.title": "فريق خبراء",
     "why.expertise.description": "محترفونا المعتمدون يجلبون سنوات من الخبرة الصناعية.",
-    "why.support.title": "دعم على مدار الساعة",
-    "why.support.description": "مساعدة على مدار الساعة للحفاظ على سير عملك بسلاسة.",
+    "why.support.title": "مساعدة الخبراء",
+    "why.support.description": "متخصصون متفانون لمساعدتك في تحقيق أهداف عملك.",
     "why.scalable.title": "حلول قابلة للتوسع",
     "why.scalable.description": "حلول تنمو مع عملك دون المساس بالأداء.",
     

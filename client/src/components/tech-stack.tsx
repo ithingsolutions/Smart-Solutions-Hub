@@ -101,19 +101,31 @@ export function TechStack() {
             return (
               <div
                 key={tech.name}
-                className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card/50 border border-border/30 backdrop-blur-sm hover:bg-card hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card/50 border border-border/30 backdrop-blur-sm hover:bg-card transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  "--tech-color": tech.color,
+                } as React.CSSProperties}
                 data-testid={`tech-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 <div 
-                  className="p-3 rounded-xl bg-accent/50 group-hover:bg-accent transition-colors"
+                  className="p-3 rounded-xl bg-accent/50 group-hover:bg-[var(--tech-color)]/10 transition-all duration-300 group-hover:shadow-lg"
+                  style={{
+                    boxShadow: "none",
+                  }}
                 >
                   <Icon 
                     className="w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110" 
                     style={{ color: tech.color }}
                   />
                 </div>
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
-                  {tech.name}
+                <span 
+                  className="text-xs sm:text-sm font-medium text-muted-foreground transition-colors text-center group-hover:font-semibold"
+                  style={{ 
+                    color: undefined 
+                  }}
+                >
+                  <span className="group-hover:hidden">{tech.name}</span>
+                  <span className="hidden group-hover:inline" style={{ color: tech.color }}>{tech.name}</span>
                 </span>
               </div>
             );

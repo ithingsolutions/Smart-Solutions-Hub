@@ -1,6 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/lib/language-context";
-import { Brain, BarChart3, Cloud, Code2, Lightbulb, Workflow, Wifi, Bot, ArrowUpRight, LucideIcon } from "lucide-react";
+import {
+  Brain,
+  BarChart3,
+  Cloud,
+  Code2,
+  Lightbulb,
+  Workflow,
+  Wifi,
+  Bot,
+  ArrowUpRight,
+  LucideIcon,
+} from "lucide-react";
 
 interface Service {
   id: number;
@@ -16,57 +27,61 @@ const services: Service[] = [
     id: 1,
     titleEn: "AI & Data Analytics",
     titleAr: "الذكاء الاصطناعي وتحليل البيانات",
-    descriptionEn: "Leverage cutting-edge AI and advanced analytics to automate processes, transform data into actionable insights, and drive innovation.",
-    descriptionAr: "استفد من أحدث تقنيات الذكاء الاصطناعي والتحليلات المتقدمة لأتمتة العمليات وتحويل البيانات إلى رؤى قابلة للتنفيذ.",
+    descriptionEn:
+      "Leverage cutting-edge AI and advanced analytics to automate processes, transform data into actionable insights, and drive innovation.",
+    descriptionAr:
+      "استفد من أحدث تقنيات الذكاء الاصطناعي والتحليلات المتقدمة لأتمتة العمليات وتحويل البيانات إلى رؤى قابلة للتنفيذ.",
     icon: Brain,
   },
   {
     id: 3,
     titleEn: "Cloud Services",
     titleAr: "الخدمات السحابية",
-    descriptionEn: "Scale your infrastructure seamlessly with secure, reliable cloud solutions tailored to your business needs.",
-    descriptionAr: "وسّع بنيتك التحتية بسلاسة من خلال حلول سحابية آمنة وموثوقة مصممة خصيصاً لاحتياجات عملك.",
+    descriptionEn:
+      "Scale your infrastructure seamlessly with secure, reliable cloud solutions tailored to your business needs.",
+    descriptionAr:
+      "وسّع بنيتك التحتية بسلاسة من خلال حلول سحابية آمنة وموثوقة مصممة خصيصاً لاحتياجات عملك.",
     icon: Cloud,
   },
   {
     id: 4,
-    titleEn: "Custom Software",
-    titleAr: "البرمجيات المخصصة",
-    descriptionEn: "Build bespoke software solutions that perfectly align with your unique business requirements and workflows.",
-    descriptionAr: "أنشئ حلولاً برمجية مخصصة تتوافق تماماً مع متطلبات عملك الفريدة وسير العمل الخاص بك.",
+    titleEn: "Software Development",
+    titleAr: "تطوير البرمجيات",
+    descriptionEn:
+      "Build bespoke software solutions that perfectly align with your unique business requirements and workflows.",
+    descriptionAr:
+      "أنشئ حلولاً برمجية مخصصة تتوافق تماماً مع متطلبات عملك الفريدة وسير العمل الخاص بك.",
     icon: Code2,
   },
   {
     id: 5,
-    titleEn: "Digital Consulting",
-    titleAr: "الاستشارات الرقمية",
-    descriptionEn: "Strategic guidance to navigate digital transformation and optimize your technology investments for maximum ROI.",
-    descriptionAr: "إرشادات استراتيجية للتنقل في التحول الرقمي وتحسين استثماراتك التقنية لتحقيق أقصى عائد.",
+    titleEn: "Digital Transformation",
+    titleAr: "التحول الرقمي",
+    descriptionEn:
+      "Strategic guidance to navigate digital transformation and optimize your technology investments for maximum ROI.",
+    descriptionAr:
+      "إرشادات استراتيجية للتنقل في التحول الرقمي وتحسين استثماراتك التقنية لتحقيق أقصى عائد.",
     icon: Lightbulb,
   },
   {
     id: 6,
     titleEn: "Process Automation",
     titleAr: "أتمتة العمليات",
-    descriptionEn: "Streamline operations and eliminate manual tasks with intelligent automation and workflow optimization.",
-    descriptionAr: "بسّط العمليات وتخلص من المهام اليدوية من خلال الأتمتة الذكية وتحسين سير العمل.",
+    descriptionEn:
+      "Streamline operations and eliminate manual tasks with intelligent automation and workflow optimization.",
+    descriptionAr:
+      "بسّط العمليات وتخلص من المهام اليدوية من خلال الأتمتة الذكية وتحسين سير العمل.",
     icon: Workflow,
   },
   {
     id: 7,
     titleEn: "IoT Solutions",
     titleAr: "حلول إنترنت الأشياء",
-    descriptionEn: "Connect devices, collect data, and create smart systems that drive efficiency and innovation.",
-    descriptionAr: "اربط الأجهزة واجمع البيانات وأنشئ أنظمة ذكية تدفع الكفاءة والابتكار.",
+    descriptionEn:
+      "Connect devices, collect data, and create smart systems that drive efficiency and innovation.",
+    descriptionAr:
+      "اربط الأجهزة واجمع البيانات وأنشئ أنظمة ذكية تدفع الكفاءة والابتكار.",
     icon: Wifi,
-  },
-  {
-    id: 8,
-    titleEn: "Chatbot Development",
-    titleAr: "تطوير روبوتات المحادثة",
-    descriptionEn: "Create intelligent conversational agents that enhance customer experience and automate support.",
-    descriptionAr: "أنشئ وكلاء محادثة ذكية تعزز تجربة العملاء وتؤتمت الدعم.",
-    icon: Bot,
   },
 ];
 
@@ -87,16 +102,18 @@ export function Services() {
   return (
     <section id="services" className="py-28 lg:py-40 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/40 to-background" />
-      
+
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       </div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5">
-            <span className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}>
+            <span
+              className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}
+            >
               {isRTL ? "ما نقدمه" : "What We Offer"}
             </span>
           </div>
@@ -110,18 +127,19 @@ export function Services() {
             className={`text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed ${isRTL ? "font-arabic" : ""}`}
             data-testid="text-services-subtitle"
           >
-            {isRTL 
+            {isRTL
               ? "حلول مبتكرة مصممة لتحويل عملك"
               : "Innovative solutions designed to transform your business"}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             const gradient = gradients[index % gradients.length];
             const title = language === "ar" ? service.titleAr : service.titleEn;
-            const description = language === "ar" ? service.descriptionAr : service.descriptionEn;
+            const description =
+              language === "ar" ? service.descriptionAr : service.descriptionEn;
 
             return (
               <Card
@@ -129,11 +147,15 @@ export function Services() {
                 className="group relative overflow-hidden border-0 bg-background/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 data-testid={`card-service-${service.id}`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                />
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                
+
                 <CardContent className="relative p-6 lg:p-8">
-                  <div className={`flex items-start justify-between mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <div
+                    className={`flex items-start justify-between mb-6 ${isRTL ? "flex-row-reverse" : ""}`}
+                  >
                     <div className="relative">
                       <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
                       <div className="relative p-4 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/10 group-hover:border-primary/30 transition-colors duration-500">

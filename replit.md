@@ -1,7 +1,7 @@
 # iThing Smart Business Solutions - Bilingual Website
 
 ## Overview
-A professional bilingual (Arabic/English) corporate website for iThing Smart Business Solutions (iThing لتطوير حلول الأعمال الذكية), a technology company specializing in AI, data analytics, cloud services, and custom software development with offices in Amman, Jordan and Dubai, UAE.
+A professional bilingual (Arabic/English) corporate website for iThing Smart Business Solutions (iThing لتطوير حلول الأعمال الذكية), a technology company specializing in AI, data analytics, cloud services, and Software Development development with offices in Amman, Jordan and Dubai, UAE.
 
 ## Current State
 - **Complete**: Fully functional bilingual website with RTL support

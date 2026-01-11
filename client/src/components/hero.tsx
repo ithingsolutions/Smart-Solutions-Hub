@@ -80,7 +80,6 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="text-center max-w-5xl mx-auto">
-          
           <div className="relative mb-8">
             <div className="relative inline-flex items-center justify-center">
               <div
@@ -131,14 +130,12 @@ export function Hero() {
               </span>
             </h1>
           </div>
-
           <p
             className={`text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-14 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
             data-testid="text-hero-description"
           >
             {t("hero.description")}
           </p>
-
           <div
             className={`flex flex-col sm:flex-row items-center justify-center gap-5 mb-16 ${isRTL ? "sm:flex-row-reverse" : ""}`}
           >
@@ -162,7 +159,6 @@ export function Hero() {
               {t("hero.cta.secondary")}
             </Button>
           </div>
-
           <div
             className={`flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm mb-16 ${isRTL ? "flex-row-reverse" : ""}`}
           >
@@ -186,25 +182,16 @@ export function Hero() {
                 {isRTL ? "استشارة مجانية" : "Free Consultation"}
               </span>
             </div>
-            <div
-              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm ${isRTL ? "flex-row-reverse" : ""}`}
-            >
-              <Shield className="w-4 h-4 text-primary" />
-              <span
-                className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
-              >
-                {isRTL ? "ضمان الجودة" : "Quality Guaranteed"}
-              </span>
-            </div>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
               <Brain className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
-                {isRTL ? "الذكاء الاصطناعي" : "AI Solutions"}
+                {isRTL
+                  ? " الذكاء الاصطناعي وتحليل البيانات"
+                  : "AI & Data Analytics"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
@@ -220,25 +207,16 @@ export function Hero() {
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
-                {isRTL ? "تطوير البرمجيات" : "Custom Software"}
-              </span>
-            </div>
-            <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 group">
-              <BarChart3 className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-              <span
-                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
-              >
-                {isRTL ? "تحليل البيانات" : "Data Analytics"}
+                {isRTL ? "تطوير البرمجيات" : "Software Development"}
               </span>
             </div>
           </div>
-
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto">
             <div className="text-center p-4">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Users className="w-5 h-5 text-primary" />
                 <span className="text-3xl sm:text-4xl font-black text-foreground">
-                  500+
+                  100+
                 </span>
               </div>
               <span
@@ -251,7 +229,7 @@ export function Hero() {
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Sparkles className="w-5 h-5 text-primary" />
                 <span className="text-3xl sm:text-4xl font-black text-foreground">
-                  1000+
+                  500+
                 </span>
               </div>
               <span
@@ -264,7 +242,7 @@ export function Hero() {
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Globe className="w-5 h-5 text-primary" />
                 <span className="text-3xl sm:text-4xl font-black text-foreground">
-                  15+
+                  5+
                 </span>
               </div>
               <span
@@ -285,31 +263,6 @@ export function Hero() {
               >
                 {isRTL ? "سنوات خبرة" : "Years Experience"}
               </span>
-            </div>
-          </div>
-
-          <div className={`text-center ${isRTL ? "font-arabic" : ""}`}>
-            <p className="text-sm text-muted-foreground mb-4">
-              {isRTL
-                ? "موثوق من قبل الشركات الرائدة"
-                : "Trusted by Leading Companies"}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 opacity-50">
-              <div className="text-2xl font-bold text-muted-foreground">
-                Microsoft
-              </div>
-              <div className="text-2xl font-bold text-muted-foreground">
-                Google
-              </div>
-              <div className="text-2xl font-bold text-muted-foreground">
-                AWS
-              </div>
-              <div className="text-2xl font-bold text-muted-foreground">
-                Oracle
-              </div>
-              <div className="text-2xl font-bold text-muted-foreground">
-                SAP
-              </div>
             </div>
           </div>
         </div>

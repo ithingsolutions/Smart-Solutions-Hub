@@ -168,6 +168,26 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
+/* EVENING MODE - Enhanced red accents after 6 PM Amman time */
+.evening-mode {
+  --primary: 0 85% 50%;
+  --sidebar-primary: 0 85% 50%;
+  --ring: 0 85% 50%;
+  --chart-1: 0 85% 55%;
+}
+
+.evening-mode.dark {
+  --primary: 0 90% 55%;
+  --sidebar-primary: 0 90% 55%;
+  --ring: 0 90% 55%;
+  --chart-1: 0 90% 60%;
+  --background: 0 5% 5%;
+  --card: 0 5% 8%;
+  --sidebar: 0 5% 7%;
+  --accent: 0 10% 12%;
+  --muted: 0 8% 14%;
+}
+
 @layer base {
   * {
     @apply border-border;

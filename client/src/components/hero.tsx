@@ -140,6 +140,9 @@ export function Hero() {
               size="lg"
               className={`group min-w-[240px] h-16 text-lg font-bold shadow-2xl shadow-primary/30 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02] ${isRTL ? "font-arabic" : ""}`}
               data-testid="button-hero-primary"
+              onClick={() => {
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               {t("hero.cta.primary")}
               <ArrowIcon
@@ -152,6 +155,9 @@ export function Hero() {
               size="lg"
               className={`min-w-[240px] h-16 text-lg font-bold backdrop-blur-sm border-2 hover:bg-accent/50 transition-all duration-300 ${isRTL ? "font-arabic" : ""}`}
               data-testid="button-hero-secondary"
+              onClick={() => {
+                document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               {t("hero.cta.secondary")}
             </Button>

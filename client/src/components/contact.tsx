@@ -324,7 +324,7 @@ export function Contact() {
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-muted-foreground" dir="ltr">
-                      +971 4 XXX XXXX
+                      +971 501970754
                     </span>
                   </div>
                 </div>

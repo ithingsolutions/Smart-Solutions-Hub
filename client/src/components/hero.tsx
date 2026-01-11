@@ -57,24 +57,12 @@ export function Hero() {
         />
 
         <div
-          className="absolute top-20 left-20 w-24 h-24 border-2 border-primary/25 rounded-2xl rotate-12 animate-spin"
-          style={{ animationDuration: "20s" }}
-        />
-        <div
           className="absolute bottom-40 right-20 w-20 h-20 border-2 border-primary/20 rounded-full animate-spin"
           style={{ animationDuration: "15s", animationDirection: "reverse" }}
         />
         <div
-          className="absolute top-1/3 right-1/4 w-16 h-16 bg-primary/15 rounded-xl rotate-45 animate-pulse"
-          style={{ animationDuration: "3s" }}
-        />
-        <div
           className="absolute bottom-1/3 left-1/6 w-8 h-8 bg-primary/20 rounded-full animate-bounce"
           style={{ animationDuration: "2s" }}
-        />
-        <div
-          className="absolute top-1/2 right-1/6 w-6 h-6 border border-primary/30 rounded-md rotate-45 animate-pulse"
-          style={{ animationDuration: "4s" }}
         />
       </div>
 

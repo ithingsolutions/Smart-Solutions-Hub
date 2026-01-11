@@ -154,13 +154,13 @@ export function Footer() {
               className={`flex items-center gap-8 ${isRTL ? "flex-row-reverse" : ""}`}
             >
               <a
-                href="#"
+                href="/privacy-policy"
                 className={`text-sm text-background/50 hover:text-background transition-colors ${isRTL ? "font-arabic" : ""}`}
               >
                 {t("footer.privacy")}
               </a>
               <a
-                href="#"
+                href="/terms-of-service"
                 className={`text-sm text-background/50 hover:text-background transition-colors ${isRTL ? "font-arabic" : ""}`}
               >
                 {t("footer.terms")}

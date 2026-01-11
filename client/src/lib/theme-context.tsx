@@ -19,6 +19,9 @@ function getAmmanHour(): number {
 
 function checkIsEvening(): boolean {
   const hour = getAmmanHour();
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('evening') === 'true') return true;
+  if (urlParams.get('evening') === 'false') return false;
   return hour >= 18 || hour < 6;
 }
 

@@ -88,6 +88,7 @@ export function Header() {
             <Button
               className={`hidden md:flex font-semibold rounded-full shadow-lg shadow-primary/25 ${isRTL ? "font-arabic" : ""}`}
               data-testid="button-get-started"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               {t("nav.getStarted")}
             </Button>
@@ -125,6 +126,10 @@ export function Header() {
               <Button
                 className={`mt-4 h-12 rounded-full ${isRTL ? "font-arabic" : ""}`}
                 data-testid="button-mobile-get-started"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
               >
                 {t("nav.getStarted")}
               </Button>

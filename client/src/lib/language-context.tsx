@@ -25,7 +25,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     "hero.title": "iThing Smart Business Solutions",
     "hero.subtitle": "Accelerating Digital Transformation",
-    "hero.description": "Your trusted partner for innovative, scalable, and future-ready technology solutions.",
+    "hero.description":
+      "Your trusted partner for innovative, scalable, and future-ready technology solutions.",
     "hero.cta.primary": "Start Your Journey",
     "hero.cta.secondary": "Learn More",
 
@@ -87,7 +88,6 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.address": "Address",
     "contact.office.amman.address":
       "Anshasi Square, 28 Alhusari St, Amman, Jordan",
-Y
     "footer.company": "iThing Smart Business Solutions",
     "footer.description":
       "Your trusted partner for digital transformation and innovative technology solutions.",
@@ -107,7 +107,8 @@ Y
 
     "hero.title": "iThing لتطوير حلول الأعمال الذكية",
     "hero.subtitle": "تسريع التحول الرقمي",
-    "hero.description": "شريكك الموثوق لحلول تكنولوجية مبتكرة وقابلة للتطوير ومستعدة للمستقبل.",
+    "hero.description":
+      "شريكك الموثوق لحلول تكنولوجية مبتكرة وقابلة للتطوير ومستعدة للمستقبل.",
     "hero.cta.primary": "ابدأ رحلتك",
     "hero.cta.secondary": "اعرف المزيد",
 

@@ -5,9 +5,9 @@ import {
   ArrowRight,
   ArrowLeft,
   Zap,
-  Brain,
-  Cloud,
-  Code,
+  Lightbulb,
+  Radio,
+  Layers,
   Sparkles,
   Globe,
   Clock,
@@ -149,29 +149,29 @@ export function Hero() {
           </div>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 group">
-              <Brain className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
+              <Lightbulb className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
                 {isRTL
-                  ? " الذكاء الاصطناعي وتحليل البيانات"
-                  : "AI & Data Analytics"}
+                  ? "استشارات التحول الرقمي"
+                  : "Digital Transformation"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 group">
-              <Cloud className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
+              <Radio className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
-                {isRTL ? "الحوسبة السحابية" : "Cloud Services"}
+                {isRTL ? "استشارات الاتصالات وتقنية المعلومات" : "Telecom & IT Advisory"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 group">
-              <Code className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
+              <Layers className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
-                {isRTL ? "تطوير البرمجيات" : "Software Development"}
+                {isRTL ? "الحلول الذكية" : "Smart Solutions"}
               </span>
             </div>
           </div>

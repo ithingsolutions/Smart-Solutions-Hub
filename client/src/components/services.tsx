@@ -2,14 +2,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/lib/language-context";
 import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/scroll-animation";
 import {
-  Brain,
-  BarChart3,
-  Cloud,
-  Code2,
   Lightbulb,
-  Workflow,
-  Wifi,
-  Bot,
+  Radio,
+  Layers,
+  Cloud,
+  Settings,
+  Rocket,
   ArrowUpRight,
   LucideIcon,
 } from "lucide-react";
@@ -26,63 +24,63 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    titleEn: "AI & Data Analytics",
-    titleAr: "الذكاء الاصطناعي وتحليل البيانات",
+    titleEn: "Digital Transformation Consulting",
+    titleAr: "استشارات التحول الرقمي",
     descriptionEn:
-      "Leverage cutting-edge AI and advanced analytics to automate processes, transform data into actionable insights, and drive innovation.",
+      "Strategic guidance to navigate digital transformation with tailored strategies aligned with international best practices and global technological standards.",
     descriptionAr:
-      "استفد من أحدث تقنيات الذكاء الاصطناعي والتحليلات المتقدمة لأتمتة العمليات وتحويل البيانات إلى رؤى قابلة للتنفيذ.",
-    icon: Brain,
-  },
-  {
-    id: 3,
-    titleEn: "Cloud Services",
-    titleAr: "الخدمات السحابية",
-    descriptionEn:
-      "Scale your infrastructure seamlessly with secure, reliable cloud solutions tailored to your business needs.",
-    descriptionAr:
-      "وسّع بنيتك التحتية بسلاسة من خلال حلول سحابية آمنة وموثوقة مصممة خصيصاً لاحتياجات عملك.",
-    icon: Cloud,
-  },
-  {
-    id: 4,
-    titleEn: "Software Development",
-    titleAr: "تطوير البرمجيات",
-    descriptionEn:
-      "Build bespoke software solutions that perfectly align with your unique business requirements and workflows.",
-    descriptionAr:
-      "أنشئ حلولاً برمجية مخصصة تتوافق تماماً مع متطلبات عملك الفريدة وسير العمل الخاص بك.",
-    icon: Code2,
-  },
-  {
-    id: 5,
-    titleEn: "Digital Transformation",
-    titleAr: "التحول الرقمي",
-    descriptionEn:
-      "Strategic guidance to navigate digital transformation and optimize your technology investments for maximum ROI.",
-    descriptionAr:
-      "إرشادات استراتيجية للتنقل في التحول الرقمي وتحسين استثماراتك التقنية لتحقيق أقصى عائد.",
+      "إرشادات استراتيجية للتحول الرقمي مع استراتيجيات مصممة وفقاً لأفضل الممارسات الدولية والمعايير التقنية العالمية.",
     icon: Lightbulb,
   },
   {
-    id: 6,
-    titleEn: "Process Automation",
-    titleAr: "أتمتة العمليات",
+    id: 2,
+    titleEn: "Telecommunications & IT Advisory",
+    titleAr: "استشارات الاتصالات وتقنية المعلومات",
     descriptionEn:
-      "Streamline operations and eliminate manual tasks with intelligent automation and workflow optimization.",
+      "Expert advisory services in telecommunications and information technology to optimize your technology investments and infrastructure.",
     descriptionAr:
-      "بسّط العمليات وتخلص من المهام اليدوية من خلال الأتمتة الذكية وتحسين سير العمل.",
-    icon: Workflow,
+      "خدمات استشارية متخصصة في الاتصالات وتقنية المعلومات لتحسين استثماراتك التقنية والبنية التحتية.",
+    icon: Radio,
   },
   {
-    id: 7,
-    titleEn: "IoT Solutions",
-    titleAr: "حلول إنترنت الأشياء",
+    id: 3,
+    titleEn: "Enterprise & Smart Solutions",
+    titleAr: "حلول المؤسسات والحلول الذكية",
     descriptionEn:
-      "Connect devices, collect data, and create smart systems that drive efficiency and innovation.",
+      "Design and development of integrated digital platforms and enterprise solutions that drive efficiency and innovation.",
     descriptionAr:
-      "اربط الأجهزة واجمع البيانات وأنشئ أنظمة ذكية تدفع الكفاءة والابتكار.",
-    icon: Wifi,
+      "تصميم وتطوير منصات رقمية متكاملة وحلول مؤسسية تعزز الكفاءة والابتكار.",
+    icon: Layers,
+  },
+  {
+    id: 4,
+    titleEn: "Cloud & Infrastructure Integration",
+    titleAr: "تكامل السحابة والبنية التحتية",
+    descriptionEn:
+      "Seamless cloud and infrastructure integration services to build scalable, secure, and reliable technology ecosystems.",
+    descriptionAr:
+      "خدمات تكامل السحابة والبنية التحتية لبناء أنظمة تقنية قابلة للتوسع وآمنة وموثوقة.",
+    icon: Cloud,
+  },
+  {
+    id: 5,
+    titleEn: "Systems & Application Integration",
+    titleAr: "تكامل الأنظمة والتطبيقات",
+    descriptionEn:
+      "Technology integration and convergence services to connect your systems and applications into a cohesive ecosystem.",
+    descriptionAr:
+      "خدمات تكامل التقنية والتقارب لربط أنظمتك وتطبيقاتك في منظومة متكاملة.",
+    icon: Settings,
+  },
+  {
+    id: 6,
+    titleEn: "Startup & Enterprise Enablement",
+    titleAr: "تمكين الشركات الناشئة والمؤسسات",
+    descriptionEn:
+      "Enabling startups and established organizations through cohesive, scalable technology ecosystems and professional services.",
+    descriptionAr:
+      "تمكين الشركات الناشئة والمؤسسات القائمة من خلال أنظمة تقنية متكاملة وقابلة للتوسع وخدمات احترافية.",
+    icon: Rocket,
   },
 ];
 

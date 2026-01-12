@@ -19,7 +19,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     "hero.title": "iThing Smart Business Solutions",
     "hero.subtitle": "Accelerating Digital Transformation",
-    "hero.description": "We specialize in modern technology solutions with a focus on emerging technologies, artificial intelligence, data analytics, cloud services, and Software Development development.",
+    "hero.description": "A Jordanian LLC established in 2016, delivering professional digital transformation consulting, telecommunications & IT advisory, and smart digital solutions across regional markets.",
     "hero.cta.primary": "Start Your Journey",
     "hero.cta.secondary": "Learn More",
     
@@ -87,7 +87,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     "hero.title": "iThing لتطوير حلول الأعمال الذكية",
     "hero.subtitle": "تسريع التحول الرقمي",
-    "hero.description": "نحن متخصصون في تقديم حلول التكنولوجيا الحديثة، مع تركيز على التقنيات الناشئة، والذكاء الاصطناعي، وتحليلات البيانات، وتطوير الخدمات السحابية، والحلول البرمجية المخصصة.",
+    "hero.description": "شركة أردنية ذات مسؤولية محدودة تأسست عام 2016، تقدم استشارات التحول الرقمي واستشارات الاتصالات وتقنية المعلومات والحلول الرقمية الذكية في الأسواق الإقليمية.",
     "hero.cta.primary": "ابدأ رحلتك",
     "hero.cta.secondary": "اعرف المزيد",
     
@@ -169,7 +169,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (isRTL) {
       document.body.style.fontFamily = "Cairo, Tajawal, sans-serif";
     } else {
-      document.body.style.fontFamily = "Inter, sans-serif";
+      document.body.style.fontFamily = "'Fira Sans', sans-serif";
     }
   }, [language, isRTL]);
 

@@ -328,7 +328,7 @@
 
   /* Arabic Font Class */
   .font-arabic {
-    font-family: 'Hasan Alquds', 'Almarai', sans-serif;
+    font-family: 'Almarai', sans-serif;
     font-optical-sizing: auto;
   }
 
@@ -486,6 +486,7 @@
     0% {
       background-position: 200% center;
     }
+
     100% {
       background-position: -200% center;
     }
@@ -499,7 +500,7 @@
   .tech-card {
     transition: all 0.3s ease;
   }
-  
+
   .tech-card:hover {
     border-color: var(--tech-color) !important;
     box-shadow: 0 10px 25px -5px color-mix(in srgb, var(--tech-color) 30%, transparent);
@@ -523,9 +524,11 @@
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -540,9 +543,12 @@
 
   /* Floating animation */
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-10px);
     }
@@ -555,14 +561,14 @@
   /* Glow effect */
   .glow {
     box-shadow: 0 0 20px hsl(var(--primary) / 0.3),
-                0 0 40px hsl(var(--primary) / 0.2),
-                0 0 60px hsl(var(--primary) / 0.1);
+      0 0 40px hsl(var(--primary) / 0.2),
+      0 0 60px hsl(var(--primary) / 0.1);
   }
 
   .glow-text {
     text-shadow: 0 0 10px hsl(var(--primary) / 0.5),
-                 0 0 20px hsl(var(--primary) / 0.3),
-                 0 0 30px hsl(var(--primary) / 0.2);
+      0 0 20px hsl(var(--primary) / 0.3),
+      0 0 30px hsl(var(--primary) / 0.2);
   }
 
   /* Card 3D tilt effect */
@@ -580,9 +586,11 @@
     0% {
       box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
     }
+
     70% {
       box-shadow: 0 0 0 15px hsl(var(--primary) / 0);
     }
+
     100% {
       box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
     }
@@ -597,23 +605,23 @@
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
   }
 
   .animate-gradient-text {
-    background: linear-gradient(
-      90deg,
-      hsl(var(--primary)),
-      hsl(var(--primary) / 0.7),
-      hsl(var(--foreground)),
-      hsl(var(--primary) / 0.7),
-      hsl(var(--primary))
-    );
+    background: linear-gradient(90deg,
+        hsl(var(--primary)),
+        hsl(var(--primary) / 0.7),
+        hsl(var(--foreground)),
+        hsl(var(--primary) / 0.7),
+        hsl(var(--primary)));
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -623,15 +631,20 @@
 
   /* Morphing blob animation */
   @keyframes morph {
-    0%, 100% {
+
+    0%,
+    100% {
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
+
     25% {
       border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
     }
+
     50% {
       border-radius: 50% 60% 40% 60% / 40% 50% 60% 50%;
     }
+
     75% {
       border-radius: 40% 50% 60% 50% / 60% 40% 50% 60%;
     }
@@ -646,6 +659,7 @@
     0% {
       transform: translateY(-100%);
     }
+
     100% {
       transform: translateY(100vh);
     }
@@ -700,6 +714,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

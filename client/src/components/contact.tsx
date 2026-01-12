@@ -304,47 +304,6 @@ export function Contact() {
                 </div>
               </CardContent>
             </Card>
-
-            <Card className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine" data-testid="card-office-dubai">
-              <div className="h-2 bg-gradient-to-r from-primary/50 via-primary/80 to-primary" />
-              <CardContent className="p-8">
-                <h3
-                  className={`text-2xl font-bold mb-6 ${isRTL ? "font-arabic text-right" : ""}`}
-                >
-                  {t("contact.office.dubai")}
-                </h3>
-                <div className="space-y-5">
-                  <div className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
-                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <MapPin className="h-5 w-5 text-primary icon-bounce" />
-                    </div>
-                    <span className={`text-muted-foreground pt-2 ${isRTL ? "font-arabic" : ""}`}>
-                      {t("contact.office.dubai.address")}
-                    </span>
-                  </div>
-                  <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className="p-3 rounded-xl bg-primary/10">
-                      <Phone className="h-5 w-5 text-primary" />
-                    </div>
-                    <span className="text-muted-foreground" dir="ltr">
-                      +971 501970754
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-6 rounded-xl overflow-hidden border border-border/50">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828tried505!2d54.89781915!3d25.07628055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1704067200000!5m2!1sen!2s"
-                    width="100%"
-                    height="150"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Dubai Office Location"
-                  />
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

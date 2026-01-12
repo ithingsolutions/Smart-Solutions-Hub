@@ -66,7 +66,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.amman": "Amman Office",
     "contact.office.dubai": "Dubai Office",
     "contact.office.address": "Address",
-    "contact.office.amman.address": "Amman, 11194, Jordan",
+    "contact.office.amman.address": "Anshasi Square, 28 Alhusari St, Amman, Jordan",
     "contact.office.dubai.address": "Dubai, United Arab Emirates",
     
     "footer.company": "iThing Smart Business Solutions",
@@ -134,7 +134,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.amman": "مكتب عمّان",
     "contact.office.dubai": "مكتب دبي",
     "contact.office.address": "العنوان",
-    "contact.office.amman.address": "عمّان، 11194، الأردن",
+    "contact.office.amman.address": "ميدان الأنشاصي، 28 شارع الحصري، عمّان، الأردن",
     "contact.office.dubai.address": "دبي، الإمارات العربية المتحدة",
     
     "footer.company": "iThing لتطوير حلول الأعمال الذكية",

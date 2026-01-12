@@ -84,7 +84,6 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.form.submit": "Send Message",
     "contact.form.selectService": "Select a service",
     "contact.office.amman": "Amman Office",
-    "contact.office.dubai": "Dubai Office",
     "contact.office.address": "Address",
     "contact.office.amman.address":
       "Anshasi Square, 28 Alhusari St, Amman, Jordan",
@@ -161,11 +160,9 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.form.submit": "إرسال الرسالة",
     "contact.form.selectService": "اختر خدمة",
     "contact.office.amman": "مكتب عمّان",
-    "contact.office.dubai": "مكتب دبي",
     "contact.office.address": "العنوان",
     "contact.office.amman.address":
       "ميدان الأنشاصي، 28 شارع الحصري، عمّان، الأردن",
-    "contact.office.dubai.address": "دبي، الإمارات العربية المتحدة",
 
     "footer.company": "iThing لتطوير حلول الأعمال الذكية",
     "footer.description":

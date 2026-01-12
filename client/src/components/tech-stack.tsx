@@ -117,32 +117,30 @@ export function TechStack() {
           </div>
         </ScrollAnimation>
 
-        <StaggerContainer className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-6 md:gap-8" staggerDelay={0.05}>
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-4 md:gap-6">
           {technologies.map((tech) => {
             const Icon = tech.icon;
             return (
-              <StaggerItem key={tech.name} animation="zoomIn">
+              <div key={tech.name}>
                 <div
-                  className="tech-card group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card/50 border-2 border-border/30 backdrop-blur-sm hover:bg-card transition-all duration-300 hover:-translate-y-1"
+                  className="tech-card group flex flex-col items-center gap-3 p-4 rounded-2xl bg-card border border-border hover:border-primary/30 transition-colors duration-200"
                   style={{
                     "--tech-color": getIconColor(tech.color),
                   } as React.CSSProperties}
                   data-testid={`tech-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}
                 >
-                  <div className="p-3 rounded-xl bg-accent/50 transition-all duration-300">
-                    <Icon 
-                      className="w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110" 
-                      style={{ color: getIconColor(tech.color) }}
-                    />
-                  </div>
+                  <Icon 
+                    className="w-8 h-8 sm:w-10 sm:h-10" 
+                    style={{ color: getIconColor(tech.color) }}
+                  />
                   <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors text-center">
                     {tech.name}
                   </span>
                 </div>
-              </StaggerItem>
+              </div>
             );
           })}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

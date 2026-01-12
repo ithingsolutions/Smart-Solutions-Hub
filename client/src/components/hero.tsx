@@ -35,17 +35,7 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-primary/20" />
 
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full opacity-40"
-          style={{ filter: "blur(80px)" }}
-        />
-        <div
-          className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-primary/15 rounded-full opacity-30"
-          style={{ filter: "blur(60px)" }}
-        />
-      </div>
-
+      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="text-center max-w-5xl mx-auto">
           <div className="relative mb-10">
@@ -58,15 +48,11 @@ export function Hero() {
               />
 
               <div className="relative z-10 py-8 sm:py-12 md:py-14 flex flex-col items-center">
-                <div className="relative group mb-6">
-                  <div
-                    className="absolute -inset-12 sm:-inset-16 bg-primary/30 rounded-full opacity-50"
-                    style={{ filter: "blur(60px)" }}
-                  />
+                <div className="relative mb-6">
                   <img
                     src={ithingLogo}
                     alt="iThing Logo"
-                    className="relative h-28 sm:h-36 md:h-40 lg:h-48 w-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.5)] hover:scale-105 transition-transform duration-500"
+                    className="relative h-28 sm:h-36 md:h-40 lg:h-48 w-auto"
                   />
                 </div>
 
@@ -127,7 +113,7 @@ export function Hero() {
             className={`flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm mb-16 ${isRTL ? "flex-row-reverse" : ""}`}
           >
             <div
-              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm ${isRTL ? "flex-row-reverse" : ""}`}
+              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card border border-border ${isRTL ? "flex-row-reverse" : ""}`}
             >
               <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
               <span
@@ -137,7 +123,7 @@ export function Hero() {
               </span>
             </div>
             <button
-              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm cursor-pointer hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 ${isRTL ? "flex-row-reverse" : ""}`}
+              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card border border-border cursor-pointer hover:bg-primary/20 hover:border-primary/50 transition-colors duration-200 ${isRTL ? "flex-row-reverse" : ""}`}
               onClick={() => {
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
@@ -152,8 +138,8 @@ export function Hero() {
             </button>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 group">
-              <Lightbulb className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
+            <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
+              <Lightbulb className="w-8 h-8 text-primary mb-2" />
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
@@ -162,16 +148,16 @@ export function Hero() {
                   : "Digital Transformation"}
               </span>
             </div>
-            <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 group">
-              <Radio className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
+            <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
+              <Radio className="w-8 h-8 text-primary mb-2" />
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
                 {isRTL ? "استشارات الاتصالات وتقنية المعلومات" : "Telecom & IT Advisory"}
               </span>
             </div>
-            <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 group">
-              <Layers className="w-8 h-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
+            <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
+              <Layers className="w-8 h-8 text-primary mb-2" />
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >

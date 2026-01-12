@@ -145,27 +145,17 @@ export function Services() {
             return (
               <StaggerItem key={service.id} animation="zoomIn">
                 <Card
-                  className="group relative overflow-hidden border-0 bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full"
+                  className="group relative overflow-hidden border bg-card shadow-md hover:shadow-lg transition-shadow duration-300 h-full"
                   data-testid={`card-service-${service.id}`}
                 >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute top-0 left-0 w-20 h-20 bg-primary/10 rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2" />
-                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-                </div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <CardContent className="relative p-6 lg:p-8">
                   <div
                     className={`flex items-start justify-between mb-6 ${isRTL ? "flex-row-reverse" : ""}`}
                   >
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
-                      <div className="relative p-4 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/10 group-hover:border-primary/30 transition-colors duration-500">
-                        <Icon className="h-7 w-7 text-primary" />
-                      </div>
+                    <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20">
+                      <Icon className="h-7 w-7 text-primary" />
                     </div>
                     <div className="p-2 rounded-full border border-transparent group-hover:border-primary/20 transition-colors">
                       <ArrowUpRight className="h-4 w-4 text-muted-foreground/30 group-hover:text-primary transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 
 type Language = "en" | "ar";
 
@@ -16,46 +22,60 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "About",
     "nav.contact": "Contact",
     "nav.getStarted": "Get Started",
-    
+
     "hero.title": "iThing Smart Business Solutions",
     "hero.subtitle": "Accelerating Digital Transformation",
-    "hero.description": "A Jordanian LLC established in 2016, delivering professional digital transformation consulting, telecommunications & IT advisory, and smart digital solutions across regional markets.",
+    "hero.description":
+      "A Jordanian LLC established in 2016, delivering professional digital transformation consulting, telecommunications & IT advisory, and smart digital solutions across regional markets.",
     "hero.cta.primary": "Start Your Journey",
     "hero.cta.secondary": "Learn More",
-    
+
     "services.title": "Our Services",
-    "services.subtitle": "Comprehensive technology solutions tailored to your business needs",
+    "services.subtitle":
+      "Comprehensive technology solutions tailored to your business needs",
     "services.ai.title": "Artificial Intelligence",
-    "services.ai.description": "Leverage cutting-edge AI and machine learning to automate processes and gain intelligent insights from your data.",
+    "services.ai.description":
+      "Leverage cutting-edge AI and machine learning to automate processes and gain intelligent insights from your data.",
     "services.analytics.title": "Data Analytics",
-    "services.analytics.description": "Transform raw data into actionable business intelligence with our advanced analytics solutions.",
+    "services.analytics.description":
+      "Transform raw data into actionable business intelligence with our advanced analytics solutions.",
     "services.cloud.title": "Cloud Services",
-    "services.cloud.description": "Scalable and secure cloud infrastructure designed to grow with your business needs.",
+    "services.cloud.description":
+      "Scalable and secure cloud infrastructure designed to grow with your business needs.",
     "services.software.title": "Software Development",
-    "services.software.description": "Tailored software solutions built to address your unique business challenges and requirements.",
+    "services.software.description":
+      "Tailored software solutions built to address your unique business challenges and requirements.",
     "services.consulting.title": "Digital Transformation",
-    "services.consulting.description": "Strategic guidance to navigate your digital transformation journey with confidence.",
+    "services.consulting.description":
+      "Strategic guidance to navigate your digital transformation journey with confidence.",
     "services.integration.title": "System Integration",
-    "services.integration.description": "Seamlessly connect your systems and applications for improved efficiency and data flow.",
-    
+    "services.integration.description":
+      "Seamlessly connect your systems and applications for improved efficiency and data flow.",
+
     "stats.projects": "Projects Delivered",
     "stats.clients": "Happy Clients",
     "stats.experience": "Years Experience",
     "stats.experts": "Tech Experts",
-    
+
     "why.title": "Why Choose iThing?",
-    "why.subtitle": "Partner with us for innovative, scalable, and future-ready solutions",
+    "why.subtitle":
+      "Partner with us for innovative, scalable, and future-ready solutions",
     "why.innovation.title": "Innovation First",
-    "why.innovation.description": "We stay ahead of technology trends to deliver cutting-edge solutions.",
+    "why.innovation.description":
+      "We stay ahead of technology trends to deliver cutting-edge solutions.",
     "why.expertise.title": "Expert Team",
-    "why.expertise.description": "Our certified professionals bring years of industry experience.",
+    "why.expertise.description":
+      "Our certified professionals bring years of industry experience.",
     "why.support.title": "Expert Assistance",
-    "why.support.description": "Dedicated professionals ready to help you achieve your business goals.",
+    "why.support.description":
+      "Dedicated professionals ready to help you achieve your business goals.",
     "why.scalable.title": "Scalable Solutions",
-    "why.scalable.description": "Solutions that grow with your business without compromising performance.",
-    
+    "why.scalable.description":
+      "Solutions that grow with your business without compromising performance.",
+
     "contact.title": "Get In Touch",
-    "contact.subtitle": "Ready to transform your business? Let's start a conversation.",
+    "contact.subtitle":
+      "Ready to transform your business? Let's start a conversation.",
     "contact.form.name": "Full Name",
     "contact.form.email": "Email Address",
     "contact.form.phone": "Phone Number",
@@ -66,11 +86,13 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.amman": "Amman Office",
     "contact.office.dubai": "Dubai Office",
     "contact.office.address": "Address",
-    "contact.office.amman.address": "Anshasi Square, 28 Alhusari St, Amman, Jordan",
+    "contact.office.amman.address":
+      "Anshasi Square, 28 Alhusari St, Amman, Jordan",
     "contact.office.dubai.address": "Dubai, United Arab Emirates",
-    
+
     "footer.company": "iThing Smart Business Solutions",
-    "footer.description": "Your trusted partner for digital transformation and innovative technology solutions.",
+    "footer.description":
+      "Your trusted partner for digital transformation and innovative technology solutions.",
     "footer.services": "Services",
     "footer.quickLinks": "Quick Links",
     "footer.contact": "Contact",
@@ -84,44 +106,53 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "من نحن",
     "nav.contact": "اتصل بنا",
     "nav.getStarted": "ابدأ الآن",
-    
+
     "hero.title": "iThing لتطوير حلول الأعمال الذكية",
     "hero.subtitle": "تسريع التحول الرقمي",
-    "hero.description": "شركة أردنية ذات مسؤولية محدودة تأسست عام 2016، تقدم استشارات التحول الرقمي واستشارات الاتصالات وتقنية المعلومات والحلول الرقمية الذكية في الأسواق الإقليمية.",
+    "hero.description":
+      "شركة أردنية ذات مسؤولية محدودة تأسست عام 2016، تقدم استشارات التحول الرقمي واستشارات الاتصالات وتقنية المعلومات والحلول الرقمية الذكية في الأسواق الإقليمية.",
     "hero.cta.primary": "ابدأ رحلتك",
     "hero.cta.secondary": "اعرف المزيد",
-    
+
     "services.title": "خدماتنا",
     "services.subtitle": "حلول تكنولوجية شاملة مصممة لتلبية احتياجات أعمالك",
     "services.ai.title": "الذكاء الاصطناعي",
-    "services.ai.description": "استفد من أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لأتمتة العمليات واستخلاص رؤى ذكية من بياناتك.",
+    "services.ai.description":
+      "استفد من أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي لأتمتة العمليات واستخلاص رؤى ذكية من بياناتك.",
     "services.analytics.title": "تحليلات البيانات",
-    "services.analytics.description": "حوّل البيانات الخام إلى ذكاء أعمال قابل للتنفيذ باستخدام حلولنا التحليلية المتقدمة.",
+    "services.analytics.description":
+      "حوّل البيانات الخام إلى ذكاء أعمال قابل للتنفيذ باستخدام حلولنا التحليلية المتقدمة.",
     "services.cloud.title": "الخدمات السحابية",
-    "services.cloud.description": "بنية تحتية سحابية قابلة للتوسع وآمنة مصممة للنمو مع احتياجات عملك.",
+    "services.cloud.description":
+      "بنية تحتية سحابية قابلة للتوسع وآمنة مصممة للنمو مع احتياجات عملك.",
     "services.software.title": "تطوير البرمجيات",
-    "services.software.description": "حلول برمجية مخصصة مبنية لمعالجة تحديات ومتطلبات عملك الفريدة.",
+    "services.software.description":
+      "حلول برمجية مخصصة مبنية لمعالجة تحديات ومتطلبات عملك الفريدة.",
     "services.consulting.title": "التحول الرقمي",
-    "services.consulting.description": "توجيه استراتيجي للتنقل في رحلة التحول الرقمي بثقة.",
+    "services.consulting.description":
+      "توجيه استراتيجي للتنقل في رحلة التحول الرقمي بثقة.",
     "services.integration.title": "تكامل الأنظمة",
-    "services.integration.description": "ربط أنظمتك وتطبيقاتك بسلاسة لتحسين الكفاءة وتدفق البيانات.",
-    
+    "services.integration.description":
+      "ربط أنظمتك وتطبيقاتك بسلاسة لتحسين الكفاءة وتدفق البيانات.",
+
     "stats.projects": "مشروع منجز",
     "stats.clients": "عميل سعيد",
     "stats.experience": "سنوات خبرة",
     "stats.experts": "خبير تقني",
-    
+
     "why.title": "لماذا تختار iThing؟",
     "why.subtitle": "شاركنا لحلول مبتكرة وقابلة للتطوير ومستعدة للمستقبل",
     "why.innovation.title": "الابتكار أولاً",
-    "why.innovation.description": "نبقى في صدارة اتجاهات التكنولوجيا لتقديم حلول متطورة.",
+    "why.innovation.description":
+      "نبقى في صدارة اتجاهات التكنولوجيا لتقديم حلول متطورة.",
     "why.expertise.title": "فريق خبراء",
-    "why.expertise.description": "محترفونا المعتمدون يجلبون سنوات من الخبرة الصناعية.",
+    "why.expertise.description":
+      "محترفونا المعتمدون يجلبون سنوات من الخبرة الصناعية.",
     "why.support.title": "مساعدة الخبراء",
     "why.support.description": "متخصصون متفانون لمساعدتك في تحقيق أهداف عملك.",
     "why.scalable.title": "حلول قابلة للتوسع",
     "why.scalable.description": "حلول تنمو مع عملك دون المساس بالأداء.",
-    
+
     "contact.title": "تواصل معنا",
     "contact.subtitle": "هل أنت مستعد لتحويل عملك؟ لنبدأ محادثة.",
     "contact.form.name": "الاسم الكامل",
@@ -134,11 +165,13 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.amman": "مكتب عمّان",
     "contact.office.dubai": "مكتب دبي",
     "contact.office.address": "العنوان",
-    "contact.office.amman.address": "ميدان الأنشاصي، 28 شارع الحصري، عمّان، الأردن",
+    "contact.office.amman.address":
+      "ميدان الأنشاصي، 28 شارع الحصري، عمّان، الأردن",
     "contact.office.dubai.address": "دبي، الإمارات العربية المتحدة",
-    
+
     "footer.company": "iThing لتطوير حلول الأعمال الذكية",
-    "footer.description": "شريكك الموثوق للتحول الرقمي وحلول التكنولوجيا المبتكرة.",
+    "footer.description":
+      "شريكك الموثوق للتحول الرقمي وحلول التكنولوجيا المبتكرة.",
     "footer.services": "الخدمات",
     "footer.quickLinks": "روابط سريعة",
     "footer.contact": "اتصل بنا",
@@ -148,7 +181,9 @@ const translations: Record<Language, Record<string, string>> = {
   },
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(() => {
@@ -165,7 +200,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("language", language);
     document.documentElement.lang = language;
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
-    
+
     if (isRTL) {
       document.body.style.fontFamily = "Cairo, Tajawal, sans-serif";
     } else {

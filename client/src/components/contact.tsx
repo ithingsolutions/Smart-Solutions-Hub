@@ -236,46 +236,22 @@ export function Contact() {
             </CardContent>
           </Card>
 
-          <div className="lg:col-span-2 space-y-6">
-            <Card className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine" data-testid="card-general-manager">
+          <div className="lg:col-span-2">
+            <Card className="group border-0 bg-background shadow-xl overflow-hidden" data-testid="card-office-amman">
               <div className="h-2 bg-gradient-to-r from-primary to-red-600" />
               <CardContent className="p-8">
-                <div className={`flex items-center gap-4 mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <div className={`flex items-center gap-4 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
                   <div className="p-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20">
                     <User className="h-8 w-8 text-primary" />
                   </div>
-                  <div className={isRTL ? "text-right" : ""}>
-                    <h3 className={`text-2xl font-bold ${isRTL ? "font-arabic" : ""}`}>
-                      {isRTL ? "iThing Solutions" : "iThing Solutions"}
-                    </h3>
-                    <p className={`text-primary font-semibold ${isRTL ? "font-arabic" : ""}`}>
-                      {isRTL ? "تواصل معنا" : "Contact Us"}
-                    </p>
-                  </div>
+                  <h3 className={`text-2xl font-bold ${isRTL ? "font-arabic" : ""}`}>
+                    iThing Solutions
+                  </h3>
                 </div>
-                <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-                  <div className="p-3 rounded-xl bg-primary/10">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
-                  <a href="mailto:info@ithingsolutions.com" className="text-muted-foreground hover:text-primary transition-colors" dir="ltr">
-                    info@ithingsolutions.com
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group border-0 bg-background shadow-xl overflow-hidden hover-lift hover-shine" data-testid="card-office-amman">
-              <div className="h-2 bg-gradient-to-r from-primary via-primary/80 to-primary/50" />
-              <CardContent className="p-8">
-                <h3
-                  className={`text-2xl font-bold mb-6 ${isRTL ? "font-arabic text-right" : ""}`}
-                >
-                  {t("contact.office.amman")}
-                </h3>
                 <div className="space-y-5">
                   <div className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
-                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <MapPin className="h-5 w-5 text-primary icon-bounce" />
+                    <div className="p-3 rounded-xl bg-primary/10">
+                      <MapPin className="h-5 w-5 text-primary" />
                     </div>
                     <span className={`text-muted-foreground pt-2 ${isRTL ? "font-arabic" : ""}`}>
                       {t("contact.office.amman.address")}
@@ -288,6 +264,14 @@ export function Contact() {
                     <span className="text-muted-foreground" dir="ltr">
                       +962 777775484
                     </span>
+                  </div>
+                  <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div className="p-3 rounded-xl bg-primary/10">
+                      <Mail className="h-5 w-5 text-primary" />
+                    </div>
+                    <a href="mailto:info@ithingsolutions.com" className="text-muted-foreground hover:text-primary transition-colors" dir="ltr">
+                      info@ithingsolutions.com
+                    </a>
                   </div>
                 </div>
                 <div className="mt-6 rounded-xl overflow-hidden border border-border/50">

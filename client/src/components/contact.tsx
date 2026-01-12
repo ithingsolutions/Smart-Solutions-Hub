@@ -245,7 +245,7 @@ export function Contact() {
                     <User className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className={`text-2xl font-bold ${isRTL ? "font-arabic" : ""}`}>
-                    Smart Business Solutions
+                    iThing Smart Business Solutions
                   </h3>
                 </div>
                 <div className="space-y-5">

@@ -90,7 +90,7 @@ export function WhyChooseUs() {
                       {isRTL ? "سنوات من التميز" : "Years of Excellence"}
                     </div>
                     <div className="mt-6 flex items-center justify-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                      <div className="w-3 h-3 rounded-full bg-green-500" />
                       <span className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}>
                         {isRTL ? "يثق بنا العملاء" : "Trusted by Clients"}
                       </span>
@@ -99,8 +99,8 @@ export function WhyChooseUs() {
                 </div>
               </div>
               
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '3s' }} />
-              <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-primary/15 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-primary/15 rounded-full blur-2xl" />
             </div>
           </ScrollAnimation>
         </div>

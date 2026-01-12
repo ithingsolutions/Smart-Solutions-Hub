@@ -120,7 +120,7 @@ export function Services() {
               </span>
             </div>
             <h2
-              className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 animate-gradient-text ${isRTL ? "font-arabic" : ""}`}
+              className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 ${isRTL ? "font-arabic" : ""}`}
               data-testid="text-services-title"
             >
               {isRTL ? "خدماتنا" : "Our Services"}
@@ -147,7 +147,7 @@ export function Services() {
             return (
               <StaggerItem key={service.id} animation="zoomIn">
                 <Card
-                  className="group relative overflow-hidden border-0 bg-background/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 card-3d h-full"
+                  className="group relative overflow-hidden border-0 bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full"
                   data-testid={`card-service-${service.id}`}
                 >
                 <div

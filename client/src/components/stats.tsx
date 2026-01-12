@@ -16,9 +16,8 @@ export function Stats() {
       <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/98 to-foreground" />
       
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-primary/15 rounded-full opacity-40" style={{ filter: "blur(60px)" }} />
+        <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-primary/10 rounded-full opacity-30" style={{ filter: "blur(50px)" }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

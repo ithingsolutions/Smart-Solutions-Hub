@@ -1,7 +1,7 @@
 import { useLanguage } from "@/lib/language-context";
 import { useTheme } from "@/lib/theme-context";
 import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/scroll-animation";
-import { Cpu } from "lucide-react";
+import { Cpu, BarChart3 } from "lucide-react";
 import { 
   SiReact, 
   SiNodedotjs, 
@@ -25,15 +25,18 @@ import {
   SiCloudflare,
   SiPostman,
   SiSwagger,
+  SiTensorflow,
+  SiAuth0,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
+import { FaJava, FaMicrosoft } from "react-icons/fa";
 import { TbBrandMysql } from "react-icons/tb";
 import { VscAzure } from "react-icons/vsc";
 import { type IconType } from "react-icons";
+import { type LucideIcon } from "lucide-react";
 
 interface Technology {
   name: string;
-  icon: IconType;
+  icon: IconType | LucideIcon;
   color: string;
 }
 
@@ -63,6 +66,9 @@ const technologies: Technology[] = [
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   { name: "Figma", icon: SiFigma, color: "#F24E1E" },
   { name: "Git", icon: SiGit, color: "#F05032" },
+  { name: "Power BI", icon: BarChart3, color: "#F2C811" },
+  { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+  { name: "Auth0", icon: SiAuth0, color: "#EB5424" },
 ];
 
 export function TechStack() {

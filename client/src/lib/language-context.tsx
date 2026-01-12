@@ -87,8 +87,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.office.address": "Address",
     "contact.office.amman.address":
       "Anshasi Square, 28 Alhusari St, Amman, Jordan",
-    "contact.office.dubai.address": "Dubai, United Arab Emirates",
-
+Y
     "footer.company": "iThing Smart Business Solutions",
     "footer.description":
       "Your trusted partner for digital transformation and innovative technology solutions.",

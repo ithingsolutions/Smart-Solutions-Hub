@@ -261,9 +261,10 @@ export function Contact() {
                     <div className="p-3 rounded-xl bg-primary/10">
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
-                    <span className="text-muted-foreground" dir="ltr">
-                      +962 777775484
-                    </span>
+                    <div className="flex flex-col text-muted-foreground" dir="ltr">
+                      <span>+962 777775484</span>
+                      <span>+971 501970754</span>
+                    </div>
                   </div>
                   <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
                     <div className="p-3 rounded-xl bg-primary/10">

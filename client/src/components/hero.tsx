@@ -136,8 +136,12 @@ export function Hero() {
                 {isRTL ? "متوفرون الآن" : "Available Now"}
               </span>
             </div>
-            <div
-              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm ${isRTL ? "flex-row-reverse" : ""}`}
+            <button
+              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card/50 border border-border/50 backdrop-blur-sm cursor-pointer hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 ${isRTL ? "flex-row-reverse" : ""}`}
+              onClick={() => {
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              data-testid="button-free-consultation"
             >
               <Zap className="w-4 h-4 text-primary" />
               <span
@@ -145,7 +149,7 @@ export function Hero() {
               >
                 {isRTL ? "استشارة مجانية" : "Free Consultation"}
               </span>
-            </div>
+            </button>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-xl bg-card/30 border border-border/30 backdrop-blur-sm hover:bg-card/50 transition-colors duration-300 group">

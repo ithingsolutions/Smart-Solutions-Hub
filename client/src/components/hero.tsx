@@ -66,7 +66,7 @@ export function Hero() {
                   <img
                     src={ithingLogo}
                     alt="iThing Logo"
-                    className="relative h-44 sm:h-56 md:h-64 lg:h-72 w-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.5)] hover:scale-105 transition-transform duration-500"
+                    className="relative h-28 sm:h-36 md:h-40 lg:h-48 w-auto drop-shadow-[0_0_60px_rgba(255,0,0,0.5)] hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 

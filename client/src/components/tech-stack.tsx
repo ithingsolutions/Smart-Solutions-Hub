@@ -21,8 +21,12 @@ import {
   SiFirebase,
   SiJavascript,
   SiGit,
-  SiDotnet
+  SiDotnet,
+  SiCloudflare,
+  SiPostman,
+  SiSwagger,
 } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 import { TbBrandMysql } from "react-icons/tb";
 import { VscAzure } from "react-icons/vsc";
 import { type IconType } from "react-icons";
@@ -34,6 +38,7 @@ interface Technology {
 }
 
 const technologies: Technology[] = [
+  { name: "Java", icon: FaJava, color: "#ED8B00" },
   { name: "React", icon: SiReact, color: "#61DAFB" },
   { name: "Next.js", icon: SiNextdotjs, color: "theme-adaptive" },
   { name: "Angular", icon: SiAngular, color: "#DD0031" },
@@ -43,12 +48,15 @@ const technologies: Technology[] = [
   { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
   { name: "Express", icon: SiExpress, color: "theme-adaptive" },
+  { name: "Cloudflare", icon: SiCloudflare, color: "#F38020" },
   { name: "Azure", icon: VscAzure, color: "#0078D4" },
   { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
-  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-  { name: "SQL Server", icon: TbBrandMysql, color: "#CC2927" },
-  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
   { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "MySQL", icon: TbBrandMysql, color: "#4479A1" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "REST API", icon: SiPostman, color: "#FF6C37" },
+  { name: "Swagger", icon: SiSwagger, color: "#85EA2D" },
   { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
   { name: "OpenAI", icon: SiOpenai, color: "#00A67E" },
   { name: "Flutter", icon: SiFlutter, color: "#02569B" },

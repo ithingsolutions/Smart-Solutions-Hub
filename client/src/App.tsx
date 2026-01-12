@@ -10,7 +10,6 @@ import { DynamicBackground } from "@/components/dynamic-background";
 import { Preloader } from "@/components/preloader";
 import { ChatPanel } from "@/components/chat-panel";
 import { CookieConsent } from "@/components/cookie-consent";
-import { FloatingParticles } from "@/components/floating-particles";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
@@ -38,7 +37,6 @@ function App() {
             <TooltipProvider>
               <Preloader />
               <DynamicBackground />
-              <FloatingParticles />
               <ChatPanel />
               <CookieConsent />
               <Toaster />

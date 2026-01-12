@@ -83,7 +83,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "var(--font-sans)", "sans-serif"],
+        sans: ["Fira Sans", "var(--font-sans)", "sans-serif"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
         arabic: ["Cairo", "Tajawal", "sans-serif"],

@@ -33,6 +33,14 @@ export function WhyChooseUs() {
               {t("why.title")}
             </h2>
             <p
+              className={`text-lg text-muted-foreground mb-6 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+              data-testid="text-about-description"
+            >
+              {isRTL 
+                ? "شركة أردنية ذات مسؤولية محدودة تأسست عام 2016، تقدم استشارات التحول الرقمي واستشارات الاتصالات وتقنية المعلومات والحلول الرقمية الذكية في الأسواق الإقليمية."
+                : "A Jordanian LLC established in 2016, delivering professional digital transformation consulting, telecommunications & IT advisory, and smart digital solutions across regional markets."}
+            </p>
+            <p
               className={`text-xl text-muted-foreground mb-12 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
               data-testid="text-why-subtitle"
             >

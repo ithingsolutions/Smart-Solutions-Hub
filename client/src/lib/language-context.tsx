@@ -25,8 +25,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "hero.title": "iThing Smart Business Solutions",
     "hero.subtitle": "Accelerating Digital Transformation",
-    "hero.description":
-      "A Jordanian LLC established in 2016, delivering professional digital transformation consulting, telecommunications & IT advisory, and smart digital solutions across regional markets.",
+    "hero.description": "Your trusted partner for innovative, scalable, and future-ready technology solutions.",
     "hero.cta.primary": "Start Your Journey",
     "hero.cta.secondary": "Learn More",
 
@@ -109,8 +108,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "hero.title": "iThing لتطوير حلول الأعمال الذكية",
     "hero.subtitle": "تسريع التحول الرقمي",
-    "hero.description":
-      "شركة أردنية ذات مسؤولية محدودة تأسست عام 2016، تقدم استشارات التحول الرقمي واستشارات الاتصالات وتقنية المعلومات والحلول الرقمية الذكية في الأسواق الإقليمية.",
+    "hero.description": "شريكك الموثوق لحلول تكنولوجية مبتكرة وقابلة للتطوير ومستعدة للمستقبل.",
     "hero.cta.primary": "ابدأ رحلتك",
     "hero.cta.secondary": "اعرف المزيد",
 

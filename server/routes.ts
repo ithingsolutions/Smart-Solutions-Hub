@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { contactFormSchema, insertTeamMemberSchema, insertClientSchema, insertServiceSchema, insertTestimonialSchema, insertPortfolioProjectSchema } from "@shared/schema";
 import { setupAuth, registerAuthRoutes, isAuthenticated } from "./replit_integrations/auth";
 import { registerChatRoutes } from "./replit_integrations/chat";
+import { sendContactFormEmail } from "./replit_integrations/sendgrid";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -21,6 +22,21 @@ export async function registerRoutes(
     try {
       const validatedData = contactFormSchema.parse(req.body);
       const submission = await storage.createContactSubmission(validatedData);
+      
+      // Send email notification via SendGrid
+      try {
+        await sendContactFormEmail({
+          name: validatedData.name,
+          email: validatedData.email,
+          company: validatedData.service || undefined,
+          message: validatedData.message,
+        });
+        console.log("Contact form email sent successfully");
+      } catch (emailError) {
+        console.error("Failed to send contact form email:", emailError);
+        // Don't fail the request if email fails, submission is still saved
+      }
+      
       res.status(201).json({ success: true, id: submission.id });
     } catch (error) {
       if (error instanceof Error && error.name === "ZodError") {

@@ -9,6 +9,7 @@ import { BackgroundProvider } from "@/lib/background-context";
 import { DynamicBackground } from "@/components/dynamic-background";
 import { Preloader } from "@/components/preloader";
 import { ChatPanel } from "@/components/chat-panel";
+import { CookieConsent } from "@/components/cookie-consent";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
@@ -37,6 +38,7 @@ function App() {
               <Preloader />
               <DynamicBackground />
               <ChatPanel />
+              <CookieConsent />
               <Toaster />
               <Router />
             </TooltipProvider>

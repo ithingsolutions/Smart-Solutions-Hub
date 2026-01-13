@@ -49,7 +49,7 @@ const clients: Client[] = [
 export function Clients() {
   const { language, isRTL } = useLanguage();
 
-  const duplicatedClients = [...clients, ...clients];
+  const duplicatedClients = [...clients, ...clients, ...clients, ...clients];
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
@@ -71,10 +71,10 @@ export function Clients() {
           50% { box-shadow: 0 8px 30px rgba(255,0,0,0.15), 0 12px 25px rgba(0,0,0,0.12); }
         }
         .carousel-track {
-          animation: scroll-left 25s linear infinite;
+          animation: scroll-left 40s linear infinite;
         }
         .carousel-track-rtl {
-          animation: scroll-right 25s linear infinite;
+          animation: scroll-right 40s linear infinite;
         }
         .carousel-track:hover,
         .carousel-track-rtl:hover {

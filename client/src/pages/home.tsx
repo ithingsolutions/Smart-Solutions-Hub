@@ -3,7 +3,6 @@ import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { WhyChooseUs } from "@/components/why-choose-us";
 import { TechStack } from "@/components/tech-stack";
-import { Clients } from "@/components/clients";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
@@ -16,7 +15,6 @@ export default function Home() {
         <Services />
         <TechStack />
         <WhyChooseUs />
-        <Clients />
         <Contact />
       </main>
       <Footer />

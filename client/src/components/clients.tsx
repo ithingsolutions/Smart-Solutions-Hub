@@ -52,7 +52,9 @@ export function Clients() {
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/3 rounded-full blur-2xl animate-[pulse_4s_ease-in-out_infinite]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/4 rounded-full blur-2xl animate-[pulse_6s_ease-in-out_infinite]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

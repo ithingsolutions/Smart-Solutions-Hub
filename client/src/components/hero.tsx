@@ -53,12 +53,14 @@ export function Hero() {
 
                 <div className="relative">
                   <h1
-                    className={`relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide ${isRTL ? "font-arabic leading-relaxed" : "leading-[1.3]"}`}
+                    className={`relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide ${
+                      isRTL ? "font-arabic leading-relaxed" : "leading-[1.3]"
+                    }`}
                     data-testid="text-hero-title"
                   >
                     <span className="bg-gradient-to-r from-foreground via-primary/80 to-foreground bg-clip-text text-transparent">
                       {isRTL
-                        ? "لتطوير حلول الأعمال الذكية"
+                        ? "أبعاد لتطوير حلول الأعمال الذكية"
                         : "Smart Business Solutions"}
                     </span>
                   </h1>
@@ -70,17 +72,23 @@ export function Hero() {
             </div>
           </div>
           <p
-            className={`text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-14 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+            className={`text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-14 leading-relaxed ${
+              isRTL ? "font-arabic" : ""
+            }`}
             data-testid="text-hero-description"
           >
             {t("hero.description")}
           </p>
           <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-5 mb-16 ${isRTL ? "sm:flex-row-reverse" : ""}`}
+            className={`flex flex-col sm:flex-row items-center justify-center gap-5 mb-16 ${
+              isRTL ? "sm:flex-row-reverse" : ""
+            }`}
           >
             <Button
               size="lg"
-              className={`group min-w-[240px] h-16 text-lg font-bold shadow-2xl shadow-primary/30 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02] ${isRTL ? "font-arabic" : ""}`}
+              className={`group min-w-[240px] h-16 text-lg font-bold shadow-2xl shadow-primary/30 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02] ${
+                isRTL ? "font-arabic" : ""
+              }`}
               data-testid="button-hero-primary"
               onClick={() => {
                 document
@@ -90,14 +98,18 @@ export function Hero() {
             >
               {t("hero.cta.primary")}
               <ArrowIcon
-                className={`h-5 w-5 transition-transform duration-300 group-hover:${isRTL ? "-translate-x-1.5" : "translate-x-1.5"}`}
+                className={`h-5 w-5 transition-transform duration-300 group-hover:${
+                  isRTL ? "-translate-x-1.5" : "translate-x-1.5"
+                }`}
               />
             </Button>
 
             <Button
               variant="outline"
               size="lg"
-              className={`min-w-[240px] h-16 text-lg font-bold backdrop-blur-sm border-2 hover:bg-accent/50 transition-all duration-300 ${isRTL ? "font-arabic" : ""}`}
+              className={`min-w-[240px] h-16 text-lg font-bold backdrop-blur-sm border-2 hover:bg-accent/50 transition-all duration-300 ${
+                isRTL ? "font-arabic" : ""
+              }`}
               data-testid="button-hero-secondary"
               onClick={() => {
                 document
@@ -109,26 +121,36 @@ export function Hero() {
             </Button>
           </div>
           <div
-            className={`flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm mb-16 ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm mb-16 ${
+              isRTL ? "flex-row-reverse" : ""
+            }`}
           >
             <div
-              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card border border-border ${isRTL ? "flex-row-reverse" : ""}`}
+              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card border border-border ${
+                isRTL ? "flex-row-reverse" : ""
+              }`}
             >
               <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
               <span
-                className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-muted-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "متوفرون الآن" : "Available Now"}
               </span>
             </div>
             <a
-              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card border border-border cursor-pointer hover:bg-primary/20 hover:border-primary/50 transition-colors duration-200 ${isRTL ? "flex-row-reverse" : ""}`}
+              className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card border border-border cursor-pointer hover:bg-primary/20 hover:border-primary/50 transition-colors duration-200 ${
+                isRTL ? "flex-row-reverse" : ""
+              }`}
               data-testid="button-free-consultation"
               href="mailto:info@ithingsolutions.com"
             >
               <Zap className="w-4 h-4 text-primary" />
               <span
-                className={`text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-muted-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "استشارة مجانية" : "Free Consultation"}
               </span>
@@ -138,7 +160,9 @@ export function Hero() {
             <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
               <Lightbulb className="w-8 h-8 text-primary mb-2" />
               <span
-                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-sm font-semibold text-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "استشارات التحول الرقمي" : "Digital Transformation"}
               </span>
@@ -146,7 +170,9 @@ export function Hero() {
             <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
               <Radio className="w-8 h-8 text-primary mb-2" />
               <span
-                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-xsm font-semibold text-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL
                   ? "استشارات الاتصالات وتقنية المعلومات"
@@ -156,7 +182,9 @@ export function Hero() {
             <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
               <Layers className="w-8 h-8 text-primary mb-2" />
               <span
-                className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-sm font-semibold text-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "الحلول الذكية" : "Smart Solutions"}
               </span>
@@ -171,7 +199,9 @@ export function Hero() {
                 </span>
               </div>
               <span
-                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-sm text-muted-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "عميل سعيد" : "Happy Clients"}
               </span>
@@ -184,7 +214,9 @@ export function Hero() {
                 </span>
               </div>
               <span
-                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-sm text-muted-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "مشروع منجز" : "Projects Done"}
               </span>
@@ -197,7 +229,9 @@ export function Hero() {
                 </span>
               </div>
               <span
-                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-sm text-muted-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "دولة" : "Countries"}
               </span>
@@ -210,7 +244,9 @@ export function Hero() {
                 </span>
               </div>
               <span
-                className={`text-sm text-muted-foreground ${isRTL ? "font-arabic" : ""}`}
+                className={`text-sm text-muted-foreground ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "سنوات خبرة" : "Years Experience"}
               </span>

@@ -62,15 +62,31 @@ export function Clients() {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
+        @keyframes client-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
         .carousel-track {
-          animation: scroll-left 25s linear infinite;
+          animation: scroll-left 20s linear infinite;
         }
         .carousel-track-rtl {
-          animation: scroll-right 25s linear infinite;
+          animation: scroll-right 20s linear infinite;
         }
         .carousel-track:hover,
         .carousel-track-rtl:hover {
           animation-play-state: paused;
+        }
+        .client-card {
+          animation: client-pulse 3s ease-in-out infinite;
+        }
+        .client-card:nth-child(2n) {
+          animation-delay: 0.5s;
+        }
+        .client-card:nth-child(3n) {
+          animation-delay: 1s;
+        }
+        .client-card:nth-child(4n) {
+          animation-delay: 1.5s;
         }
       `}</style>
       
@@ -115,18 +131,18 @@ export function Clients() {
               return (
                 <div
                   key={`${client.id}-${index}`}
-                  className="group flex flex-col items-center justify-center p-8 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
+                  className="client-card group flex flex-col items-center justify-center p-4 rounded-xl bg-background border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 min-w-[140px]"
                   data-testid={`client-${client.id}`}
                 >
-                  <div className="h-24 w-full flex items-center justify-center mb-4">
+                  <div className="h-16 w-full flex items-center justify-center mb-2">
                     <img
                       src={client.logoUrl}
                       alt={name}
-                      className="max-h-24 max-w-full object-contain"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
                   <span
-                    className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
+                    className={`text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
                   >
                     {name}
                   </span>

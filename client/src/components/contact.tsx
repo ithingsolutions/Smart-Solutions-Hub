@@ -236,10 +236,10 @@ export function Contact() {
             </CardContent>
           </Card>
 
-          <div className="lg:col-span-2">
-            <Card className="group border-0 bg-background shadow-xl overflow-hidden" data-testid="card-office-amman">
+          <div className="lg:col-span-2 flex">
+            <Card className="group border-0 bg-background shadow-xl overflow-hidden flex-1 flex flex-col" data-testid="card-office-amman">
               <div className="h-2 bg-gradient-to-r from-primary to-red-600" />
-              <CardContent className="p-8">
+              <CardContent className="p-8 flex-1 flex flex-col">
                 <div className={`flex items-center gap-4 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
                   <div className="p-4 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20">
                     <User className="h-8 w-8 text-primary" />
@@ -275,11 +275,11 @@ export function Contact() {
                     </a>
                   </div>
                 </div>
-                <div className="mt-6 rounded-xl overflow-hidden border border-border/50">
+                <div className="mt-auto pt-6 rounded-xl overflow-hidden border border-border/50 flex-1 min-h-[200px]">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d211.54048486773985!2d35.89207797627318!3d31.97045142027104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca1911a552b43%3A0x3a046f55a29842d6!2sThermoflix!5e0!3m2!1sen!2sus!4v1768129631823!5m2!1sen!2sus"
                     width="100%"
-                    height="280"
+                    height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"

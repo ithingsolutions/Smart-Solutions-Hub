@@ -1,48 +1,53 @@
 import { useLanguage } from "@/lib/language-context";
-import { useQuery } from "@tanstack/react-query";
-import { Building2 } from "lucide-react";
 
 interface Client {
   id: number;
   nameEn: string;
   nameAr: string;
   logoUrl: string;
-  icon: string;
-  sortOrder: number;
 }
+
+const clients: Client[] = [
+  {
+    id: 1,
+    nameEn: "AIRVINE",
+    nameAr: "AIRVINE",
+    logoUrl: "/attached_assets/Airvine-Logo_1767774778537.png",
+  },
+  {
+    id: 2,
+    nameEn: "Dictum Health",
+    nameAr: "Dictum Health",
+    logoUrl: "/attached_assets/DICTUM-HEALTH-1_1767774778538.jpg",
+  },
+  {
+    id: 3,
+    nameEn: "Flow-MED",
+    nameAr: "Flow-MED",
+    logoUrl: "/attached_assets/Flow-MED_1767774778540.png",
+  },
+  {
+    id: 4,
+    nameEn: "HQ Inc",
+    nameAr: "HQ Inc",
+    logoUrl: "/attached_assets/HQInc_1767774778539.jpg",
+  },
+  {
+    id: 5,
+    nameEn: "Swiss Discovery",
+    nameAr: "Swiss Discovery",
+    logoUrl: "/attached_assets/Swiss-Discovery_1767774778538.jpg",
+  },
+  {
+    id: 6,
+    nameEn: "Thermoflix",
+    nameAr: "Thermoflix",
+    logoUrl: "/attached_assets/Thermoflix_1767774778540.jpg",
+  },
+];
 
 export function Clients() {
   const { language, isRTL } = useLanguage();
-
-  const { data: clients = [], isLoading } = useQuery<Client[]>({
-    queryKey: ["/api/content/clients"],
-  });
-
-  if (isLoading) {
-    return (
-      <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="h-10 w-48 bg-muted animate-pulse rounded-full mx-auto mb-8" />
-            <div className="h-12 w-64 bg-muted animate-pulse rounded mx-auto mb-4" />
-            <div className="h-6 w-96 bg-muted animate-pulse rounded mx-auto" />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div
-                key={i}
-                className="h-32 bg-muted animate-pulse rounded-2xl"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (clients.length === 0) {
-    return null;
-  }
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
@@ -84,19 +89,13 @@ export function Clients() {
                 className="group flex flex-col items-center justify-center p-8 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 data-testid={`client-${client.id}`}
               >
-                {client.logoUrl ? (
-                  <div className="h-24 w-full flex items-center justify-center mb-4">
-                    <img
-                      src={client.logoUrl}
-                      alt={name}
-                      className="max-h-24 max-w-full object-contain"
-                    />
-                  </div>
-                ) : (
-                  <div className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors mb-4">
-                    <Building2 className="w-8 h-8 text-primary" />
-                  </div>
-                )}
+                <div className="h-24 w-full flex items-center justify-center mb-4">
+                  <img
+                    src={client.logoUrl}
+                    alt={name}
+                    className="max-h-24 max-w-full object-contain"
+                  />
+                </div>
                 <span
                   className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
                 >

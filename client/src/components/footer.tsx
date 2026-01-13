@@ -1,5 +1,5 @@
 import { useLanguage } from "@/lib/language-context";
-import { SiLinkedin } from "react-icons/si";
+import { SiLinkedin, SiWhatsapp } from "react-icons/si";
 import { ArrowUpRight } from "lucide-react";
 const logoImage = "/attached_assets/1661853192216_1767668534815.jpg";
 
@@ -62,7 +62,16 @@ export function Footer() {
               >
                 <SiLinkedin className="h-5 w-5 transition-transform group-hover:rotate-6" />
               </a>
-                          </div>
+              <a
+                href="https://wa.me/962777775484"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-3 rounded-xl bg-background/10 hover:bg-[#25D366] hover:text-white transition-all duration-300 hover:scale-110"
+                data-testid="link-whatsapp"
+              >
+                <SiWhatsapp className="h-5 w-5 transition-transform group-hover:rotate-6" />
+              </a>
+            </div>
           </div>
 
           <div>

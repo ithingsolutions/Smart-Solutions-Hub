@@ -62,31 +62,43 @@ export function Clients() {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
-        @keyframes client-pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(0.95); }
+        @keyframes float {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-8px) scale(1.05); }
+        }
+        @keyframes glow {
+          0%, 100% { box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+          50% { box-shadow: 0 8px 30px rgba(255,0,0,0.15), 0 12px 25px rgba(0,0,0,0.12); }
         }
         .carousel-track {
-          animation: scroll-left 20s linear infinite;
+          animation: scroll-left 25s linear infinite;
         }
         .carousel-track-rtl {
-          animation: scroll-right 20s linear infinite;
+          animation: scroll-right 25s linear infinite;
         }
         .carousel-track:hover,
         .carousel-track-rtl:hover {
           animation-play-state: paused;
         }
         .client-card {
-          animation: client-pulse 3s ease-in-out infinite;
+          animation: float 4s ease-in-out infinite, glow 4s ease-in-out infinite;
         }
-        .client-card:nth-child(2n) {
-          animation-delay: 0.5s;
-        }
-        .client-card:nth-child(3n) {
-          animation-delay: 1s;
-        }
-        .client-card:nth-child(4n) {
-          animation-delay: 1.5s;
+        .client-card:nth-child(1) { animation-delay: 0s; }
+        .client-card:nth-child(2) { animation-delay: 0.5s; }
+        .client-card:nth-child(3) { animation-delay: 1s; }
+        .client-card:nth-child(4) { animation-delay: 1.5s; }
+        .client-card:nth-child(5) { animation-delay: 2s; }
+        .client-card:nth-child(6) { animation-delay: 2.5s; }
+        .client-card:nth-child(7) { animation-delay: 0.25s; }
+        .client-card:nth-child(8) { animation-delay: 0.75s; }
+        .client-card:nth-child(9) { animation-delay: 1.25s; }
+        .client-card:nth-child(10) { animation-delay: 1.75s; }
+        .client-card:nth-child(11) { animation-delay: 2.25s; }
+        .client-card:nth-child(12) { animation-delay: 2.75s; }
+        .client-card:hover {
+          animation-play-state: paused;
+          transform: translateY(-12px) scale(1.1);
+          box-shadow: 0 15px 40px rgba(255,0,0,0.25), 0 20px 35px rgba(0,0,0,0.15);
         }
       `}</style>
 

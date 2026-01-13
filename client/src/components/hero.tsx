@@ -53,7 +53,7 @@ export function Hero() {
 
                 <div className="relative">
                   <h1
-                    className={`relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide ${
+                    className={`relative text-xl sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wide ${
                       isRTL ? "font-arabic leading-relaxed" : "leading-[1.3]"
                     }`}
                     data-testid="text-hero-title"

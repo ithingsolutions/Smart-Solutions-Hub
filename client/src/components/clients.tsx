@@ -1,4 +1,5 @@
 import { useLanguage } from "@/lib/language-context";
+import { useEffect, useRef, useState } from "react";
 
 interface Client {
   id: number;
@@ -48,20 +49,56 @@ const clients: Client[] = [
 
 export function Clients() {
   const { language, isRTL } = useLanguage();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const offsetRef = useRef(0);
+  const speedRef = useRef(0.5);
 
-  const duplicatedClients = [...clients, ...clients, ...clients, ...clients];
+  const allClients = [...clients, ...clients, ...clients];
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let animationId: number;
+
+    const animate = () => {
+      if (!isPaused && track) {
+        offsetRef.current += isRTL ? -speedRef.current : speedRef.current;
+        
+        const children = track.children;
+        if (children.length > 0) {
+          const firstChild = children[0] as HTMLElement;
+          const childWidth = firstChild.offsetWidth + 24;
+          
+          if (isRTL) {
+            if (offsetRef.current <= -childWidth) {
+              offsetRef.current += childWidth;
+              track.appendChild(firstChild);
+            }
+          } else {
+            if (offsetRef.current >= childWidth) {
+              offsetRef.current -= childWidth;
+              track.appendChild(firstChild);
+            }
+          }
+        }
+        
+        track.style.transform = `translateX(${isRTL ? offsetRef.current : -offsetRef.current}px)`;
+      }
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, [isPaused, isRTL]);
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
       <style>{`
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-25%); }
-        }
-        @keyframes scroll-right {
-          0% { transform: translateX(-25%); }
-          100% { transform: translateX(0); }
-        }
         @keyframes float {
           0%, 100% { transform: translateY(0) scale(1); }
           50% { transform: translateY(-8px) scale(1.05); }
@@ -69,16 +106,6 @@ export function Clients() {
         @keyframes glow {
           0%, 100% { box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
           50% { box-shadow: 0 8px 30px rgba(255,0,0,0.15), 0 12px 25px rgba(0,0,0,0.12); }
-        }
-        .carousel-track {
-          animation: scroll-left 40s linear infinite;
-        }
-        .carousel-track-rtl {
-          animation: scroll-right 40s linear infinite;
-        }
-        .carousel-track:hover,
-        .carousel-track-rtl:hover {
-          animation-play-state: paused;
         }
         .client-card {
           animation: float 4s ease-in-out infinite, glow 4s ease-in-out infinite;
@@ -89,12 +116,6 @@ export function Clients() {
         .client-card:nth-child(4) { animation-delay: 1.5s; }
         .client-card:nth-child(5) { animation-delay: 2s; }
         .client-card:nth-child(6) { animation-delay: 2.5s; }
-        .client-card:nth-child(7) { animation-delay: 0.25s; }
-        .client-card:nth-child(8) { animation-delay: 0.75s; }
-        .client-card:nth-child(9) { animation-delay: 1.25s; }
-        .client-card:nth-child(10) { animation-delay: 1.75s; }
-        .client-card:nth-child(11) { animation-delay: 2.25s; }
-        .client-card:nth-child(12) { animation-delay: 2.75s; }
         .client-card:hover {
           animation-play-state: paused;
           transform: translateY(-12px) scale(1.1);
@@ -133,17 +154,22 @@ export function Clients() {
           </p>
         </div>
 
-        <div className="overflow-hidden">
-          <div
-            className={`flex gap-6 ${isRTL ? "carousel-track-rtl" : "carousel-track"}`}
+        <div 
+          className="overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div 
+            ref={trackRef}
+            className="flex gap-6"
             style={{ width: "fit-content" }}
           >
-            {duplicatedClients.map((client, index) => {
+            {allClients.map((client, index) => {
               const name = language === "ar" ? client.nameAr : client.nameEn;
               return (
                 <div
                   key={`${client.id}-${index}`}
-                  className="client-card group flex flex-col items-center justify-center p-4 rounded-xl bg-background border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 min-w-[140px]"
+                  className="client-card group flex flex-col items-center justify-center p-4 rounded-xl bg-background border border-border hover:border-primary/30 transition-all duration-300 min-w-[140px] flex-shrink-0"
                   data-testid={`client-${client.id}`}
                 >
                   <div className="h-16 w-full flex items-center justify-center mb-2">

@@ -35,17 +35,12 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-primary/20" />
 
-      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="text-center max-w-5xl mx-auto">
           <div className="relative mb-10">
             <div className="relative inline-flex flex-col items-center justify-center">
-              <div
-                className="absolute w-80 h-80 sm:w-[420px] sm:h-[420px] md:w-[480px] md:h-[480px] lg:w-[520px] lg:h-[520px] rounded-full border border-dashed border-primary/20"
-              />
-              <div
-                className="absolute w-72 h-72 sm:w-[380px] sm:h-[380px] md:w-[440px] md:h-[440px] lg:w-[480px] lg:h-[480px] rounded-full border-2 border-primary/15"
-              />
+              <div className="absolute w-80 h-80 sm:w-[420px] sm:h-[420px] md:w-[480px] md:h-[480px] lg:w-[520px] lg:h-[520px] rounded-full border border-dashed border-primary/20" />
+              <div className="absolute w-72 h-72 sm:w-[380px] sm:h-[380px] md:w-[440px] md:h-[440px] lg:w-[480px] lg:h-[480px] rounded-full border-2 border-primary/15" />
 
               <div className="relative z-10 py-8 sm:py-12 md:py-14 flex flex-col items-center">
                 <div className="relative mb-6">
@@ -88,7 +83,9 @@ export function Hero() {
               className={`group min-w-[240px] h-16 text-lg font-bold shadow-2xl shadow-primary/30 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02] ${isRTL ? "font-arabic" : ""}`}
               data-testid="button-hero-primary"
               onClick={() => {
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               {t("hero.cta.primary")}
@@ -103,7 +100,9 @@ export function Hero() {
               className={`min-w-[240px] h-16 text-lg font-bold backdrop-blur-sm border-2 hover:bg-accent/50 transition-all duration-300 ${isRTL ? "font-arabic" : ""}`}
               data-testid="button-hero-secondary"
               onClick={() => {
-                document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+                document
+                  .getElementById("services")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               {t("hero.cta.secondary")}
@@ -122,12 +121,10 @@ export function Hero() {
                 {isRTL ? "متوفرون الآن" : "Available Now"}
               </span>
             </div>
-            <button
+            <a
               className={`flex items-center gap-3 px-4 py-2 rounded-full bg-card border border-border cursor-pointer hover:bg-primary/20 hover:border-primary/50 transition-colors duration-200 ${isRTL ? "flex-row-reverse" : ""}`}
-              onClick={() => {
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
               data-testid="button-free-consultation"
+              href="mailto:info@ithingsolutions.com"
             >
               <Zap className="w-4 h-4 text-primary" />
               <span
@@ -135,7 +132,7 @@ export function Hero() {
               >
                 {isRTL ? "استشارة مجانية" : "Free Consultation"}
               </span>
-            </button>
+            </a>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
@@ -143,9 +140,7 @@ export function Hero() {
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
-                {isRTL
-                  ? "استشارات التحول الرقمي"
-                  : "Digital Transformation"}
+                {isRTL ? "استشارات التحول الرقمي" : "Digital Transformation"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">
@@ -153,7 +148,9 @@ export function Hero() {
               <span
                 className={`text-sm font-semibold text-foreground ${isRTL ? "font-arabic" : ""}`}
               >
-                {isRTL ? "استشارات الاتصالات وتقنية المعلومات" : "Telecom & IT Advisory"}
+                {isRTL
+                  ? "استشارات الاتصالات وتقنية المعلومات"
+                  : "Telecom & IT Advisory"}
               </span>
             </div>
             <div className="flex flex-col items-center p-4 rounded-xl bg-card border border-border group">

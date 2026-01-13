@@ -48,9 +48,32 @@ const clients: Client[] = [
 
 export function Clients() {
   const { language, isRTL } = useLanguage();
+  
+  const duplicatedClients = [...clients, ...clients];
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
+      <style>{`
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .carousel-track {
+          animation: scroll-left 25s linear infinite;
+        }
+        .carousel-track-rtl {
+          animation: scroll-right 25s linear infinite;
+        }
+        .carousel-track:hover,
+        .carousel-track-rtl:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+      
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl animate-pulse" />
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/3 rounded-full blur-2xl animate-[pulse_4s_ease-in-out_infinite]" />
@@ -82,30 +105,35 @@ export function Clients() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {clients.map((client) => {
-            const name = language === "ar" ? client.nameAr : client.nameEn;
-            return (
-              <div
-                key={client.id}
-                className="group flex flex-col items-center justify-center p-8 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                data-testid={`client-${client.id}`}
-              >
-                <div className="h-24 w-full flex items-center justify-center mb-4">
-                  <img
-                    src={client.logoUrl}
-                    alt={name}
-                    className="max-h-24 max-w-full object-contain"
-                  />
-                </div>
-                <span
-                  className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
+        <div className="overflow-hidden">
+          <div 
+            className={`flex gap-6 ${isRTL ? "carousel-track-rtl" : "carousel-track"}`}
+            style={{ width: "fit-content" }}
+          >
+            {duplicatedClients.map((client, index) => {
+              const name = language === "ar" ? client.nameAr : client.nameEn;
+              return (
+                <div
+                  key={`${client.id}-${index}`}
+                  className="group flex flex-col items-center justify-center p-8 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 min-w-[200px]"
+                  data-testid={`client-${client.id}`}
                 >
-                  {name}
-                </span>
-              </div>
-            );
-          })}
+                  <div className="h-24 w-full flex items-center justify-center mb-4">
+                    <img
+                      src={client.logoUrl}
+                      alt={name}
+                      className="max-h-24 max-w-full object-contain"
+                    />
+                  </div>
+                  <span
+                    className={`text-sm font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors ${isRTL ? "font-arabic" : ""}`}
+                  >
+                    {name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

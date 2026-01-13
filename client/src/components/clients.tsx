@@ -1,5 +1,4 @@
 import { useLanguage } from "@/lib/language-context";
-import { useEffect, useRef, useState } from "react";
 
 interface Client {
   id: number;
@@ -49,80 +48,48 @@ const clients: Client[] = [
 
 export function Clients() {
   const { language, isRTL } = useLanguage();
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const offsetRef = useRef(0);
-  const speedRef = useRef(0.5);
-
-  const allClients = [...clients, ...clients, ...clients];
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    let animationId: number;
-
-    const animate = () => {
-      if (!isPaused && track) {
-        offsetRef.current += isRTL ? -speedRef.current : speedRef.current;
-        
-        const children = track.children;
-        if (children.length > 0) {
-          const firstChild = children[0] as HTMLElement;
-          const childWidth = firstChild.offsetWidth + 24;
-          
-          if (isRTL) {
-            if (offsetRef.current <= -childWidth) {
-              offsetRef.current += childWidth;
-              track.appendChild(firstChild);
-            }
-          } else {
-            if (offsetRef.current >= childWidth) {
-              offsetRef.current -= childWidth;
-              track.appendChild(firstChild);
-            }
-          }
-        }
-        
-        track.style.transform = `translateX(${isRTL ? offsetRef.current : -offsetRef.current}px)`;
-      }
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-    };
-  }, [isPaused, isRTL]);
+  
+  const duplicatedClients = [...clients, ...clients];
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-card/50">
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-8px) scale(1.05); }
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        @keyframes glow {
-          0%, 100% { box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-          50% { box-shadow: 0 8px 30px rgba(255,0,0,0.15), 0 12px 25px rgba(0,0,0,0.12); }
+        @keyframes scroll-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        @keyframes client-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+        .carousel-track {
+          animation: scroll-left 20s linear infinite;
+        }
+        .carousel-track-rtl {
+          animation: scroll-right 20s linear infinite;
+        }
+        .carousel-track:hover,
+        .carousel-track-rtl:hover {
+          animation-play-state: paused;
         }
         .client-card {
-          animation: float 4s ease-in-out infinite, glow 4s ease-in-out infinite;
+          animation: client-pulse 3s ease-in-out infinite;
         }
-        .client-card:nth-child(1) { animation-delay: 0s; }
-        .client-card:nth-child(2) { animation-delay: 0.5s; }
-        .client-card:nth-child(3) { animation-delay: 1s; }
-        .client-card:nth-child(4) { animation-delay: 1.5s; }
-        .client-card:nth-child(5) { animation-delay: 2s; }
-        .client-card:nth-child(6) { animation-delay: 2.5s; }
-        .client-card:hover {
-          animation-play-state: paused;
-          transform: translateY(-12px) scale(1.1);
-          box-shadow: 0 15px 40px rgba(255,0,0,0.25), 0 20px 35px rgba(0,0,0,0.15);
+        .client-card:nth-child(2n) {
+          animation-delay: 0.5s;
+        }
+        .client-card:nth-child(3n) {
+          animation-delay: 1s;
+        }
+        .client-card:nth-child(4n) {
+          animation-delay: 1.5s;
         }
       `}</style>
-
+      
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl animate-pulse" />
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/3 rounded-full blur-2xl animate-[pulse_4s_ease-in-out_infinite]" />
@@ -154,22 +121,17 @@ export function Clients() {
           </p>
         </div>
 
-        <div 
-          className="overflow-hidden"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="overflow-hidden">
           <div 
-            ref={trackRef}
-            className="flex gap-6"
+            className={`flex gap-6 ${isRTL ? "carousel-track-rtl" : "carousel-track"}`}
             style={{ width: "fit-content" }}
           >
-            {allClients.map((client, index) => {
+            {duplicatedClients.map((client, index) => {
               const name = language === "ar" ? client.nameAr : client.nameEn;
               return (
                 <div
                   key={`${client.id}-${index}`}
-                  className="client-card group flex flex-col items-center justify-center p-4 rounded-xl bg-background border border-border hover:border-primary/30 transition-all duration-300 min-w-[140px] flex-shrink-0"
+                  className="client-card group flex flex-col items-center justify-center p-4 rounded-xl bg-background border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 min-w-[140px]"
                   data-testid={`client-${client.id}`}
                 >
                   <div className="h-16 w-full flex items-center justify-center mb-2">

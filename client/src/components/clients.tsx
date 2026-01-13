@@ -48,7 +48,7 @@ const clients: Client[] = [
 
 export function Clients() {
   const { language, isRTL } = useLanguage();
-  
+
   const duplicatedClients = [...clients, ...clients];
 
   return (
@@ -64,7 +64,7 @@ export function Clients() {
         }
         @keyframes client-pulse {
           0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+          50% { transform: scale(0.95); }
         }
         .carousel-track {
           animation: scroll-left 20s linear infinite;
@@ -89,7 +89,7 @@ export function Clients() {
           animation-delay: 1.5s;
         }
       `}</style>
-      
+
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl animate-pulse" />
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/3 rounded-full blur-2xl animate-[pulse_4s_ease-in-out_infinite]" />
@@ -122,7 +122,7 @@ export function Clients() {
         </div>
 
         <div className="overflow-hidden">
-          <div 
+          <div
             className={`flex gap-6 ${isRTL ? "carousel-track-rtl" : "carousel-track"}`}
             style={{ width: "fit-content" }}
           >

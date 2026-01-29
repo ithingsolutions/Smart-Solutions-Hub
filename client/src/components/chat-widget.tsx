@@ -121,7 +121,10 @@ export function ChatWidget() {
         {
           id: Date.now() + 1,
           role: "assistant",
-          content: language === "ar" ? "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى." : "Sorry, an error occurred. Please try again.",
+          content:
+            language === "ar"
+              ? "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى."
+              : "Sorry, an error occurred. Please try again.",
         },
       ]);
     } finally {
@@ -198,7 +201,9 @@ export function ChatWidget() {
                       : "bg-muted text-foreground"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  <p className="text-sm whitespace-pre-wrap">
+                    {message.content}
+                  </p>
                 </div>
               </div>
             ))}

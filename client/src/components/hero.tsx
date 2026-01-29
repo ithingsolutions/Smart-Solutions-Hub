@@ -196,18 +196,8 @@ export function Hero() {
               <div className="space-y-6 animate-fade-in">
                 {/* Badge */}
                 <div className="inline-block"></div>
-
-                {/* Main Heading */}
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                  <span className="block bg-gradient-to-r from-white via-slate-100 to-gray-100 bg-clip-text text-transparent animate-gradient">
-                    {isRTL
-                      ? "  تمكين حلول ذكية جاهزة للمستقبل"
-                      : "Empowering future ready smart solutions"}
-                  </span>
-                </h1>
-
-                {/* Subheading */}
-                <p className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-slate-300 to-gray-300 bg-clip-text text-transparent">
+           {/* Subheading */}
+           <p className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-slate-300 to-gray-300 bg-clip-text text-transparent">
                   {isRTL ? (
                     <>
                       <span className="text-red-500">أبعاد</span>
@@ -220,6 +210,16 @@ export function Hero() {
                     </>
                   )}
                 </p>
+                {/* Main Heading */}
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                  <span className="block bg-gradient-to-r from-white via-slate-100 to-gray-100 bg-clip-text text-transparent animate-gradient">
+                    {isRTL
+                      ? "  تمكين حلول ذكية جاهزة للمستقبل"
+                      : "Empowering future ready smart solutions"}
+                  </span>
+                </h1>
+
+     
 
                 {/* Description */}
                 <p className="text-lg text-slate-300 max-w-xl leading-relaxed">

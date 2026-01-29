@@ -1,7 +1,19 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 
 type TimeOfDay = "dawn" | "morning" | "afternoon" | "sunset" | "night";
-type BackgroundMode = "auto" | "dawn" | "morning" | "afternoon" | "sunset" | "night";
+type BackgroundMode =
+  | "auto"
+  | "dawn"
+  | "morning"
+  | "afternoon"
+  | "sunset"
+  | "night";
 
 interface BackgroundContextType {
   timeOfDay: TimeOfDay;
@@ -10,11 +22,13 @@ interface BackgroundContextType {
   currentBackground: TimeOfDay;
 }
 
-const BackgroundContext = createContext<BackgroundContextType | undefined>(undefined);
+const BackgroundContext = createContext<BackgroundContextType | undefined>(
+  undefined
+);
 
 function getTimeOfDay(): TimeOfDay {
   const hour = new Date().getHours();
-  
+
   if (hour >= 5 && hour < 8) return "dawn";
   if (hour >= 8 && hour < 12) return "morning";
   if (hour >= 12 && hour < 17) return "afternoon";
@@ -26,7 +40,9 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
   const [timeOfDay, setTimeOfDay] = useState<TimeOfDay>(getTimeOfDay);
   const [backgroundMode, setBackgroundMode] = useState<BackgroundMode>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("backgroundMode") as BackgroundMode) || "auto";
+      return (
+        (localStorage.getItem("backgroundMode") as BackgroundMode) || "auto"
+      );
     }
     return "auto";
   });
@@ -43,10 +59,18 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("backgroundMode", backgroundMode);
   }, [backgroundMode]);
 
-  const currentBackground = backgroundMode === "auto" ? timeOfDay : backgroundMode;
+  const currentBackground =
+    backgroundMode === "auto" ? timeOfDay : backgroundMode;
 
   return (
-    <BackgroundContext.Provider value={{ timeOfDay, backgroundMode, setBackgroundMode, currentBackground }}>
+    <BackgroundContext.Provider
+      value={{
+        timeOfDay,
+        backgroundMode,
+        setBackgroundMode,
+        currentBackground,
+      }}
+    >
       {children}
     </BackgroundContext.Provider>
   );

@@ -49,7 +49,7 @@ export function FloatingParticles() {
           }}
         />
       ))}
-      
+
       {[...Array(5)].map((_, i) => (
         <motion.div
           key={`glow-${i}`}
@@ -59,7 +59,9 @@ export function FloatingParticles() {
             top: `${30 + (i % 3) * 20}%`,
             width: 200 + i * 50,
             height: 200 + i * 50,
-            background: `radial-gradient(circle, hsl(var(--primary) / ${0.05 + i * 0.02}) 0%, transparent 70%)`,
+            background: `radial-gradient(circle, hsl(var(--primary) / ${
+              0.05 + i * 0.02
+            }) 0%, transparent 70%)`,
           }}
           animate={{
             scale: [1, 1.2, 1],

@@ -103,8 +103,8 @@ export function ChatPanel() {
                     prev.map((msg) =>
                       msg.id === assistantMessage.id
                         ? { ...msg, content: assistantContent }
-                        : msg,
-                    ),
+                        : msg
+                    )
                   );
                 }
               } catch (e) {

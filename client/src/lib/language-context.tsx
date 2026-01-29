@@ -57,7 +57,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stats.experience": "Years Experience",
     "stats.experts": "Tech Experts",
 
-    "why.title": "Why Choose iThing?",
+    "why.title": "Why iThing?",
     "why.subtitle":
       "Partner with us for innovative, scalable, and future-ready solutions",
     "why.innovation.title": "Innovation First",
@@ -177,7 +177,7 @@ const translations: Record<Language, Record<string, string>> = {
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined,
+  undefined
 );
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

@@ -20,33 +20,13 @@ export function WhyChooseUs() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center ${isRTL ? "lg:flex-row-reverse" : ""}`}>
           <ScrollAnimation animation="fadeLeft" className={isRTL ? "text-right order-2 lg:order-1" : "order-2 lg:order-1"}>
-            <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5 ${isRTL ? "flex-row-reverse" : ""}`}>
-              <CheckCircle2 className="w-4 h-4 text-primary" />
-              <span className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}>
-                {isRTL ? "لماذا نحن؟" : "Why Choose Us?"}
-              </span>
-            </div>
+           
             <h2
               className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 leading-tight ${isRTL ? "font-arabic" : ""}`}
               data-testid="text-why-title"
             >
               {t("why.title")}
             </h2>
-            <p
-              className={`text-lg text-muted-foreground mb-6 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
-              data-testid="text-about-description"
-            >
-              {isRTL 
-                ? "شركة أردنية ذات مسؤولية محدودة تأسست عام 2016، تقدم استشارات التحول الرقمي واستشارات الاتصالات وتقنية المعلومات والحلول الرقمية الذكية في الأسواق الإقليمية."
-                : "A Jordanian LLC established in 2016, delivering professional digital transformation consulting, telecommunications & IT advisory, and smart digital solutions across regional markets."}
-            </p>
-            <p
-              className={`text-xl text-muted-foreground mb-12 leading-relaxed ${isRTL ? "font-arabic" : ""}`}
-              data-testid="text-why-subtitle"
-            >
-              {t("why.subtitle")}
-            </p>
-
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {reasons.map((reason) => {
                 const Icon = reason.icon;

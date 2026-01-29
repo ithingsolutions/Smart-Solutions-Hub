@@ -1,7 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
-type AnimationType = "fadeUp" | "fadeDown" | "fadeLeft" | "fadeRight" | "zoomIn" | "zoomOut";
+type AnimationType =
+  | "fadeUp"
+  | "fadeDown"
+  | "fadeLeft"
+  | "fadeRight"
+  | "zoomIn"
+  | "zoomOut";
 
 interface ScrollAnimationProps {
   children: ReactNode;

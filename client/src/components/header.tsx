@@ -34,15 +34,19 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+          : "bg-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
           <a href="#home" className="flex items-center" data-testid="link-logo">
-            <img 
-              src={theme === "dark" ? logoDark : logoLight} 
-              alt="iThing" 
-              className="h-12 w-auto" 
+            <img
+              src={theme === "dark" || !scrolled ? logoDark : logoLight}
+              alt="iThing"
+              className="h-12 w-auto"
             />
           </a>
 
@@ -51,7 +55,11 @@ export function Header() {
               <a
                 key={item.key}
                 href={item.href}
-                className={`relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group ${isRTL ? "font-arabic" : ""}`}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
+                  scrolled
+                    ? "text-muted-foreground hover:text-foreground"
+                    : "text-white hover:text-white/80"
+                } ${isRTL ? "font-arabic" : ""}`}
                 data-testid={`link-${item.key.split(".")[1]}`}
               >
                 {t(item.key)}
@@ -65,7 +73,11 @@ export function Header() {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="rounded-full"
+              className={`rounded-full ${
+                !scrolled
+                  ? "text-white hover:text-white/80 hover:bg-white/10"
+                  : ""
+              }`}
               data-testid="button-theme-toggle"
             >
               {theme === "dark" ? (
@@ -79,16 +91,26 @@ export function Header() {
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
-              className="font-bold text-xs px-3 rounded-full"
+              className={`font-bold text-xs px-3 rounded-full ${
+                !scrolled
+                  ? "text-white hover:text-white/80 hover:bg-white/10"
+                  : ""
+              }`}
               data-testid="button-language-toggle"
             >
               {language === "en" ? "العربية" : "EN"}
             </Button>
 
             <Button
-              className={`hidden md:flex font-semibold rounded-full shadow-lg shadow-primary/25 ${isRTL ? "font-arabic" : ""}`}
+              className={`hidden md:flex font-semibold rounded-full shadow-lg shadow-primary/25 ${
+                isRTL ? "font-arabic" : ""
+              }`}
               data-testid="button-get-started"
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               {t("nav.getStarted")}
             </Button>
@@ -96,7 +118,11 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden rounded-full"
+              className={`md:hidden rounded-full ${
+                !scrolled
+                  ? "text-white hover:text-white/80 hover:bg-white/10"
+                  : ""
+              }`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
             >
@@ -117,18 +143,24 @@ export function Header() {
                   key={item.key}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-4 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-xl transition-colors ${isRTL ? "font-arabic text-right" : ""}`}
+                  className={`px-4 py-4 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-xl transition-colors ${
+                    isRTL ? "font-arabic text-right" : ""
+                  }`}
                   data-testid={`link-mobile-${item.key.split(".")[1]}`}
                 >
                   {t(item.key)}
                 </a>
               ))}
               <Button
-                className={`mt-4 h-12 rounded-full ${isRTL ? "font-arabic" : ""}`}
+                className={`mt-4 h-12 rounded-full ${
+                  isRTL ? "font-arabic" : ""
+                }`}
                 data-testid="button-mobile-get-started"
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 {t("nav.getStarted")}

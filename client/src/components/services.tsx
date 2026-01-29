@@ -1,12 +1,15 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/lib/language-context";
-import { ScrollAnimation, StaggerContainer, StaggerItem } from "@/components/scroll-animation";
+import {
+  ScrollAnimation,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/scroll-animation";
 import {
   Lightbulb,
-  Radio,
   Layers,
-  Cloud,
   Settings,
+  BarChart3,
+  Cloud,
   Rocket,
   ArrowUpRight,
   LucideIcon,
@@ -19,80 +22,83 @@ interface Service {
   descriptionEn: string;
   descriptionAr: string;
   icon: LucideIcon;
+  gradient: string;
+  iconColor: string;
 }
 
 const services: Service[] = [
   {
     id: 1,
-    titleEn: "Digital Transformation Consulting",
-    titleAr: "استشارات التحول الرقمي",
+    titleEn: "Digital Transformation & Strategy",
+    titleAr: "التحول الرقمي والاستراتيجية",
     descriptionEn:
-      "Strategic guidance to navigate digital transformation with tailored strategies aligned with international best practices and global technological standards.",
+      "We enable organizations to scale and innovate through advanced digital technologies. Our services focus on modernizing IT ecosystems, optimizing digital platforms, and building secure, high-performance infrastructures leveraging cloud computing, AI, data analytics, automation, and enterprise systems.",
     descriptionAr:
-      "إرشادات استراتيجية للتحول الرقمي مع استراتيجيات مصممة وفقاً لأفضل الممارسات الدولية والمعايير التقنية العالمية.",
+      "نمكّن المؤسسات من التوسع والابتكار من خلال التقنيات الرقمية المتقدمة. تركز خدماتنا على تحديث أنظمة تقنية المعلومات وتحسين المنصات الرقمية وبناء بنى تحتية آمنة وعالية الأداء.",
     icon: Lightbulb,
+    gradient: "from-amber-500/20 to-orange-500/20",
+    iconColor: "text-amber-400",
   },
   {
     id: 2,
-    titleEn: "Telecommunications & IT Advisory",
-    titleAr: "استشارات الاتصالات وتقنية المعلومات",
-    descriptionEn:
-      "Expert advisory services in telecommunications and information technology to optimize your technology investments and infrastructure.",
-    descriptionAr:
-      "خدمات استشارية متخصصة في الاتصالات وتقنية المعلومات لتحسين استثماراتك التقنية والبنية التحتية.",
-    icon: Radio,
-  },
-  {
-    id: 3,
     titleEn: "Enterprise & Smart Solutions",
     titleAr: "حلول المؤسسات والحلول الذكية",
     descriptionEn:
-      "Design and development of integrated digital platforms and enterprise solutions that drive efficiency and innovation.",
+      "We design and deliver intelligent enterprise systems that enhance performance, connectivity, and operational control. We implement scalable platforms powered by IoT, cloud, AI, and advanced analytics to optimize business processes and support real-time decision-making.",
     descriptionAr:
-      "تصميم وتطوير منصات رقمية متكاملة وحلول مؤسسية تعزز الكفاءة والابتكار.",
+      "نصمم ونقدم أنظمة مؤسسية ذكية تعزز الأداء والاتصال والتحكم التشغيلي. ننفذ منصات قابلة للتوسع مدعومة بإنترنت الأشياء والسحابة والذكاء الاصطناعي والتحليلات المتقدمة.",
     icon: Layers,
+    gradient: "from-purple-500/20 to-pink-500/20",
+    iconColor: "text-purple-400",
   },
   {
-    id: 4,
-    titleEn: "Cloud & Infrastructure Integration",
-    titleAr: "تكامل السحابة والبنية التحتية",
-    descriptionEn:
-      "Seamless cloud and infrastructure integration services to build scalable, secure, and reliable technology ecosystems.",
-    descriptionAr:
-      "خدمات تكامل السحابة والبنية التحتية لبناء أنظمة تقنية قابلة للتوسع وآمنة وموثوقة.",
-    icon: Cloud,
-  },
-  {
-    id: 5,
+    id: 3,
     titleEn: "Systems & Application Integration",
     titleAr: "تكامل الأنظمة والتطبيقات",
     descriptionEn:
-      "Technology integration and convergence services to connect your systems and applications into a cohesive ecosystem.",
+      "We connect enterprise systems and digital platforms to create seamless, secure, and high-performance technology ecosystems. We design and implement scalable integration architectures using APIs, middleware, microservices, and cloud-native technologies.",
     descriptionAr:
-      "خدمات تكامل التقنية والتقارب لربط أنظمتك وتطبيقاتك في منظومة متكاملة.",
+      "نربط أنظمة المؤسسات والمنصات الرقمية لإنشاء أنظمة تقنية سلسة وآمنة وعالية الأداء. نصمم وننفذ هياكل تكامل قابلة للتوسع باستخدام واجهات برمجة التطبيقات والوسيط والخدمات المصغرة.",
     icon: Settings,
+    gradient: "from-indigo-500/20 to-blue-500/20",
+    iconColor: "text-indigo-400",
+  },
+  {
+    id: 4,
+    titleEn: "Data Analytics & AI",
+    titleAr: "تحليلات البيانات والذكاء الاصطناعي",
+    descriptionEn:
+      "We transform data into actionable intelligence through advanced analytics and artificial intelligence solutions. We design and deploy scalable data platforms leveraging cloud data lakes, business intelligence, machine learning, and predictive analytics.",
+    descriptionAr:
+      "نحوّل البيانات إلى ذكاء قابل للتنفيذ من خلال حلول التحليلات المتقدمة والذكاء الاصطناعي. نصمم وننشر منصات بيانات قابلة للتوسع مع التعلم الآلي والتحليلات التنبؤية.",
+    icon: BarChart3,
+    gradient: "from-cyan-500/20 to-teal-500/20",
+    iconColor: "text-cyan-400",
+  },
+  {
+    id: 5,
+    titleEn: "Cloud & Infrastructure Integration",
+    titleAr: "تكامل السحابة والبنية التحتية",
+    descriptionEn:
+      "We design and integrate secure, scalable, and high-performance cloud and infrastructure environments. We implement hybrid and multi-cloud architectures leveraging leading platforms, virtualization, containerization, and edge technologies.",
+    descriptionAr:
+      "نصمم وندمج بيئات سحابية وبنية تحتية آمنة وقابلة للتوسع وعالية الأداء. ننفذ هياكل سحابية هجينة ومتعددة مع الاستفادة من المنصات الرائدة والحاويات وتقنيات الحافة.",
+    icon: Cloud,
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    iconColor: "text-blue-400",
   },
   {
     id: 6,
     titleEn: "Startup & Enterprise Enablement",
     titleAr: "تمكين الشركات الناشئة والمؤسسات",
     descriptionEn:
-      "Enabling startups and established organizations through cohesive, scalable technology ecosystems and professional services.",
+      "We empower startups and enterprises to build, scale, and optimize digital products and platforms with speed and confidence. We provide end-to-end enablement through cloud platforms, agile development frameworks, DevOps automation, and modern application architectures.",
     descriptionAr:
-      "تمكين الشركات الناشئة والمؤسسات القائمة من خلال أنظمة تقنية متكاملة وقابلة للتوسع وخدمات احترافية.",
+      "نمكّن الشركات الناشئة والمؤسسات من بناء وتوسيع وتحسين المنتجات والمنصات الرقمية بسرعة وثقة. نقدم تمكيناً شاملاً من خلال المنصات السحابية وأطر التطوير المرنة وأتمتة DevOps.",
     icon: Rocket,
+    gradient: "from-rose-500/20 to-red-500/20",
+    iconColor: "text-rose-400",
   },
-];
-
-const gradients = [
-  "from-rose-500/20 to-orange-500/20",
-  "from-amber-500/20 to-yellow-500/20",
-  "from-cyan-500/20 to-teal-500/20",
-  "from-emerald-500/20 to-green-500/20",
-  "from-violet-500/20 to-purple-500/20",
-  "from-blue-500/20 to-cyan-500/20",
-  "from-pink-500/20 to-rose-500/20",
-  "from-indigo-500/20 to-blue-500/20",
 ];
 
 export function Services() {
@@ -100,79 +106,90 @@ export function Services() {
 
   return (
     <section id="services" className="py-28 lg:py-40 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/40 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-black" />
 
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-      </div>
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-red-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollAnimation animation="fadeUp">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/15 to-primary/10 border border-primary/20 mb-8 shadow-lg shadow-primary/5">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 shadow-lg">
+              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
               <span
-                className={`text-sm font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent ${isRTL ? "font-arabic" : ""}`}
+                className={`text-sm font-bold text-slate-300 ${
+                  isRTL ? "font-arabic" : ""
+                }`}
               >
                 {isRTL ? "ما نقدمه" : "What We Offer"}
               </span>
             </div>
             <h2
-              className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 ${isRTL ? "font-arabic" : ""}`}
+              className={`text-4xl sm:text-5xl lg:text-6xl font-black mb-8 bg-gradient-to-r from-white via-slate-100 to-gray-200 bg-clip-text text-transparent ${
+                isRTL ? "font-arabic" : ""
+              }`}
               data-testid="text-services-title"
             >
               {isRTL ? "خدماتنا" : "Our Services"}
             </h2>
             <p
-              className={`text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed ${isRTL ? "font-arabic" : ""}`}
+              className={`text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed ${
+                isRTL ? "font-arabic" : ""
+              }`}
               data-testid="text-services-subtitle"
             >
               {isRTL
-                ? "حلول مبتكرة مصممة لتحويل عملك"
-                : "Innovative solutions designed to transform your business"}
+                ? "شريكك لتسريع التبني الرقمي وتعزيز التميز التشغيلي والبقاء في المقدمة"
+                : "Partner with us to accelerate digital adoption, strengthen operational excellence, and stay ahead in a rapidly evolving digital landscape"}
             </p>
           </div>
         </ScrollAnimation>
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => {
+          {services.map((service) => {
             const Icon = service.icon;
-            const gradient = gradients[index % gradients.length];
             const title = language === "ar" ? service.titleAr : service.titleEn;
             const description =
               language === "ar" ? service.descriptionAr : service.descriptionEn;
 
             return (
               <StaggerItem key={service.id} animation="zoomIn">
-                <Card
-                  className="group relative overflow-hidden border bg-card shadow-md hover:shadow-lg transition-shadow duration-300 h-full"
+                <div
+                  className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${service.gradient} backdrop-blur-xl border border-white/10 shadow-2xl p-6 lg:p-8 h-full hover:scale-105 transition-all duration-300 cursor-pointer`}
                   data-testid={`card-service-${service.id}`}
                 >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <CardContent className="relative p-6 lg:p-8">
-                  <div
-                    className={`flex items-start justify-between mb-6 ${isRTL ? "flex-row-reverse" : ""}`}
-                  >
-                    <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20">
-                      <Icon className="h-7 w-7 text-primary" />
+                  <div className="relative">
+                    <div
+                      className={`flex items-start justify-between mb-6 ${
+                        isRTL ? "flex-row-reverse" : ""
+                      }`}
+                    >
+                      <div className="p-4 rounded-2xl bg-white/10 border border-white/20">
+                        <Icon className={`h-7 w-7 ${service.iconColor}`} />
+                      </div>
+                      <div className="p-2 rounded-full border border-transparent group-hover:border-white/20 transition-colors">
+                        <ArrowUpRight className="h-4 w-4 text-white/30 group-hover:text-white transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </div>
                     </div>
-                    <div className="p-2 rounded-full border border-transparent group-hover:border-primary/20 transition-colors">
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground/30 group-hover:text-primary transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </div>
+                    <h3
+                      className={`text-xl font-bold mb-3 text-white group-hover:text-red-400 transition-colors duration-300 ${
+                        isRTL ? "font-arabic text-right" : ""
+                      }`}
+                    >
+                      {title}
+                    </h3>
+                    <p
+                      className={`text-sm text-slate-300 leading-relaxed ${
+                        isRTL ? "font-arabic text-right" : ""
+                      }`}
+                    >
+                      {description}
+                    </p>
                   </div>
-                  <h3
-                    className={`text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300 ${isRTL ? "font-arabic text-right" : ""}`}
-                  >
-                    {title}
-                  </h3>
-                  <p
-                    className={`text-sm text-muted-foreground leading-relaxed ${isRTL ? "font-arabic text-right" : ""}`}
-                  >
-                    {description}
-                  </p>
-                </CardContent>
-                </Card>
+                </div>
               </StaggerItem>
             );
           })}

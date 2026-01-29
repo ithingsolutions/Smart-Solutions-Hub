@@ -30,7 +30,7 @@ export function Hero() {
     },
     {
       icon: Code,
-      text: isRTL ? "" : "Technology Development",
+      text: isRTL ? "تطوير التكنولوجيا" : "Technology Development",
     },
   ];
 
@@ -368,7 +368,7 @@ export function Hero() {
               <div className="relative inline-block">
                 <div className="absolute inset-0 bg-purple-500/20 blur-xl rounded-full group-hover:bg-purple-500/30 transition-all" />
                 <div className="relative text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                  500+
+                  100+
                 </div>
               </div>
               <div className="text-purple-200 text-sm md:text-base font-medium flex items-center justify-center gap-2">
